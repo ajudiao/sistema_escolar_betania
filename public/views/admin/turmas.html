@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turmas - Administração | SGEB MED Angola</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+</head>
+
+<body data-protected="true">
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+   
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Sistema de Geatão Escolar Betânia</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- Principal -->
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link active" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Comunicação -->
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicação</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 11 18-5v12L3 13v-2z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">2</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gestão -->
+        <div class="nav-group">
+          <div class="nav-group-title">Gestão</div>
+          <div class="nav-item">
+            <a href="professores.html" class="nav-link" data-title="Professores">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Professores</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v4H4z" />
+                  <path d="M4 12h16v8H4z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="usuarios-sistema.html" class="nav-link" data-title="Usuários do Sistema">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-4-4h-1" />
+                  <circle cx="17" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Usuários do Sistema</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Disciplinas">
+              <span class="nav-link-icon">
+
+                <!-- Ícone Livro / Disciplinas -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                  <path d="M2 4h7a4 4 0 0 1 4 4v12a4 4 0 0 0-4-4H2z" />
+                  <path d="M22 4h-7a4 4 0 0 0-4 4v12a4 4 0 0 1 4-4h7z" />
+
+                </svg>
+
+              </span>
+              <span class="nav-link-text">Disciplinas</span>
+            </a>
+          </div>
+
+          <div class="nav-item">
+            <a href="classe.html" class="nav-link" data-title="Classes">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Classes</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="alunos.html" class="nav-link" data-title="Alunos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Alunos</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Conta -->
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="../../../index.html" data-logout class="nav-link" data-title="Sair">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left"><button class="mobile-toggle">☰</button>
+          <h1 class="header-title">Turmas</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">AD</div>
+            <div class="header-user-info"><span class="header-user-name" data-user-name>Administrador</span><span
+                class="header-user-role" data-user-role>Administração</span></div>
+          </div>
+          <a href="#" data-logout class="btn btn-sm btn-outline-danger ms-3">Sair</a>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="page-header d-flex justify-content-between align-items-center">
+          <div>
+            <h2 class="page-title">Gestão de Turmas</h2>
+            <p class="page-subtitle">Turmas e respetivos detalhes</p>
+          </div>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#turmaModal">Nova Turma</button>
+        </div>
+
+        <!-- Filters -->
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row g-3 align-items-end">
+              <div class="col-md-4">
+                <label class="form-label">Pesquisar</label>
+                <input id="filterTurmaSearch" type="text" class="form-control"
+                  placeholder="Código, curso, professor...">
+              </div>
+              <div class="col-md-2">
+                <label class="form-label">Classe</label>
+                <select id="filterTurmaCiclo" class="form-control form-select">
+                  <option value="">Todos</option>
+                  <option>1ª</option>
+                  <option>2ª</option>
+                  <option>3ª</option>
+                  <option>4ª</option>
+                  <option>5ª</option>
+                  <option>6ª</option>
+                  <option>7ª</option>
+                  <option>8ª</option>
+                  <option>9ª</option>
+                  <option>10ª</option>
+                  <option>11ª</option>
+                  <option>12ª</option>
+                  <option>13ª</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <label class="form-label">Sala</label>
+                <input id="filterTurmaSala" type="text" class="form-control" placeholder="Ex: A101">
+              </div>
+              <div class="col-md-2">
+                <label class="form-label">Ano Letivo</label>
+                <select id="filterTurmaAno" class="form-control form-select">
+                  <option value="">Todos</option>
+                  <option value="2023/2024">2023/2024</option>
+                  <option value="2024/2025">2024/2025</option>
+                  <option value="2025/2026">2025/2026</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <button id="btnFilterTurma" class="btn btn-outline-primary w-100">Filtrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Tipo de Ensino</th>
+                    <th>Classe</th>
+                    <th>Sala</th>
+                    <th>Ano Letivo</th>
+                    <th>Diretor de Turma</th>
+                    <th>Nº Alunos</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal: Ver Detalhes da Turma -->
+        <div class="modal fade" id="turmaDetailsModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Detalhes da Turma</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Código</label>
+                    <p id="turmaDetailCodigo">-</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Tipo de Ensino</label>
+                    <p id="turmaDetailCurso">-</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Classe</label>
+                    <p id="turmaDetailClasse">-</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Sala</label>
+                    <p id="turmaDetailSala">-</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Ano Letivo</label>
+                    <p id="turmaDetailAno">-</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Diretor de Turma</label>
+                    <p id="turmaDetailProf">-</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Nº Alunos</label>
+                    <p id="turmaDetailNum">-</p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal: Adicionar / Editar Turma -->
+        <div class="modal fade" id="turmaModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="turmaModalTitle">Nova Turma</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <form id="formTurma">
+                <div class="modal-body">
+
+                  <input type="hidden" id="turmaModalForm">
+                  <input type="hidden" id="turmaId">
+
+                  <!-- ================= IDENTIFICAÇÃO ================= -->
+                  <h6 class="text-primary border-bottom pb-2 mb-3">Identificação</h6>
+
+                  <div class="row">
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Código</label>
+                      <input id="turmaCodigo" class="form-control" placeholder="Ex: INFO-10A">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Ano Letivo</label>
+                      <select id="turmaAno" class="form-select">
+                        <option value="">Selecione...</option>
+                        <option value="2023">2023/2024</option>
+                        <option value="2024">2024/2025</option>
+                        <option value="2025">2025/2026</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Turno</label>
+                      <select id="turmaTurno" class="form-select">
+                        <option value="">Selecione...</option>
+                        <option value="Manhã">Manhã</option>
+                        <option value="Tarde">Tarde</option>
+                        <option value="Noite">Noite</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- ================= ORGANIZAÇÃO ACADÉMICA ================= -->
+                  <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Organização Académica</h6>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Classe</label>
+                      <select id="turmaClasse" class="form-select">
+                        <option value="">Selecione...</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Sala</label>
+                      <input id="turmaSala" type="text" class="form-control" placeholder="Ex: A101">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Director de Turma</label>
+                      <select id="turmaProf" class="form-select">
+                        <option value="">Selecione...</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- ================= CAPACIDADE ================= -->
+                  <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Capacidade</h6>
+
+                  <div class="row">
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Nº Máximo de Alunos</label>
+                      <input id="turmaNum" type="number" class="form-control" min="1">
+                    </div>
+
+                    <div class="col-md-8 mb-3">
+                      <label class="form-label">Observações</label>
+                      <textarea id="turmaObservacoes" class="form-control" rows="2" placeholder="Opcional..."></textarea>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Geatão Escolar Betânia &copy; 2026</p>
+      </footer>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/data-loader.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  <script>
+    // Proteger página para ADMIN
+    AuthHelper.checkRole(['ADMIN']);
+
+    let turmasData = [];
+    let cursosDisponives = [];
+    let professoresDisponives = [];
+    let classesDisponives = [];
+
+    // Carregar turmas da API
+    async function loadTurmas() {
+      try {
+        DataLoader.showLoading('Carregando turmas...');
+        turmasData = await api.getTurmas();
+        DataLoader.hideLoading();
+        renderTurmasTable(turmasData);
+      } catch (error) {
+        DataLoader.hideLoading();
+        DataLoader.showError('Erro ao carregar turmas: ' + error.message);
+      }
+    }
+
+
+
+    // Carregar professores para o modal
+    async function loadProfessoresModal() {
+      try {
+        console.log('[TURMAS] Carregando professores...');
+        professoresDisponives = await api.getProfessores();
+        console.log('[TURMAS] Professores carregados:', professoresDisponives);
+        renderProfessorSelect();
+      } catch (error) {
+        console.error('[TURMAS] Erro ao carregar professores:', error);
+        const select = document.getElementById('turmaProf');
+        const errorOption = document.createElement('option');
+        errorOption.value = '';
+        errorOption.textContent = 'Erro ao carregar professores';
+        errorOption.disabled = true;
+        select.appendChild(errorOption);
+      }
+    }
+
+    // Carregar classes para o modal
+    async function loadClassesModal() {
+      try {
+        console.log('[TURMAS] Carregando classes...');
+        classesDisponives = await api.getClasses();
+        console.log('[TURMAS] Classes carregadas:', classesDisponives);
+        renderClassesSelect();
+      } catch (error) {
+        console.error('[TURMAS] Erro ao carregar classes:', error);
+        const select = document.getElementById('turmaClasse');
+        const errorOption = document.createElement('option');
+        errorOption.value = '';
+        errorOption.textContent = 'Erro ao carregar classes';
+        errorOption.disabled = true;
+        select.appendChild(errorOption);
+      }
+    }
+
+
+
+    // Renderizar select de professores
+    function renderProfessorSelect() {
+      const select = document.getElementById('turmaProf');
+      console.log('[TURMAS] Renderizando select de professores...');
+      console.log('[TURMAS] professoresDisponives:', professoresDisponives);
+      
+      const options = select.querySelectorAll('option:not(:first-child)');
+      options.forEach(opt => opt.remove());
+
+      if (professoresDisponives && professoresDisponives.length > 0) {
+        console.log('[TURMAS] Adicionando', professoresDisponives.length, 'professores ao select');
+        professoresDisponives.forEach(prof => {
+          const option = document.createElement('option');
+          option.value = prof.id_prof;
+          option.textContent = prof.nome_prof;
+          select.appendChild(option);
+          console.log('[TURMAS] ✓ Adicionado professor:', prof.nome_prof);
+        });
+      } else {
+        console.warn('[TURMAS] ⚠️ Nenhum professor disponível');
+        const emptyOption = document.createElement('option');
+        emptyOption.value = '';
+        emptyOption.textContent = 'Nenhum professor disponível';
+        emptyOption.disabled = true;
+        select.appendChild(emptyOption);
+      }
+    }
+
+    // Renderizar select de classes
+    function renderClassesSelect() {
+      const select = document.getElementById('turmaClasse');
+      console.log('[TURMAS] Renderizando select de classes...');
+      console.log('[TURMAS] classesDisponives:', classesDisponives);
+      
+      const options = select.querySelectorAll('option:not(:first-child)');
+      options.forEach(opt => opt.remove());
+
+      if (classesDisponives && classesDisponives.length > 0) {
+        console.log('[TURMAS] Adicionando', classesDisponives.length, 'classes ao select');
+        classesDisponives.forEach(classe => {
+          const option = document.createElement('option');
+          option.value = classe.id_classe;
+          option.textContent = classe.descricao_classe;
+          select.appendChild(option);
+          console.log('[TURMAS] ✓ Adicionada classe:', classe.descricao_classe);
+        });
+      } else {
+        console.warn('[TURMAS] ⚠️ Nenhuma classe disponível');
+        const emptyOption = document.createElement('option');
+        emptyOption.value = '';
+        emptyOption.textContent = 'Nenhuma classe disponível';
+        emptyOption.disabled = true;
+        select.appendChild(emptyOption);
+      }
+    }
+
+    // Renderizar tabela de turmas
+    function renderTurmasTable(turmas) {
+      const tbody = document.querySelector('table tbody');
+      tbody.innerHTML = '';
+
+      if (!turmas || turmas.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" class="text-center text-muted py-4">Nenhuma turma encontrada</td></tr>';
+        return;
+      }
+
+      turmas.forEach(turma => {
+        const classeObj = classesDisponives.find(c => c.id_classe === turma.classe_id);
+        const tipoEnsino = classeObj ? classeObj.tipoEnsino : '--';
+        const profNome = turma.diretor ? turma.diretor.nome_prof : 'N/A';
+        const numAlunos = turma._count?.estudantes || 0;
+        
+        const row = document.createElement('tr');
+        row.setAttribute('data-turma-id', turma.id_turma);
+        row.innerHTML = `
+          <td><strong>${turma.sigla_turma || '-'}</strong></td>
+          <td>${tipoEnsino}</td>
+          <td>${turma.classe_turma || '-'}</td>
+          <td>${turma.sala_turma || '-'}</td>
+          <td>${turma.ano_lectivo_turma}/${turma.ano_lectivo_turma+1 || '-'}</td>
+          <td>${profNome}</td>
+          <td><span class="badge bg-primary">${numAlunos} alunos</span></td>
+          <td>
+            <button class="btn btn-sm btn-outline-info me-1 btn-view" data-id="${turma.id_turma}">Ver</button>
+            <button class="btn btn-sm btn-outline-warning me-1 btn-edit" data-id="${turma.id_turma}">Editar</button>
+            <button class="btn btn-sm btn-outline-danger btn-delete" data-id="${turma.id_turma}">Deletar</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      // Adicionar listeners aos botões
+      document.querySelectorAll('.btn-view').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.getAttribute('data-id');
+          this.disabled = true;
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+          viewTurma(id);
+          setTimeout(() => {
+            this.disabled = false;
+            this.innerHTML = originalText;
+          }, 300);
+        });
+      });
+
+      document.querySelectorAll('.btn-edit').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.getAttribute('data-id');
+          this.disabled = true;
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+          editTurma(id);
+          setTimeout(() => {
+            this.disabled = false;
+            this.innerHTML = originalText;
+          }, 300);
+        });
+      });
+
+      document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.getAttribute('data-id');
+          this.disabled = true;
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+          deleteTurma(id).finally(() => {
+            this.disabled = false;
+            this.innerHTML = originalText;
+          });
+        });
+      });
+    }
+
+    // Ver detalhes da turma
+    function viewTurma(id) {
+      const turma = turmasData.find(t => t.id_turma == id);
+      if (turma) {
+        const classeObj = classesDisponives.find(c => c.id_classe === turma.classe_id);
+        const tipoEnsino = classeObj ? classeObj.tipoEnsino : '--';
+        const profNome = turma.diretor ? turma.diretor.nome_prof : 'N/A';
+        const numAlunos = turma._count?.estudantes || 0;
+        
+        document.getElementById('turmaDetailCodigo').textContent = turma.sigla_turma || '-';
+        document.getElementById('turmaDetailCurso').textContent = tipoEnsino;
+        document.getElementById('turmaDetailClasse').textContent = turma.classe_turma || '-';
+        document.getElementById('turmaDetailSala').textContent = turma.sala_turma || '-';
+        document.getElementById('turmaDetailAno').textContent = turma.ano_lectivo_turma || '-';
+        document.getElementById('turmaDetailProf').textContent = profNome;
+        document.getElementById('turmaDetailNum').textContent = numAlunos;
+
+        const modal = new bootstrap.Modal(document.getElementById('turmaDetailsModal'));
+        modal.show();
+      }
+    }
+
+    // Editar turma
+    function editTurma(id) {
+      const turma = turmasData.find(t => t.id_turma == id);
+      if (turma) {
+        document.getElementById('turmaModalTitle').textContent = 'Editar Turma';
+        document.getElementById('turmaCodigo').value = turma.sigla_turma || '';
+        document.getElementById('turmaAno').value = turma.ano_lectivo_turma || '';
+        document.getElementById('turmaTurno').value = turma.turno_turma || '';
+        document.getElementById('turmaClasse').value = turma.classe_id || '';
+        document.getElementById('turmaSala').value = turma.sala_turma || '';
+        document.getElementById('turmaProf').value = turma.diretor_turma || '';
+        document.getElementById('turmaNum').value = turma.numero_aluno_turma || '';
+        document.getElementById('turmaObservacoes').value = turma.observacoes_turma || '';
+        document.getElementById('turmaModalForm').setAttribute('data-id', id);
+        
+        const modal = new bootstrap.Modal(document.getElementById('turmaModal'));
+        modal.show();
+      }
+    }
+
+    // Deletar turma
+    async function deleteTurma(id) {
+      if (confirm('Tem certeza que quer deletar esta turma?')) {
+        try {
+          await api.deleteTurma(id);
+          DataLoader.showSuccess('Turma deletada com sucesso!');
+          loadTurmas();
+        } catch (error) {
+          DataLoader.showError('Erro ao deletar turma: ' + error.message);
+        }
+      }
+    }
+
+    // Filtrar turmas
+    document.getElementById('btnFilterTurma').addEventListener('click', function() {
+      const btnFilter = this;
+      btnFilter.disabled = true;
+      const originalText = btnFilter.innerHTML;
+      btnFilter.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Filtrando...';
+      
+      setTimeout(() => {
+        const q = document.getElementById('filterTurmaSearch').value.trim().toLowerCase();
+        const classe = document.getElementById('filterTurmaCiclo').value;
+        const sala = document.getElementById('filterTurmaSala').value.trim().toLowerCase();
+        const ano = document.getElementById('filterTurmaAno').value;
+
+        const filtered = turmasData.filter(turma => {
+          const sigla = (turma.sigla_turma || '').toLowerCase();
+          const classeObj = classesDisponives.find(c => c.id_classe === turma.classe_id);
+          const tipoEnsino = classeObj ? (classeObj.tipoEnsino || '').toLowerCase() : '';
+          const classeTurma = (turma.classe_turma || '').toLowerCase();
+          const salaTurma = (turma.sala_turma || '').toLowerCase();
+          const anoTurma = String(turma.ano_lectivo_turma || '');
+          const profNome = turma.diretor ? (turma.diretor.nome_prof || '').toLowerCase() : '';
+
+          let matches = true;
+          if (q) matches = matches && (sigla.includes(q) || tipoEnsino.includes(q) || profNome.includes(q));
+          if (classe) matches = matches && (classeTurma.includes(classe.toLowerCase()));
+          if (sala) matches = matches && salaTurma.includes(sala);
+          if (ano) matches = matches && (anoTurma === ano);
+
+          return matches;
+        });
+
+        renderTurmasTable(filtered);
+        btnFilter.disabled = false;
+        btnFilter.innerHTML = originalText;
+      }, 200);
+    });
+
+    // Criar/Editar turma
+    document.getElementById('formTurma').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = this.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Guardando...';
+
+      const id = document.getElementById('turmaModalForm').getAttribute('data-id');
+      const turmaCodigo = document.getElementById('turmaCodigo').value.trim();
+      const turmaAno = document.getElementById('turmaAno').value;
+      const turmaTurno = document.getElementById('turmaTurno').value;
+      const turmaClasse = document.getElementById('turmaClasse').value;
+      const turmaSala = document.getElementById('turmaSala').value.trim();
+      const turmaProfVal = document.getElementById('turmaProf').value;
+      const turmaNumVal = document.getElementById('turmaNum').value;
+
+      // Validações
+      if (!turmaCodigo) {
+        DataLoader.showError('Por favor, preencha o código da turma');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        return;
+      }
+      if (!turmaAno) {
+        DataLoader.showError('Por favor, selecione o ano letivo');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        return;
+      }
+      if (!turmaTurno) {
+        DataLoader.showError('Por favor, selecione o turno');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        return;
+      }
+      if (!turmaClasse) {
+        DataLoader.showError('Por favor, selecione a classe');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        return;
+      }
+      if (!turmaSala) {
+        DataLoader.showError('Por favor, preencha a sala');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        return;
+      }
+      if (!turmaProfVal) {
+        DataLoader.showError('Por favor, selecione o diretor de turma');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        return;
+      }
+      if (!turmaNumVal) {
+        DataLoader.showError('Por favor, preencha o número máximo de alunos');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        return;
+      }
+
+      const data = {
+        sigla_turma: turmaCodigo,
+        ano_lectivo_turma: Number(turmaAno),
+        turno_turma: turmaTurno,
+        classe_turma: classesDisponives.find(c => c.id_classe == turmaClasse)?.sigla_classe || '',
+        classe_id: turmaClasse ? Number(turmaClasse) : null,
+        sala_turma: turmaSala,
+        diretor_turma: Number(turmaProfVal),
+        numero_aluno_turma: Number(turmaNumVal),
+        observacoes_turma: document.getElementById('turmaObservacoes').value
+      };
+      
+      console.log('[TURMAS] Enviando payload:', data);
+
+      try {
+        if (id) {
+          await api.updateTurma(id, data);
+          DataLoader.showSuccess('Turma atualizada com sucesso!');
+        } else {
+          await api.createTurma(data);
+          DataLoader.showSuccess('Turma criada com sucesso!');
+        }
+
+        bootstrap.Modal.getInstance(document.getElementById('turmaModal')).hide();
+        document.getElementById('turmaModalForm').removeAttribute('data-id');
+        document.getElementById('formTurma').reset();
+        document.getElementById('turmaModalTitle').textContent = 'Nova Turma';
+        
+        loadTurmas();
+      } catch (error) {
+        DataLoader.showError('Erro ao guardar turma: ' + error.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+
+    // Reset modal
+    document.getElementById('turmaModal').addEventListener('hidden.bs.modal', function() {
+      document.getElementById('turmaModalTitle').textContent = 'Nova Turma';
+      document.getElementById('formTurma').reset();
+      document.getElementById('turmaModalForm').removeAttribute('data-id');
+    });
+
+    // Logout
+    document.querySelectorAll('[data-logout]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saindo...';
+        setTimeout(() => {
+          AuthHelper.logout();
+        }, 300);
+      });
+    });
+
+    // Carregar dados iniciais
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Carregar classes primeiro, depois turmas (para evitar race condition)
+      await loadClassesModal();
+      loadTurmas();
+      loadProfessoresModal();
+
+      // Adicionar spinner ao botão "Nova Turma"
+      const btnNovoTurma = document.querySelector('button[data-bs-target="#turmaModal"]');
+      if (btnNovoTurma) {
+        btnNovoTurma.addEventListener('click', function() {
+          this.disabled = true;
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Abrindo...';
+          setTimeout(() => {
+            this.disabled = false;
+            this.innerHTML = originalText;
+          }, 300);
+        });
+      }
+
+      // Update header com dados do usuário
+      const headerUserName = document.querySelector('.header-user-name');
+      const headerUserRole = document.querySelector('.header-user-role');
+      
+      if (headerUserName) {
+        headerUserName.textContent = api.getUserName() || 'Administrador';
+      }
+      if (headerUserRole) {
+        headerUserRole.textContent = AuthHelper.translateRole(api.getUserRole());
+      }
+    });
+  </script>
+</body>
+
+</html>

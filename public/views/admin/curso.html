@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos - Administração | SGEB MED Angola</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+</head>
+
+<body data-protected="true">
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Sistema de Geatão Escolar Betânia</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- Principal -->
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link active" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Comunicação -->
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicação</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 11 18-5v12L3 13v-2z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">2</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gestão -->
+        <div class="nav-group">
+          <div class="nav-group-title">Gestão</div>
+          <div class="nav-item">
+            <a href="professores.html" class="nav-link" data-title="Professores">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Professores</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v4H4z" />
+                  <path d="M4 12h16v8H4z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="usuarios-sistema.html" class="nav-link" data-title="Usuários do Sistema">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-4-4h-1" />
+                  <circle cx="17" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Usuários do Sistema</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Disciplinas">
+              <span class="nav-link-icon">
+
+                <!-- Ícone Livro / Disciplinas -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                  <path d="M2 4h7a4 4 0 0 1 4 4v12a4 4 0 0 0-4-4H2z" />
+                  <path d="M22 4h-7a4 4 0 0 0-4 4v12a4 4 0 0 1 4-4h7z" />
+
+                </svg>
+
+              </span>
+              <span class="nav-link-text">Disciplinas</span>
+            </a>
+          </div>
+
+          <div class="nav-item">
+            <a href="curso.html" class="nav-link" data-title="Cursos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Cursos</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="alunos.html" class="nav-link" data-title="Alunos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Alunos</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Conta -->
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="../../../index.html" class="nav-link" data-title="Sair">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left"><button class="mobile-toggle">☰</button>
+          <h1 class="header-title">Cursos</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">AD</div>
+            <div class="header-user-info"><span class="header-user-name" data-user-name>Administrador</span><span
+                class="header-user-role" data-user-role>Administração</span></div>
+          </div>
+          <a href="#" data-logout class="btn btn-sm btn-outline-danger ms-3">Sair</a>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div id="flashMessage" class="alert" style="display: none;" role="alert"></div>
+        <div class="page-header d-flex justify-content-between align-items-center">
+          <div>
+            <h2 class="page-title">Gestão de Cursos</h2>
+            <p class="page-subtitle">Cursos e descrições</p>
+          </div>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cursoModal">Novo Curso</button>
+        </div>
+
+        <!-- Filters -->
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row g-3 align-items-end">
+              <div class="col-md-6 flex-grow-1">
+                <label class="form-label">Pesquisar</label>
+                <input id="filterCursoSearch" type="text" class="form-control" placeholder="Código ou nome do curso">
+              </div>
+              <!-- <div class="col-md-4">
+                <label class="form-label">Duração</label>
+                <select id="filterCursoDuracao" class="form-control form-select">
+                  <option value="">Todos</option>
+                  <option>2 anos</option>
+                  <option>3 anos</option>
+                  <option>4 anos</option>
+                </select>
+              </div> -->
+              <div class="col-md-2">
+                <button id="btnFilterCurso" class="btn btn-outline-primary w-100">Filtrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Nome do Curso</th>
+                    <th>Duração</th>
+                    <th>Disciplinas</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal: Adicionar / Editar Curso -->
+        <div class="modal fade" id="cursoModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="cursoModalTitle">Novo Curso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <form id="formCurso">
+                <div class="modal-body">
+                  <input type="hidden" id="cursoModalForm">
+                  <input type="hidden" id="cursoId" value="">
+                  <input type="hidden" id="cursoAction" value="add">
+                  <div class="mb-3">
+                    <label class="form-label">Código</label>
+                    <input id="cursoCodigo" class="form-control" placeholder="Ex: CUR-001" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Nome do Curso</label>
+                    <input id="cursoNome" class="form-control" placeholder="Ex: Informática" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Duração (em semestres)</label>
+                    <input id="cursoDuracao" class="form-control" type="number" placeholder="Ex: 6" min="1">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Disciplinas do Curso</label>
+                    <div id="cursoDisciplinas" class="border rounded p-3" style="max-height: 250px; overflow-y: auto;">
+                      <!-- Checkboxes de disciplinas carregadas dinamicamente -->
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal: Ver Detalhes do Curso -->
+        <div class="modal fade" id="cursoDetailsModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Detalhes do Curso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Código</label>
+                    <p id="detailCodigo" class="text-muted">-</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Duração</label>
+                    <p id="detailDuracao" class="text-muted">-</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-12">
+                    <label class="form-label fw-bold">Nome do Curso</label>
+                    <p id="detailNome" class="text-muted">-</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-12">
+                    <label class="form-label fw-bold">Disciplinas</label>
+                    <p id="detailDisciplinas" class="text-muted">-</p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Geatão Escolar Betânia &copy; 2026</p>
+      </footer>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/data-loader.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  <script src="../../js/curso.js"></script>
+  <script>
+    // Proteger página para ADMIN
+    AuthHelper.checkRole(['ADMIN']);
+
+    let cursosData = [];
+    let disciplinasDisponives = [];
+
+    // Carregar cursos da API
+    async function loadCursos() {
+      try {
+        DataLoader.showLoading('Carregando cursos...');
+        cursosData = await api.getCursos();
+        DataLoader.hideLoading();
+        renderCursosTable(cursosData);
+      } catch (error) {
+        DataLoader.hideLoading();
+        DataLoader.showError('Erro ao carregar cursos: ' + error.message);
+      }
+    }
+
+    // Carregar disciplinas para o modal
+    async function loadDisciplinasModal() {
+      try {
+        disciplinasDisponives = await api.getDisciplinas();
+        renderDisciplinasCheckboxes();
+      } catch (error) {
+        console.error('Erro ao carregar disciplinas:', error);
+        DataLoader.showError('Erro ao carregar disciplinas: ' + error.message);
+      }
+    }
+
+    // Renderizar checkboxes de disciplinas
+    function renderDisciplinasCheckboxes() {
+      const container = document.getElementById('disciplinasCheckboxes');
+      container.innerHTML = '';
+
+      if (!disciplinasDisponives || disciplinasDisponives.length === 0) {
+        container.innerHTML = '<p class="text-muted">Nenhuma disciplina encontrada</p>';
+        return;
+      }
+
+      disciplinasDisponives.forEach((disc, index) => {
+        const checkId = `check-disc-${disc.id_disc}`;
+        const div = document.createElement('div');
+        div.className = 'form-check';
+        div.innerHTML = `
+          <input class="form-check-input disciplina-check" type="checkbox" value="${disc.id_disc}" id="${checkId}">
+          <label class="form-check-label" for="${checkId}">
+            ${disc.sigla_disc} - ${disc.descricao_disc}
+          </label>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Renderizar tabela de cursos
+    function renderCursosTable(cursos) {
+      const tbody = document.querySelector('table tbody');
+      tbody.innerHTML = '';
+
+      if (!cursos || cursos.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted py-4">Nenhum curso encontrado</td></tr>';
+        return;
+      }
+
+      cursos.forEach(curso => {
+        const row = document.createElement('tr');
+        row.setAttribute('data-curso-id', curso.id_curso);
+        row.innerHTML = `
+          <td><strong>${curso.sigla_curso || '-'}</strong></td>
+          <td>${curso.descricao_curso || '-'}</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>
+            <button class="btn btn-sm btn-outline-info me-1 btn-view" data-id="${curso.id_curso}">Ver</button>
+            <button class="btn btn-sm btn-outline-warning me-1 btn-edit" data-id="${curso.id_curso}">Editar</button>
+            <button class="btn btn-sm btn-outline-danger btn-delete" data-id="${curso.id_curso}">Deletar</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      // Adicionar listeners aos botões
+      document.querySelectorAll('.btn-view').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.getAttribute('data-id');
+          viewCurso(id);
+        });
+      });
+
+      document.querySelectorAll('.btn-edit').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.getAttribute('data-id');
+          editCurso(id);
+        });
+      });
+
+      document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.getAttribute('data-id');
+          deleteCurso(id);
+        });
+      });
+    }
+
+    // Ver detalhes do curso
+    function viewCurso(id) {
+      const curso = cursosData.find(c => c.id_curso == id);
+      if (curso) {
+        alert(`Curso: ${curso.sigla_curso}\n\nDescrição: ${curso.descricao_curso}`);
+      }
+    }
+
+    // Editar curso
+    function editCurso(id) {
+      const curso = cursosData.find(c => c.id_curso == id);
+      if (curso) {
+        document.getElementById('cursoModalTitle').textContent = 'Editar Curso';
+        document.getElementById('cursoCodigo').value = curso.sigla_curso || '';
+        document.getElementById('cursoNome').value = curso.descricao_curso || '';
+        document.getElementById('cursoDuracao').value = '';
+        document.getElementById('cursoDesc').value = curso.descricao_curso || '';
+        document.getElementById('cursoModalForm').setAttribute('data-id', id);
+        
+        // Desmarcar todas as disciplinas
+        document.querySelectorAll('.disciplina-check').forEach(cb => cb.checked = false);
+        
+        const modal = new bootstrap.Modal(document.getElementById('cursoModal'));
+        modal.show();
+      }
+    }
+
+    // Deletar curso
+    async function deleteCurso(id) {
+      if (confirm('Tem certeza que quer deletar este curso?')) {
+        try {
+          await api.deleteCurso(id);
+          DataLoader.showSuccess('Curso deletado com sucesso!');
+          loadCursos();
+        } catch (error) {
+          DataLoader.showError('Erro ao deletar curso: ' + error.message);
+        }
+      }
+    }
+
+    // Filtrar cursos
+    document.getElementById('btnFilterCurso').addEventListener('click', function() {
+      const q = document.getElementById('filterCursoSearch').value.trim().toLowerCase();
+      const duracao = document.getElementById('filterCursoDuracao').value.trim();
+
+      const filtered = cursosData.filter(curso => {
+        const sigla = (curso.sigla_curso || '').toLowerCase();
+        const descricao = (curso.descricao_curso || '').toLowerCase();
+
+        const matchSearch = !q || sigla.includes(q) || descricao.includes(q);
+        // Duração não implementada no schema - sempre verdadeiro
+        const matchDuracao = !duracao;
+
+        return matchSearch && matchDuracao;
+      });
+
+      renderCursosTable(filtered);
+    });
+
+    // Criar/Editar curso
+    document.getElementById('formCurso').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const id = document.getElementById('cursoModalForm').getAttribute('data-id');
+      const selectedDisciplinas = Array.from(document.querySelectorAll('.disciplina-check:checked')).map(cb => cb.value);
+      const data = {
+        sigla_curso: document.getElementById('cursoCodigo').value,
+        descricao_curso: document.getElementById('cursoNome').value
+      };
+
+      try {
+        if (id) {
+          await api.updateCurso(id, data);
+          DataLoader.showSuccess('Curso atualizado com sucesso!');
+        } else {
+          await api.createCurso(data);
+          DataLoader.showSuccess('Curso criado com sucesso!');
+        }
+
+        bootstrap.Modal.getInstance(document.getElementById('cursoModal')).hide();
+        document.getElementById('cursoModalForm').removeAttribute('data-id');
+        document.getElementById('formCurso').reset();
+        document.getElementById('cursoModalTitle').textContent = 'Novo Curso';
+        
+        loadCursos();
+      } catch (error) {
+        DataLoader.showError('Erro ao guardar curso: ' + error.message);
+      }
+    });
+
+    // Reset modal
+    document.getElementById('cursoModal').addEventListener('hidden.bs.modal', function() {
+      document.getElementById('cursoModalTitle').textContent = 'Novo Curso';
+      document.getElementById('formCurso').reset();
+      document.getElementById('cursoModalForm').removeAttribute('data-id');
+      // Limpar checkboxes
+      document.querySelectorAll('.disciplina-check').forEach(cb => cb.checked = false);
+    });
+
+    // Logout
+    document.querySelectorAll('[data-logout]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        AuthHelper.logout();
+      });
+    });
+
+    // Carregar dados iniciais
+    document.addEventListener('DOMContentLoaded', function() {
+      loadCursos();
+      loadDisciplinasModal();
+
+      // Update header com dados do usuário
+      const headerUserName = document.querySelector('.header-user-name');
+      const headerUserRole = document.querySelector('.header-user-role');
+      
+      if (headerUserName) {
+        headerUserName.textContent = api.getUserName() || 'Administrador';
+      }
+      if (headerUserRole) {
+        headerUserRole.textContent = AuthHelper.translateRole(api.getUserRole());
+      }
+    });
+  </script>
+</body>
+
+</html>

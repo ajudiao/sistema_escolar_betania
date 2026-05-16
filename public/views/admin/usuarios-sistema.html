@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuários do Sistema - Administração | SGEB MED Angola</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Sistema de Geatão Escolar Betânia</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- Principal -->
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link active" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Comunicação -->
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicação</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 11 18-5v12L3 13v-2z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">2</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gestão -->
+        <div class="nav-group">
+          <div class="nav-group-title">Gestão</div>
+          <div class="nav-item">
+            <a href="professores.html" class="nav-link" data-title="Professores">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Professores</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v4H4z" />
+                  <path d="M4 12h16v8H4z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="usuarios-sistema.html" class="nav-link" data-title="Usuários do Sistema">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-4-4h-1" />
+                  <circle cx="17" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Usuários do Sistema</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Disciplinas">
+              <span class="nav-link-icon">
+
+                <!-- Ícone Livro / Disciplinas -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                  <path d="M2 4h7a4 4 0 0 1 4 4v12a4 4 0 0 0-4-4H2z" />
+                  <path d="M22 4h-7a4 4 0 0 0-4 4v12a4 4 0 0 1 4-4h7z" />
+
+                </svg>
+
+              </span>
+              <span class="nav-link-text">Disciplinas</span>
+            </a>
+          </div>
+
+          <div class="nav-item">
+            <a href="classe.html" class="nav-link" data-title="Classes">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Classes</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="alunos.html" class="nav-link" data-title="Alunos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Alunos</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Conta -->
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="../../../index.html" class="nav-link" data-title="Sair">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">☰</button>
+          <h1 class="header-title">Usuários do Sistema</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">AD</div>
+            <div class="header-user-info">
+              <span class="header-user-name" data-user-name>Administrador</span>
+              <span class="header-user-role" data-user-role>Administração</span>
+            </div>
+          </div>
+          <a href="#" data-logout class="btn btn-sm btn-outline-danger ms-3">Sair</a>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="page-header d-flex justify-content-between align-items-center">
+          <div>
+            <h2 class="page-title">Gestão de Usuários administrativos do Sistema</h2>
+            <p class="page-subtitle">Adicionar e gerenciar funcionários e usuários administrativos</p>
+          </div>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuarioModal">Novo Usuário</button>
+        </div>
+
+        <!-- Filters -->
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row g-3 align-items-end justify-content-between">
+              <div class="col-md-4 flex-grow-1">
+                <label class="form-label">Pesquisar</label>
+                <input id="filterUsuarioSearch" type="text" class="form-control" placeholder="Nome, email...">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Estado</label>
+                <select id="filterUsuarioEstado" class="form-control form-select">
+                  <option value="">Todos</option>
+                  <option value="ATIVO">Ativo</option>
+                  <option value="INATIVO">Inativo</option>
+                  <option value="SUSPENSO">Suspenso</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <button id="btnFilterUsuario" class="btn btn-outline-primary w-100">Filtrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Perfil</th>
+                    <th>Estado</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal: Adicionar / Editar Usuário -->
+        <div class="modal fade" id="usuarioModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="usuarioModalTitle">Novo Usuário</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <form id="formUsuario">
+                <input type="hidden" id="usuarioId">
+                <div class="modal-body">
+                  <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Nome de Usuário</label>
+                    <input type="text" id="usuarioNome" class="form-control" name="user_name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="usuarioEmail" class="form-control" name="email" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Perfil</label>
+                    <input type="text" class="form-control" value="Administrador" disabled>
+                    <small class="text-muted">Todos os usuários criados são Administradores</small>
+                  </div>
+                  <div class="col-md-6" id="usuarioSenhaSection">
+                    <label class="form-label">Senha</label>
+                    <input type="password" id="usuarioSenha" class="form-control" name="password" autocomplete="new-password">
+                  </div>
+                  <div class="col-md-12 d-none" id="usuarioEstadoSection">
+                    <label class="form-label">Estado</label>
+                    <select id="usuarioEstado" class="form-control form-select" required>
+                      <option value="ATIVO">Ativo</option>
+                      <option value="INATIVO">Inativo</option>
+                      <option value="SUSPENSO">Suspenso</option>
+                    </select>
+                  </div>
+              </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary" id="usuarioSubmitBtn">Criar Usuário</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Geatão Escolar Betânia &copy; 2026</p>
+      </footer>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/data-loader.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  <script>
+    let usuariosData = [];
+
+    // Carregar usuários da API
+    async function loadUsuarios() {
+      try {
+        DataLoader.showLoading('Carregando usuários...');
+        const usuarios = await api.getUsuarios();
+        usuariosData = (usuarios || []).filter(usuario => (usuario.perfil || '').toUpperCase() === 'ADMIN');
+        DataLoader.hideLoading();
+        renderUsuariosTable(usuariosData);
+      } catch (error) {
+        DataLoader.hideLoading();
+        DataLoader.showError('Erro ao carregar usuários: ' + error.message);
+      }
+    }
+
+    // Renderizar tabela de usuários
+    function renderUsuariosTable(usuarios) {
+      const tbody = document.querySelector('table tbody');
+      tbody.innerHTML = '';
+
+      if (!usuarios || usuarios.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-4">Nenhum usuário encontrado</td></tr>';
+        return;
+      }
+
+      usuarios.forEach(usuario => {
+        const perfilMap = {
+          'ADMIN': { label: 'Administrador', color: 'primary' },
+          'SECRETARIA': { label: 'Secretária', color: 'info' },
+          'PROFESSOR': { label: 'Professor', color: 'warning' },
+          'ESTUDANTE': { label: 'Estudante', color: 'secondary' }
+        };
+        const perfilInfo = perfilMap[usuario.perfil] || { label: usuario.perfil, color: 'secondary' };
+        
+        const statusMap = {
+          'ATIVO': { label: 'Ativo', color: 'success' },
+          'INATIVO': { label: 'Inativo', color: 'danger' },
+          'SUSPENSO': { label: 'Suspenso', color: 'warning' }
+        };
+        const statusInfo = statusMap[usuario.status] || { label: usuario.status, color: 'secondary' };
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><strong>${usuario.user_name || '-'}</strong></td>
+          <td>${usuario.email || '-'}</td>
+          <td><span class="badge bg-${perfilInfo.color}">${perfilInfo.label}</span></td>
+          <td><span class="badge bg-${statusInfo.color}">${statusInfo.label}</span></td>
+          <td>
+            <button class="btn btn-sm btn-outline-secondary me-1 btn-edit" data-id="${usuario.id_usuario}">Editar</button>
+            <button class="btn btn-sm btn-outline-danger btn-delete" data-id="${usuario.id_usuario}" data-name="${usuario.user_name}">Deletar</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      // Adicionar listeners aos botões
+      document.querySelectorAll('.btn-edit').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.getAttribute('data-id');
+          this.disabled = true;
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+          setTimeout(() => {
+            editUsuario(id);
+            this.disabled = false;
+            this.innerHTML = originalText;
+          }, 300);
+        });
+      });
+
+      document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.getAttribute('data-id');
+          const nome = this.getAttribute('data-name');
+          this.disabled = true;
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+          deleteUsuario(id, nome).finally(() => {
+            this.disabled = false;
+            this.innerHTML = originalText;
+          });
+        });
+      });
+    }
+
+    // Editar usuário
+    function editUsuario(id) {
+      const usuario = usuariosData.find(u => u.id_usuario == id);
+      if (usuario) {
+        document.getElementById('usuarioId').value = usuario.id_usuario;
+        document.getElementById('usuarioNome').value = usuario.user_name || '';
+        document.getElementById('usuarioEmail').value = usuario.email || '';
+        document.getElementById('usuarioEstado').value = usuario.status || 'ATIVO';
+        document.getElementById('usuarioSenha').value = '';
+        document.getElementById('usuarioSenhaSection').classList.add('d-none');
+        
+        // Mostrar campo de estado em modo edição
+        document.getElementById('usuarioEstadoSection').classList.remove('d-none');
+
+        document.getElementById('usuarioModalTitle').textContent = 'Editar Usuário';
+        document.getElementById('usuarioSubmitBtn').textContent = 'Atualizar Usuário';
+
+        const modal = new bootstrap.Modal(document.getElementById('usuarioModal'));
+        modal.show();
+      }
+    }
+
+    // Deletar usuário
+    async function deleteUsuario(id, nome) {
+      if (confirm(`Tem certeza que deseja deletar o usuário "${nome}"?`)) {
+        try {
+          DataLoader.showLoading('Deletando usuário...');
+          await api.deleteUsuario(id);
+          DataLoader.hideLoading();
+          DataLoader.showSuccess('Usuário deletado com sucesso!');
+          loadUsuarios();
+        } catch (error) {
+          DataLoader.hideLoading();
+          DataLoader.showError('Erro ao deletar usuário: ' + error.message);
+        }
+      }
+    }
+
+    // Reset modal
+    document.getElementById('usuarioModal').addEventListener('hidden.bs.modal', function () {
+      document.getElementById('usuarioModalTitle').textContent = 'Novo Usuário';
+      document.getElementById('usuarioSubmitBtn').textContent = 'Criar Usuário';
+      document.getElementById('formUsuario').reset();
+      document.getElementById('usuarioId').value = '';
+      document.getElementById('usuarioSenhaSection').classList.remove('d-none');
+      document.getElementById('usuarioEstadoSection').classList.add('d-none');
+    });
+
+    // Form submit
+    document.getElementById('formUsuario').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      
+      const submitBtn = this.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Guardando...';
+
+      const id = document.getElementById('usuarioId').value;
+      const user_name = document.getElementById('usuarioNome').value;
+      const email = document.getElementById('usuarioEmail').value;
+      const password = document.getElementById('usuarioSenha').value;
+
+      // Validações
+      if (!user_name || !email) {
+        DataLoader.showError('Nome de usuário e email são obrigatórios');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        return;
+      }
+
+      const data = {
+        user_name: user_name,
+        email: email
+      };
+
+      // Para edição
+      if (id) {
+        const status = document.getElementById('usuarioEstado').value;
+        data.status = status;
+        if (password) {
+          data.password = password;
+        }
+      } else {
+        // Para criação
+        if (!password) {
+          DataLoader.showError('Senha é obrigatória para novos usuários');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          return;
+        }
+        data.password = password;
+        data.perfil = 'ADMIN';
+      }
+
+      try {
+        if (id) {
+          await api.updateUsuario(id, data);
+          DataLoader.showSuccess('Usuário atualizado com sucesso!');
+        } else {
+          data.password = password;
+          await api.createUsuario(data);
+          DataLoader.showSuccess('Usuário criado com sucesso!');
+        }
+
+        bootstrap.Modal.getInstance(document.getElementById('usuarioModal')).hide();
+        loadUsuarios();
+      } catch (error) {
+        DataLoader.showError('Erro ao guardar usuário: ' + error.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+
+    // Filter usuarios
+    document.getElementById('btnFilterUsuario').addEventListener('click', function() {
+      const btn = this;
+      btn.disabled = true;
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Filtrando...';
+      
+      setTimeout(() => {
+        const q = document.getElementById('filterUsuarioSearch').value.trim().toLowerCase();
+        const estado = document.getElementById('filterUsuarioEstado').value;
+
+        const filtered = usuariosData.filter(usuario => {
+          const userName = (usuario.user_name || '').toLowerCase();
+          const userEmail = (usuario.email || '').toLowerCase();
+          const userStatus = usuario.status || '';
+
+          let matches = true;
+          if (q) matches = matches && (userName.includes(q) || userEmail.includes(q));
+          if (estado) matches = matches && userStatus === estado;
+
+          return matches;
+        });
+
+        renderUsuariosTable(filtered);
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }, 200);
+    });
+
+    // Adicionar spinner ao botão "Novo Usuário"
+    const btnNovoUsuario = document.querySelector('button[data-bs-target="#usuarioModal"]');
+    if (btnNovoUsuario) {
+      btnNovoUsuario.addEventListener('click', function() {
+        this.disabled = true;
+        const originalText = this.innerHTML;
+        this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Abrindo...';
+        setTimeout(() => {
+          this.disabled = false;
+          this.innerHTML = originalText;
+        }, 300);
+      });
+    }
+
+    // Carregar dados iniciais
+    document.addEventListener('DOMContentLoaded', function() {
+      loadUsuarios();
+
+      // Logout handler
+      document.querySelectorAll('[data-logout]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          btn.disabled = true;
+          const originalText = btn.innerHTML;
+          btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saindo...';
+          setTimeout(() => {
+            AuthHelper.logout();
+          }, 300);
+        });
+      });
+
+      // Update header
+      const headerUserName = document.querySelector('.header-user-name');
+      const headerUserRole = document.querySelector('.header-user-role');
+      
+      if (headerUserName) {
+        headerUserName.textContent = api.getUserName() || 'Administrador';
+      }
+      if (headerUserRole) {
+        headerUserRole.textContent = AuthHelper.translateRole(api.getUserRole());
+      }
+    });
+  </script>
+</body>
+
+</html>

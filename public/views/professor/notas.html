@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lançamento e Visualização de Notas - Professor | SGEB MED Angola</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="css/professor.css">
+</head>
+<body>
+  <div class="main-wrapper">
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Sistema de Geatão Escolar Betânia</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <!-- Principal -->
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Académico -->
+        <div class="nav-group">
+          <div class="nav-group-title">Académico</div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Minhas Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link active" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          
+          <div class="nav-item">
+            <a href="faltas.html" class="nav-link" data-title="Faltas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="10" y1="14" x2="14" y2="18"/><line x1="14" y1="14" x2="10" y2="18"/></svg>
+              </span>
+              <span class="nav-link-text">Faltas</span>
+            </a>
+          </div>
+
+           <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Minhas Disciplinas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Disciplinas</span>
+            </a>
+          </div>
+
+        </div>
+        
+        <!-- Comunicação -->
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicação</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">3</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Conta -->
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+             <a href="../../../index.html" class="nav-link" data-title="Sair">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="header-title">Lançamento e Visualização de Notas</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">JF</div>
+            <div class="header-user-info">
+              <span class="header-user-name" data-user-name>Carregando...</span>
+              <span class="header-user-role" data-user-role>Professor</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Page Content -->
+      <div class="page-content">
+        <!-- Spinner de carregamento inicial -->
+        <div id="loadingSpinner" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status" style="width: 2rem; height: 2rem;">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+          <p class="text-muted mt-2">Carregando dados...</p>
+        </div>
+
+        <!-- Conteúdo (oculto enquanto carrega) -->
+        <div id="pageContent" style="display: none;">
+        <div id="flashMessage" class="alert" style="display: none;" role="alert"></div>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Filtro de lançamento</h5>
+          </div>
+          <div class="card-body">
+            <div class="row g-3 align-items-end">
+              <div class="col-md-2">
+                <label class="form-label">Trimestre</label>
+                <select class="form-control form-select" id="trimestreSelect">
+                  <option value="">Selecione...</option>
+                  <option value="1">I Trimestre</option>
+                  <option value="2">II Trimestre</option>
+                  <option value="3">III Trimestre</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <label class="form-label">Turma</label>
+                <select class="form-control form-select" id="turmaSelect">
+                  <option value="">Selecione...</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Disciplina</label>
+                <select class="form-control form-select" id="disciplinaSelect">
+                  <option value="">Selecione...</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <label class="form-label">Data</label>
+                <input type="date" class="form-control" id="dataAvaliacao">
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-primary w-100" id="btnCarregarAlunos">Carregar Alunos</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="divLancarNotas" class="card" style="display: none;">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Dados dos alunos</h5>
+          </div>
+          <div class="card-body">
+                <div class="row g-3 mb-4">
+              <div class="col-md-3">
+                <div class="p-3 rounded bg-light border">
+                  <small class="text-uppercase text-muted">Trimestre</small>
+                  <div class="h4 mb-0 mt-2" id="trimestreInfo">-</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="p-3 rounded bg-light border">
+                  <small class="text-uppercase text-muted">Turma</small>
+                  <div class="h4 mb-0 mt-2" id="turmaInfo">-</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="p-3 rounded bg-light border">
+                  <small class="text-uppercase text-muted">Disciplina</small>
+                  <div class="h4 mb-0 mt-2" id="disciplinaInfo">-</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="p-3 rounded bg-light border">
+                  <small class="text-uppercase text-muted">Média da turma</small>
+                  <div class="h4 mb-0 mt-2" id="mediaTurma">0.0</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th style="width: 40px;">#</th>
+                    <th>Aluno</th>
+                    <th style="width: 110px;">MAC</th>
+                    <th style="width: 110px;">NPP</th>
+                    <th style="width: 110px;">NPT</th>
+                    <th style="width: 110px;">MT</th>
+                  </tr>
+                </thead>
+                <tbody id="tabelaAlunosNotas">
+                </tbody>
+              </table>
+            </div>
+
+            <div class="row g-3 align-items-center mt-3">
+              <div class="col-md-8">
+                <p class="text-muted mb-0"><strong>Observação:</strong> campos em branco são considerados como prova ainda não realizada e serão tratados como zero na média.</p>
+              </div>
+              <div class="col-md-4 text-end">
+                <button class="btn btn-success" id="btnLancarNotas">Salvar lançamentos</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Footer -->
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Geatão Escolar Betânia &copy; 2026</p>
+      </footer>
+    </main>
+  </div>
+  
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Global JS -->
+  <script src="../../js/global.js"></script>
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  <script>
+    // ========== FUNÇÕES UTILITÁRIAS ==========
+    function showFlashMessage(message, type = 'success') {
+      const flash = document.getElementById('flashMessage');
+      flash.textContent = message;
+      flash.className = `alert alert-${type}`;
+      flash.style.display = 'block';
+      setTimeout(() => {
+        flash.style.display = 'none';
+      }, 5000);
+    }
+
+    // Função para detectar trimestre baseado no mês
+    function detectarTrimestre() {
+      const mes = new Date().getMonth() + 1; // 1-12
+      if (mes >= 1 && mes <= 3) return 1;
+      if (mes >= 4 && mes <= 6) return 2;
+      if (mes >= 7 && mes <= 9) return 3;
+      return 1; // Padrão out-dez
+    }
+
+    function updateMediaLinha(row) {
+      const mac = parseFloat(row.querySelector('[data-field="mac"]').value) || 0;
+      const npp = parseFloat(row.querySelector('[data-field="npp"]').value) || 0;
+      const npt = parseFloat(row.querySelector('[data-field="npt"]').value) || 0;
+      const media = ((mac + npp + npt) / 3).toFixed(1);
+      row.querySelector('.media-valor').textContent = media;
+    }
+
+    function updateResumo() {
+      const rows = Array.from(document.querySelectorAll('#tabelaAlunosNotas tr'));
+      const medias = rows.map(row => parseFloat(row.querySelector('.media-valor').textContent) || 0);
+      const mediaTurma = medias.length ? (medias.reduce((sum, value) => sum + value, 0) / medias.length).toFixed(1) : '0.0';
+      document.getElementById('mediaTurma').textContent = mediaTurma;
+    }
+
+    // ========== CARREGAMENTO INICIALIZADO ==========
+    async function carregarDados() {
+      const spinner = document.getElementById('loadingSpinner');
+      const content = document.getElementById('pageContent');
+      
+      try {
+        console.log('%c[NOTAS] Iniciando carregamento de dados...', 'color: blue; font-weight: bold;');
+        
+        const usuarioId = localStorage.getItem('userId');
+        console.log('%c[NOTAS] UserID do localStorage:', 'color: cyan;', usuarioId);
+        
+        const professor = await api.getProfessorByUsuario(usuarioId);
+        
+        console.log('%c[NOTAS] ========== ESTRUTURA COMPLETA DO PROFESSOR ==========', 'color: purple; font-weight: bold;');
+        console.log('%c[NOTAS] Professor objeto completo:', 'color: purple;', professor);
+        console.log('%c[NOTAS] Chaves disponíveis no objeto professor:', 'color: orange;', Object.keys(professor));
+        console.log('%c[NOTAS] professor.turmas:', 'color: teal;', professor.turmas);
+        console.log('%c[NOTAS] professor.turmas_dirigidas:', 'color: teal;', professor.turmas_dirigidas);
+        console.log('%c[NOTAS] professor.disciplinas:', 'color: teal;', professor.disciplinas);
+        console.log('%c[NOTAS] ========== FIM DA ESTRUTURA ==========', 'color: purple; font-weight: bold;');
+        
+        // Atualizar header
+        const headerName = document.querySelector('.header-user-name');
+        const headerAvatar = document.querySelector('.header-user-avatar');
+        
+        headerName.textContent = professor.nome_prof || 'Professor';
+        headerAvatar.textContent = professor.nome_prof
+          ? professor.nome_prof.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)
+          : 'JF';
+        
+        // Preencher dropdown de turmas
+        const turmaSelect = document.getElementById('turmaSelect');
+        turmaSelect.innerHTML = '<option value="">Selecione...</option>';
+        
+        let turmasDisponiveis = [];
+        
+        console.log('%c[NOTAS] Verificando turmas...', 'color: cyan;');
+        console.log('%c[NOTAS] professor.turmas exists?', 'color: cyan;', !!professor.turmas);
+        console.log('%c[NOTAS] professor.turmas length:', 'color: cyan;', professor.turmas ? professor.turmas.length : 0);
+        console.log('%c[NOTAS] professor.turmas_dirigidas exists?', 'color: cyan;', !!professor.turmas_dirigidas);
+        console.log('%c[NOTAS] professor.turmas_dirigidas length:', 'color: cyan;', professor.turmas_dirigidas ? professor.turmas_dirigidas.length : 0);
+        
+        if (professor.turmas && professor.turmas.length > 0) {
+          console.log('%c[NOTAS] ✓ Encontradas turmas em professor.turmas', 'color: green;');
+          console.log('%c[NOTAS] Estrutura de turmas:', 'color: purple;', professor.turmas[0]);
+          
+          // IMPORTANTE: Filtrar apenas turmas que existem (turma !== null)
+          const turmasValidas = professor.turmas.filter(pt => pt.turma !== null);
+          console.log(`%c[NOTAS] Turmas válidas: ${turmasValidas.length} de ${professor.turmas.length}`, 'color: orange;');
+          
+          turmasValidas.forEach((pt, idx) => {
+            const turma = pt.turma; // Aqui está o objeto turma real
+            const idTurma = turma.id_turma;
+            const siglaTurma = turma.sigla_turma || `Turma ${idTurma}`;
+            
+            console.log(`%c[NOTAS] ✓ Turma ${idx}: ID=${idTurma}, Sigla=${siglaTurma}`, 'color: green;');
+            
+            if (idTurma) {
+              const option = document.createElement('option');
+              option.value = idTurma;
+              option.textContent = siglaTurma;
+              option.dataset.id = idTurma;
+              turmaSelect.appendChild(option);
+              turmasDisponiveis.push({ id: idTurma, sigla: siglaTurma });
+            }
+          });
+          console.log('%c[NOTAS] ✓ Total de turmas válidas carregadas:', 'color: green;', turmasDisponiveis.length);
+        } else if (professor.turmas_dirigidas && professor.turmas_dirigidas.length > 0) {
+          console.log('%c[NOTAS] ✓ Encontradas turmas em professor.turmas_dirigidas', 'color: green;');
+          console.log('%c[NOTAS] Estrutura de turmas dirigidas:', 'color: purple;', professor.turmas_dirigidas[0]);
+          
+          // Turmas dirigidas já vêm como objeto Turma direto (não é junção)
+          professor.turmas_dirigidas.forEach((turma, idx) => {
+            const idTurma = turma.id_turma;
+            const siglaTurma = turma.sigla_turma || `Turma ${idTurma}`;
+            
+            console.log(`%c[NOTAS] ✓ Turma Dirigida ${idx}: ID=${idTurma}, Sigla=${siglaTurma}`, 'color: green;');
+            
+            if (idTurma) {
+              const option = document.createElement('option');
+              option.value = idTurma;
+              option.textContent = siglaTurma;
+              option.dataset.id = idTurma;
+              turmaSelect.appendChild(option);
+              turmasDisponiveis.push({ id: idTurma, sigla: siglaTurma });
+            }
+          });
+          console.log('%c[NOTAS] ✓ Total de turmas dirigidas carregadas:', 'color: green;', turmasDisponiveis.length);
+        } else {
+          console.warn('%c[NOTAS] ✗ AVISO: Nenhuma turma encontrada! Professor não tem turmas nem turmas_dirigidas!', 'color: red; font-weight: bold;');
+          showFlashMessage('⚠️ Nenhuma turma encontrada para este professor', 'warning');
+        }
+        
+        // Preencher dropdown de disciplinas
+        const disciplinaSelect = document.getElementById('disciplinaSelect');
+        disciplinaSelect.innerHTML = '<option value="">Selecione...</option>';
+        
+        console.log('%c[NOTAS] Verificando disciplinas...', 'color: cyan;');
+        console.log('%c[NOTAS] professor.disciplinas exists?', 'color: cyan;', !!professor.disciplinas);
+        console.log('%c[NOTAS] professor.disciplinas length:', 'color: cyan;', professor.disciplinas ? professor.disciplinas.length : 0);
+        
+        if (professor.disciplinas && professor.disciplinas.length > 0) {
+          console.log('%c[NOTAS] ✓ Encontradas disciplinas!', 'color: green;');
+          console.log('%c[NOTAS] Estrutura de disciplinas:', 'color: purple;', professor.disciplinas[0]);
+          
+          professor.disciplinas.forEach(disc => {
+            const option = document.createElement('option');
+            
+            // O ID correto é disciplina_id (da relação ProfessorDisciplina)
+            const disciplinaId = disc.disciplina_id;
+            
+            // O nome vem do objeto disciplina aninhado
+            const nomeDisciplina = disc.disciplina?.descricao_disc || disc.disciplina?.sigla_disc || `Disciplina ${disciplinaId}`;
+            
+            option.value = disciplinaId;
+            option.textContent = nomeDisciplina;
+            option.dataset.nomeDisciplina = nomeDisciplina;
+            option.dataset.disciplinaId = disciplinaId;
+            
+            disciplinaSelect.appendChild(option);
+            
+            console.log(`%c[NOTAS] Disciplina adicionada: ID=${disciplinaId}, Nome=${nomeDisciplina}`, 'color: teal;');
+          });
+          console.log('%c[NOTAS] ✓ Total de disciplinas carregadas:', 'color: green;', professor.disciplinas.length);
+        } else {
+          console.warn('%c[NOTAS] ✗ AVISO: Nenhuma disciplina encontrada!', 'color: orange;');
+        }
+        
+        // Definir data de hoje
+        const dataAvaliacao = document.getElementById('dataAvaliacao');
+        const today = new Date().toISOString().split('T')[0];
+        dataAvaliacao.value = today;
+        
+        // ========== SELEÇÕES AUTOMÁTICAS ==========
+        // 1. Não selecionar automaticamente trimestre, turma ou disciplina.
+        // O professor deve escolher manualmente antes de carregar os alunos.
+        console.log('%c[NOTAS] Os filtros de trimestre, turma e disciplina permanecem vazios para seleção manual.', 'color: blue;');
+        
+        // Esconder spinner e mostrar conteúdo
+        spinner.style.display = 'none';
+        content.style.display = 'block';
+        
+        console.log('%c[NOTAS] Dados carregados com sucesso!', 'color: green; font-weight: bold;');
+        
+        // ========== DEBUG: VALIDAR SELEÇÕES ANTES DE CARREGAR ==========
+        const trimestreVal = document.getElementById('trimestreSelect').value;
+        const turmaVal = document.getElementById('turmaSelect').value;
+        const disciplinaVal = document.getElementById('disciplinaSelect').value;
+        const dataVal = document.getElementById('dataAvaliacao').value;
+        
+        console.log('%c[NOTAS] ========== RESUMO FINAL ANTES DE CARREGAR ==========', 'color: orange; font-weight: bold;');
+        console.log('%c[NOTAS] Trimestre:', 'color: orange;', trimestreVal, '✓');
+        console.log('%c[NOTAS] Turma:', 'color: orange;', turmaVal, turmaVal ? '✓' : '✗ VAZIO');
+        console.log('%c[NOTAS] Disciplina:', 'color: orange;', disciplinaVal, disciplinaVal ? '✓' : '✗ VAZIO');
+        console.log('%c[NOTAS] Data:', 'color: orange;', dataVal, '✓');
+        console.log('%c[NOTAS] ========== FIM RESUMO ==========', 'color: orange; font-weight: bold;');
+        
+        // ========== NÃO CARREGAR PAUTA AUTOMATICAMENTE ==========
+        // O professor deve selecionar filtros e clicar em "Carregar Alunos".
+        if (!turmaVal || !disciplinaVal) {
+          console.warn('%c[NOTAS] AVISO: Turma ou Disciplina não foram selecionadas corretamente. A carga de alunos será feita apenas quando clicar no botão.', 'color: red;');
+        }
+        
+        
+        
+      } catch (erro) {
+        console.error('%c[NOTAS] Erro ao carregar dados:', 'color: red;', erro);
+        spinner.innerHTML = `<div class="alert alert-danger">Erro ao carregar dados: ${erro.message}</div>`;
+      }
+    }
+
+    // ========== CARREGAR NOTAS EXISTENTES ==========
+    async function carregarNotasExistentes(disciplinaId, turmaId, trimestre, anoLetivo, estudantes) {
+      try {
+        console.log('%c[NOTAS] ========== INICIANDO CARREGAMENTO DE NOTAS ==========', 'color: blue; font-weight: bold;');
+        console.log('%c[NOTAS] Filtros aplicados:', 'color: blue;', {
+          disciplinaId, turmaId, trimestre, anoLetivo
+        });
+        
+        // Buscar todas as notas da disciplina
+        const notas = await api.getNotas(null, disciplinaId);
+        console.log('%c[NOTAS] Total de notas retornadas pela API:', 'color: green;', notas ? notas.length : 0);
+        
+        if (notas && notas.length > 0) {
+          console.log('%c[NOTAS] Primeira nota retornada (estrutura):', 'color: purple;', notas[0]);
+          console.log('%c[NOTAS] Propriedades disponíveis:', 'color: purple;', Object.keys(notas[0]));
+        }
+        
+        if (!notas || notas.length === 0) {
+          console.log('%c[NOTAS] ⚠️ Nenhuma nota encontrada para esta disciplina', 'color: orange;');
+          return;
+        }
+
+        // Filtrar notas pelo trimestre, turma e ano letivo selecionados
+        console.log('%c[NOTAS] Aplicando filtros:', 'color: cyan;', `trimestre=${trimestre}, turma=${turmaId}, ano=${anoLetivo}`);
+        
+        const notasFiltradas = notas.filter(nota => {
+          const trimMatch = nota.trimestre_nota == trimestre;
+          const turmaMatch = nota.turma_id === turmaId;
+          const anoMatch = nota.ano_letivo === anoLetivo;
+          
+          if (!trimMatch || !turmaMatch || !anoMatch) {
+            console.log(`%c[NOTAS] ✗ Nota rejeitada - Est: ${nota.estudante_id}, Tri: ${nota.trimestre_nota}(${trimMatch}), Turma: ${nota.turma_id}(${turmaMatch}), Ano: ${nota.ano_letivo}(${anoMatch})`, 'color: orange;');
+            return false;
+          }
+          return true;
+        });
+
+        console.log(`%c[NOTAS] ✓ Notas filtradas: ${notasFiltradas.length} de ${notas.length}`, 'color: cyan;');
+        
+        if (notasFiltradas.length > 0) {
+          console.log('%c[NOTAS] Primeira nota filtrada:', 'color: purple;', notasFiltradas[0]);
+        }
+
+        // Criar mapa de notas por estudante para busca rápida
+        const notasPorEstudante = {};
+        notasFiltradas.forEach(nota => {
+          const key = nota.estudante_id;
+          notasPorEstudante[key] = nota;
+        });
+
+        console.log(`%c[NOTAS] Mapa criado com ${Object.keys(notasPorEstudante).length} estudantes`, 'color: purple;');
+
+        // Preencher os campos com as notas existentes
+        const rows = document.querySelectorAll('#tabelaAlunosNotas tr');
+        let notasPreenchidas = 0;
+        
+        console.log('%c[NOTAS] Iniciando preenchimento de campos...', 'color: teal;');
+        
+        rows.forEach((row, idx) => {
+          const estudanteId = parseInt(row.dataset.estudanteId);
+          const nota = notasPorEstudante[estudanteId];
+
+          console.log(`%c[NOTAS] Linha ${idx}: Est ID ${estudanteId} - ${nota ? '✓ ENCONTRADA' : '✗ NÃO ENCONTRADA'}`, nota ? 'color: green;' : 'color: orange;');
+
+          if (nota) {
+            console.log(`%c[NOTAS]   Valores: MAC=${nota.mac_notas}, NPP=${nota.pp_notas}, NPT=${nota.pt_notas}`, 'color: teal;');
+            
+            // Preencher os campos se tiverem valores
+            const inputMac = row.querySelector('input[data-field="mac"]');
+            const inputNpp = row.querySelector('input[data-field="npp"]');
+            const inputNpt = row.querySelector('input[data-field="npt"]');
+
+            if (inputMac && nota.mac_notas !== undefined && nota.mac_notas !== null) {
+              inputMac.value = parseFloat(nota.mac_notas);
+              console.log(`%c[NOTAS]     ✓ MAC preenchido`, 'color: green;');
+            }
+            if (inputNpp && nota.pp_notas !== undefined && nota.pp_notas !== null) {
+              inputNpp.value = parseFloat(nota.pp_notas);
+              console.log(`%c[NOTAS]     ✓ NPP preenchido`, 'color: green;');
+            }
+            if (inputNpt && nota.pt_notas !== undefined && nota.pt_notas !== null) {
+              inputNpt.value = parseFloat(nota.pt_notas);
+              console.log(`%c[NOTAS]     ✓ NPT preenchido`, 'color: green;');
+            }
+
+            notasPreenchidas++;
+          }
+        });
+
+        // Recalcular médias após preencher
+        document.querySelectorAll('#tabelaAlunosNotas tr').forEach(row => {
+          updateMediaLinha(row);
+        });
+        updateResumo();
+
+        console.log(`%c[NOTAS] ✓ ${notasPreenchidas}/${rows.length} notas preenchidas com sucesso!`, notasPreenchidas > 0 ? 'color: green; font-weight: bold;' : 'color: orange; font-weight: bold;');
+        console.log('%c[NOTAS] ========== FIM DO CARREGAMENTO DE NOTAS ==========', 'color: blue; font-weight: bold;');
+
+      } catch (erro) {
+        console.error('%c[NOTAS] ✗ Erro ao carregar notas existentes:', 'color: red;', erro);
+        console.warn('%c[NOTAS] Continuando sem carregar notas anteriores...', 'color: orange;');
+      }
+    }
+
+    // ========== CARREGAR ALUNOS ==========
+    async function carregarAlunos() {
+      const btnCarregar = document.getElementById('btnCarregarAlunos');
+      
+      // Iniciar spinner
+      btnCarregar.disabled = true;
+      const textoBtnOriginal = btnCarregar.innerHTML;
+      btnCarregar.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Carregando...';
+      
+      try {
+        const trimestreValue = document.getElementById('trimestreSelect').value;
+        const turmaId = document.getElementById('turmaSelect').value;
+        const disciplinaId = document.getElementById('disciplinaSelect').value;
+        const data = document.getElementById('dataAvaliacao').value;
+        
+        console.log('%c[NOTAS] DEBUG - Iniciando carregarAlunos com valores:', 'color: cyan;', {
+          trimestre: trimestreValue,
+          turmaId: turmaId,
+          disciplinaId: disciplinaId,
+          data: data
+        });
+        
+        // Validações (devem estar preenchidos)
+        if (!trimestreValue || trimestreValue === '') {
+          console.warn('%c[NOTAS] Validação falhou: Trimestre vazio', 'color: orange;');
+          showFlashMessage('Selecione um trimestre', 'warning');
+          return;
+        }
+        
+        if (!turmaId || turmaId === '') {
+          console.warn('%c[NOTAS] Validação falhou: Turma vazia', 'color: orange;');
+          showFlashMessage('Selecione uma turma', 'warning');
+          return;
+        }
+        
+        if (!disciplinaId || disciplinaId === '') {
+          console.warn('%c[NOTAS] Validação falhou: Disciplina vazia', 'color: orange;');
+          showFlashMessage('Selecione uma disciplina', 'warning');
+          return;
+        }
+        
+        if (!data || data === '') {
+          console.warn('%c[NOTAS] Validação falhou: Data vazia', 'color: orange;');
+          showFlashMessage('Selecione uma data', 'warning');
+          return;
+        }
+        
+        console.log('%c[NOTAS] ✓ Todas as validações passaram, carregando alunos da turma:', 'color: blue;', turmaId);
+        
+        // Converter turmaId para número e validar
+        const turmaIdNum = parseInt(turmaId);
+        if (isNaN(turmaIdNum)) {
+          throw new Error(`turmaId inválido: "${turmaId}" não é um número válido`);
+        }
+        
+        console.log('%c[NOTAS] Chamando api.getTurma com ID:', 'color: teal;', turmaIdNum);
+        const turma = await api.getTurma(turmaIdNum);
+        
+        console.log('%c[NOTAS] Turma carregada:', 'color: green;', turma);
+        
+        if (!turma.estudantes || turma.estudantes.length === 0) {
+          showFlashMessage('Nenhum aluno encontrado nesta turma', 'info');
+          document.getElementById('divLancarNotas').style.display = 'none';
+          return;
+        }
+        
+        // Atualizar info com trimestre
+        const trimestreText = `${trimestreValue}º`;
+        document.getElementById('trimestreInfo').textContent = trimestreText;
+        document.getElementById('turmaInfo').textContent = turma.sigla_turma || turma.descricao_turma || `Turma ${turmaId}`;
+        
+        // Pegar nome da disciplina do select
+        const disciplinaSelect = document.getElementById('disciplinaSelect');
+        const disciplinaOption = disciplinaSelect.options[disciplinaSelect.selectedIndex];
+        const nomeDisciplina = disciplinaOption.dataset.nomeDisciplina || disciplinaOption.text;
+        document.getElementById('disciplinaInfo').textContent = nomeDisciplina || '-';
+        
+        console.log('%c[NOTAS] Disciplina exibida:', 'color: purple;', nomeDisciplina);
+        
+        // Popular tabela
+        const tbody = document.getElementById('tabelaAlunosNotas');
+        tbody.innerHTML = '';
+        
+        turma.estudantes.forEach((estudante, index) => {
+          const tr = document.createElement('tr');
+          tr.dataset.estudanteId = estudante.id_estudante;
+          tr.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${estudante.nome_estudante}</td>
+            <td><input type="number" class="form-control form-control-sm text-center" data-field="mac" min="0" max="20" step="0.1" placeholder="0"></td>
+            <td><input type="number" class="form-control form-control-sm text-center" data-field="npp" min="0" max="20" step="0.1" placeholder="0"></td>
+            <td><input type="number" class="form-control form-control-sm text-center" data-field="npt" min="0" max="20" step="0.1" placeholder="0"></td>
+            <td class="text-center"><strong class="media-valor">0.0</strong></td>
+          `;
+          tbody.appendChild(tr);
+          
+          // Adicionar evento de input para recalcular média
+          tr.querySelectorAll('input[data-field]').forEach(input => {
+            input.addEventListener('input', function() {
+              updateMediaLinha(tr);
+              updateResumo();
+            });
+          });
+        });
+        
+        document.getElementById('divLancarNotas').style.display = 'block';
+        updateResumo();
+        
+        // Carregar notas já existentes com filtros precisos
+        await carregarNotasExistentes(
+          parseInt(disciplinaId), 
+          parseInt(turmaId),
+          parseInt(trimestreValue),
+          new Date().getFullYear(),
+          turma.estudantes
+        );
+        
+        console.log(`%c✓ [NOTAS] ${turma.estudantes.length} alunos carregados com sucesso!`, 'color: green;');
+        
+      } catch (erro) {
+        console.error('%c[NOTAS] ✗ Erro ao carregar alunos:', 'color: red;', erro);
+        showFlashMessage(`Erro ao carregar alunos: ${erro.message}`, 'danger');
+      } finally {
+        // Remover spinner
+        btnCarregar.disabled = false;
+        btnCarregar.innerHTML = textoBtnOriginal;
+      }
+    }
+
+    // ========== SALVAR NOTAS ==========
+    async function salvarNotas() {
+      const btnSalvar = document.getElementById('btnLancarNotas');
+      
+      // Iniciar spinner
+      btnSalvar.disabled = true;
+      const textoBtnOriginal = btnSalvar.innerHTML;
+      btnSalvar.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Salvando...';
+      
+      try {
+        const rows = Array.from(document.querySelectorAll('#tabelaAlunosNotas tr'));
+        
+        if (rows.length === 0) {
+          showFlashMessage('Carregue os alunos antes de salvar', 'danger');
+          return;
+        }
+        
+        const trimestreValue = document.getElementById('trimestreSelect').value;
+        const turmaId = document.getElementById('turmaSelect').value;
+        const data = document.getElementById('dataAvaliacao').value;
+        const disciplinaIdValue = document.getElementById('disciplinaSelect').value;
+        const anoLetivo = new Date().getFullYear();
+        
+        console.log('%c[NOTAS] Iniciando salvamento de notas...', 'color: blue; font-weight: bold;');
+        console.log('%c[NOTAS] Valores capturados:', 'color: teal;', {
+          trimestre: trimestreValue,
+          turmaId: turmaId,
+          disciplinaId: disciplinaIdValue,
+          data: data,
+          anoLetivo: anoLetivo
+        });
+        
+        // Validar valores antes de converter
+        if (!trimestreValue || !turmaId || !disciplinaIdValue || !data) {
+          showFlashMessage('Erro: Faltam dados. Trimestre, Turma, Disciplina e Data são obrigatórios.', 'danger');
+          console.error('%c[NOTAS] Validação falhou:', 'color: red;', {
+            trimestre: trimestreValue ? 'OK' : 'VAZIO',
+            turmaId: turmaId ? 'OK' : 'VAZIO',
+            disciplinaId: disciplinaIdValue ? 'OK' : 'VAZIO',
+            data: data ? 'OK' : 'VAZIO'
+          });
+          return;
+        }
+        
+        let notasSalvas = 0;
+        let erros = 0;
+        
+        // Iterar sobre cada estudante e salvar suas notas
+        for (let i = 0; i < rows.length; i++) {
+          const row = rows[i];
+          const numeroAluno = row.querySelector('td:nth-child(1)').textContent;
+          const nomeAluno = row.querySelector('td:nth-child(2)').textContent;
+          
+          const mac = parseFloat(row.querySelector('[data-field="mac"]').value) || 0;
+          const npp = parseFloat(row.querySelector('[data-field="npp"]').value) || 0;
+          const npt = parseFloat(row.querySelector('[data-field="npt"]').value) || 0;
+          
+          // Pular se nenhuma nota foi inserida
+          if (mac === 0 && npp === 0 && npt === 0) {
+            console.log(`%c[NOTAS] Pulando ${nomeAluno} - nenhuma nota inserida`, 'color: orange;');
+            continue;
+          }
+          
+          try {
+            // Obter ID do estudante da tabela
+            const estudanteId = row.dataset.estudanteId;
+            
+            if (!estudanteId) {
+              console.warn(`%c[NOTAS] ID de estudante não encontrado para ${nomeAluno}`, 'color: orange;');
+              continue;
+            }
+            
+            // Converter para números com validação
+            const disciplinaIdNum = parseInt(disciplinaIdValue);
+            const turmaIdNum = parseInt(turmaId);
+            const trimestreNum = parseInt(trimestreValue);
+            const estudanteIdNum = parseInt(estudanteId);
+            
+            if (isNaN(disciplinaIdNum) || isNaN(turmaIdNum) || isNaN(trimestreNum) || isNaN(estudanteIdNum)) {
+              console.warn(`%c[NOTAS] Erro de conversão para ${nomeAluno}:`, 'color: orange;', {
+                estudanteId: estudanteIdNum,
+                disciplinaId: disciplinaIdNum,
+                turmaId: turmaIdNum,
+                trimestre: trimestreNum
+              });
+              erros++;
+              continue;
+            }
+            
+            const notaData = {
+              estudante_id: estudanteIdNum,
+              disciplina_id: disciplinaIdNum,
+              turma_id: turmaIdNum,
+              trimestre_nota: trimestreNum,
+              data_nota: data,
+              mac_notas: mac,
+              pp_notas: npp,
+              pt_notas: npt,
+              ano_letivo: anoLetivo
+            };
+            
+            console.log(`%c[NOTAS] Salvando/atualizando nota para ${nomeAluno}:`, 'color: teal;', notaData);
+            
+            await api.upsertNota(notaData);
+            notasSalvas++;
+            
+            console.log(`%c✓ Nota de ${nomeAluno} salva/atualizada com sucesso!`, 'color: green;');
+            
+          } catch (erro) {
+            erros++;
+            console.error(`%c[NOTAS] Erro ao salvar nota de ${nomeAluno}:`, 'color: red;', erro);
+          }
+        }
+        
+        // Mostrar resultado final
+        const mensagem = erros === 0 
+          ? `${notasSalvas} nota(s) salva(s) com sucesso!`
+          : `${notasSalvas} salva(s), ${erros} erro(s)`;
+        
+        showFlashMessage(mensagem, erros === 0 ? 'success' : 'warning');
+        
+        console.log('%c[NOTAS] Salvamento concluído!', 'color: green; font-weight: bold;');
+        
+        if (erros === 0) {
+          // Limpar tabela após sucesso
+          setTimeout(() => {
+            document.getElementById('divLancarNotas').style.display = 'none';
+          }, 2000);
+        }
+        
+      } catch (erro) {
+        console.error('%c[NOTAS] Erro geral ao salvar notas:', 'color: red;', erro);
+        showFlashMessage(`Erro ao salvar notas: ${erro.message}`, 'danger');
+      } finally {
+        // Remover spinner
+        btnSalvar.disabled = false;
+        btnSalvar.innerHTML = textoBtnOriginal;
+      }
+    }
+
+    // ========== EVENT LISTENERS ==========
+    document.addEventListener('DOMContentLoaded', function() {
+      carregarDados();
+      
+      document.getElementById('btnCarregarAlunos').addEventListener('click', carregarAlunos);
+      document.getElementById('btnLancarNotas').addEventListener('click', salvarNotas);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Admin | SGEB</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+</head>
+<body data-protected="true">
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Sistema de Geatão Escolar Betânia</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- Principal -->
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link active" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Comunicação -->
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicação</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 11 18-5v12L3 13v-2z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">2</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gestão -->
+        <div class="nav-group">
+          <div class="nav-group-title">Gestão</div>
+          <div class="nav-item">
+            <a href="professores.html" class="nav-link" data-title="Professores">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Professores</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v4H4z" />
+                  <path d="M4 12h16v8H4z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="usuarios-sistema.html" class="nav-link" data-title="Usuários do Sistema">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-4-4h-1" />
+                  <circle cx="17" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Usuários do Sistema</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Disciplinas">
+              <span class="nav-link-icon">
+
+                <!-- Ícone Livro / Disciplinas -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                  <path d="M2 4h7a4 4 0 0 1 4 4v12a4 4 0 0 0-4-4H2z" />
+                  <path d="M22 4h-7a4 4 0 0 0-4 4v12a4 4 0 0 1 4-4h7z" />
+
+                </svg>
+
+              </span>
+              <span class="nav-link-text">Disciplinas</span>
+            </a>
+          </div>
+
+          <div class="nav-item">
+            <a href="classe.html" class="nav-link" data-title="Classes">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Classes</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="alunos.html" class="nav-link" data-title="Alunos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Alunos</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Conta -->
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#" class="nav-link" data-title="Sair" data-logout>
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="header-title">Dashboard</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">AD</div>
+            <div class="header-user-info">
+              <span class="header-user-name" data-user-name>Administrador</span>
+              <span class="header-user-role" data-user-role>Admin</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div class="page-content">
+        <div class="page-header mb-4">
+          <h2 class="page-title">Painel de Controlo</h2>
+          <p class="page-subtitle">Ano Lectivo 2026/2025</p>
+        </div>
+        
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value" data-stat-alunos>
+                <span class="spinner-border spinner-border-sm" role="status">
+                  <span class="visually-hidden">Carregando...</span>
+                </span>
+              </div>
+              <div class="stat-label">Alunos</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon success">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value" data-stat-professores>
+                <span class="spinner-border spinner-border-sm" role="status">
+                  <span class="visually-hidden">Carregando...</span>
+                </span>
+              </div>
+              <div class="stat-label">Professores</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon warning">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value" data-stat-turmas>
+                <span class="spinner-border spinner-border-sm" role="status">
+                  <span class="visually-hidden">Carregando...</span>
+                </span>
+              </div>
+              <div class="stat-label">Turmas</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon info">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value" data-stat-avisos>
+                <span class="spinner-border spinner-border-sm" role="status">
+                  <span class="visually-hidden">Carregando...</span>
+                </span>
+              </div>
+              <div class="stat-label">Avisos</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Distribuição por Classe -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Distribuição de Alunos</h5>
+          </div>
+          <div class="card-body">
+            <div class="row text-center">
+              <div class="col-4 col-md-2">
+                <div class="fw-bold text-primary">11ª</div>
+                <small class="text-muted">350 alunos</small>
+              </div>
+              <div class="col-4 col-md-2">
+                <div class="fw-bold text-primary">12ª</div>
+                <small class="text-muted">420 alunos</small>
+              </div>
+              <div class="col-4 col-md-2">
+                <div class="fw-bold text-primary">13ª</div>
+                <small class="text-muted">475 alunos</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/data-loader.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+
+  <script>
+    // Verificar se é ADMIN
+    AuthHelper.checkRole(['ADMIN']);
+    
+    // Cache de dados do dashboard (válido por 5 minutos)
+    const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos
+    
+    function obterDoCache(chave) {
+      const data = localStorage.getItem(`dashboard_cache_${chave}`);
+      if (!data) return null;
+      
+      const { valor, timestamp } = JSON.parse(data);
+      if (Date.now() - timestamp > CACHE_DURATION) {
+        localStorage.removeItem(`dashboard_cache_${chave}`);
+        return null;
+      }
+      
+      return valor;
+    }
+    
+    function guardarEmCache(chave, valor) {
+      localStorage.setItem(`dashboard_cache_${chave}`, JSON.stringify({
+        valor,
+        timestamp: Date.now()
+      }));
+    }
+    
+    async function carregarEstatisticas() {
+      try {
+        // Tentar carregar do cache primeiro
+        let estudantes = obterDoCache('estudantes');
+        let professores = obterDoCache('professores');
+        let turmas = obterDoCache('turmas');
+        let avisos = obterDoCache('avisos');
+
+        // Se não há cache, carregar da API
+        if (!estudantes || !professores || !turmas || !avisos) {
+          const resultados = await Promise.all([
+            estudantes ? Promise.resolve(estudantes) : api.getEstudantes(),
+            professores ? Promise.resolve(professores) : api.getProfessores(),
+            turmas ? Promise.resolve(turmas) : api.getTurmas(),
+            avisos ? Promise.resolve(avisos) : api.getAvisos()
+          ]);
+
+          estudantes = resultados[0];
+          professores = resultados[1];
+          turmas = resultados[2];
+          avisos = resultados[3];
+
+          // Guardar em cache
+          guardarEmCache('estudantes', estudantes);
+          guardarEmCache('professores', professores);
+          guardarEmCache('turmas', turmas);
+          guardarEmCache('avisos', avisos);
+        }
+
+        // Atualizar cards de estatísticas
+        document.querySelectorAll('[data-stat-alunos]').forEach(el => {
+          el.textContent = estudantes.length;
+        });
+
+        document.querySelectorAll('[data-stat-professores]').forEach(el => {
+          el.textContent = professores.length;
+        });
+
+        document.querySelectorAll('[data-stat-turmas]').forEach(el => {
+          el.textContent = turmas.length;
+        });
+
+        document.querySelectorAll('[data-stat-avisos]').forEach(el => {
+          el.textContent = avisos.length;
+        });
+
+      } catch (error) {
+        console.error('Erro ao carregar dados:', error);
+        // Mostrar dados do cache mesmo se expirado, como fallback
+        document.querySelectorAll('[data-stat-alunos]').forEach(el => {
+          el.textContent = '—';
+        });
+        document.querySelectorAll('[data-stat-professores]').forEach(el => {
+          el.textContent = '—';
+        });
+        document.querySelectorAll('[data-stat-turmas]').forEach(el => {
+          el.textContent = '—';
+        });
+        document.querySelectorAll('[data-stat-avisos]').forEach(el => {
+          el.textContent = '—';
+        });
+      }
+    }
+    
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Update header com dados do usuário
+      const headerUserName = document.querySelector('.header-user-name');
+      const headerUserRole = document.querySelector('.header-user-role');
+      
+      if (headerUserName) {
+        headerUserName.textContent = api.getUserName() || 'Administrador';
+      }
+      if (headerUserRole) {
+        headerUserRole.textContent = AuthHelper.translateRole(api.getUserRole());
+      }
+
+      // Carregar estatísticas com cache
+      await carregarEstatisticas();
+
+      // Logout
+      document.querySelectorAll('[data-logout]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          AuthHelper.logout();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

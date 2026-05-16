@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Aluno | SGEB MED Angola</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="css/aluno.css">
+</head>
+<body data-protected="true">
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Gestao Escolar</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link active" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Academico</div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Minhas Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Notas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="faltas.html" class="nav-link" data-title="Minhas Faltas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Faltas</span>
+            </a>
+          </div>
+        </div>
+        
+          <div class="nav-group">
+          <div class="nav-group-title">Comunicacao</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link active" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 11 18-5v12L3 13v-2z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">2</span>
+            </a>
+          </div>
+        </div>
+
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#" class="nav-link" data-title="Sair" data-logout>
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="header-title">Dashboard</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">MS</div>
+            <div class="header-user-info">
+              <span class="header-user-name" data-user-name>Maria Santos</span>
+              <span class="header-user-role" data-user-role>Aluno - EIA-11AD</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div class="page-content">
+        <!-- Welcome Banner -->
+        <div class="card mb-4" style="background: linear-gradient(135deg, var(--primary-color), #1e40af); color: white;">
+          <div class="card-body py-4">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h3 class="mb-2">Bem-vinda, <span id="nomeBemVindo">~</span>!</h3>
+                <p class="mb-0 opacity-90" id="infoEstudanteText">-</p>
+              </div>
+              <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <span class="badge" style="background: rgba(255,255,255,0.2); font-size: 0.875rem; padding: 0.5rem 1rem;">I Trimestre</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Quick Stats -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="mediaGeralValue" style="color: red;">-</span>
+                <span class="stat-label">Media Geral</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="disciplinasValue">-</span>
+                <span class="stat-label">Disciplinas </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="faltasTotaisValue">-</span>
+                <span class="stat-label">Faltas Totais</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value">0</span>
+                <span class="stat-label">Avisos Novos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row g-4">
+          <!-- Recent Grades -->
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h6 class="card-title mb-0">Notas Recentes</h6>
+                <a href="avaliacoes.html" class="btn btn-sm btn-outline-primary">Ver Todas</a>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th>Disciplina</th>
+                        <th class="text-center">M.A.C</th>
+                        <th class="text-center">P.P</th>
+                        <th class="text-center">P.T</th>
+                      </tr>
+                    </thead>
+                    <tbody id="avaliacoesTableBody">
+                      <!-- Dados serão carregados via JavaScript -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Faltas por Disciplina -->
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h6 class="card-title mb-0">Faltas por Disciplina</h6>
+                <a href="faltas.html" class="btn btn-sm btn-outline-primary">Ver Todas</a>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th>Disciplina</th>
+                        <th class="text-center">Faltas</th>
+                        <th class="text-center">Limite</th>
+                        <th class="text-center">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="faltasTableBody">
+                      <!-- Dados serão carregados via JavaScript -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Gestao Escolar - 2026 - Ministerio da Educacao de Angola</p>
+      </footer>
+    </main>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // ========== VARIÁVEIS GLOBAIS ==========
+      let estudanteId = null;
+      let estudanteData = null;
+      let turmaDoEstudante = null;
+      let notasData = [];
+      let faltasData = [];
+
+      // ========== FUNÇÃO AUXILIAR: MOSTRAR MENSAGENS ==========
+      function showFlashMessage(message, type = 'success') {
+        const existingFlash = document.querySelector('.alert');
+        if (existingFlash) {
+          existingFlash.remove();
+        }
+
+        const flash = document.createElement('div');
+        flash.className = `alert alert-${type} alert-dismissible fade show`;
+        flash.innerHTML = `
+          ${message}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        document.querySelector('.page-content').insertBefore(flash, document.querySelector('.page-content').firstChild);
+        
+        setTimeout(() => {
+          if (flash.parentNode) {
+            flash.remove();
+          }
+        }, 5000);
+      }
+
+      // ========== FUNÇÃO: CARREGAR DADOS REAIS DO BACKEND ==========
+      async function loadEstudanteData() {
+        try {
+          console.log('[DASHBOARD] Iniciando carregamento de dados do estudante...');
+          
+          // Buscar todos os estudantes para encontrar o logado
+          const estudantes = await api.getEstudantes();
+          console.log('[DASHBOARD] Estudantes retornados:', estudantes?.length ?? 0);
+
+          if (estudantes && estudantes.length > 0) {
+            // Encontrar o estudante do usuário logado
+            const userId = api.getUserId();
+            const estudanteIdLocalStorage = localStorage.getItem('estudanteId');
+            console.log('[DASHBOARD] userId do localStorage:', userId, 'tipo:', typeof userId);
+            console.log('[DASHBOARD] estudanteId do localStorage:', estudanteIdLocalStorage);
+            
+            let estudante = null;
+            
+            // Prioridade 1: Usar estudanteId do localStorage se existir (vem do login)
+            if (estudanteIdLocalStorage) {
+              console.log('[DASHBOARD] 1️⃣ Procurando por estudanteId armazenado:', estudanteIdLocalStorage);
+              estudante = estudantes.find(e => e.id_estudante == estudanteIdLocalStorage);
+              if (estudante) {
+                console.log('%c[DASHBOARD] ✓ Encontrado por estudanteId do login', 'color: green;', estudante);
+              }
+            }
+            
+            // Prioridade 2: Procurar por usuario_id
+            if (!estudante && userId) {
+              const userIdNum = parseInt(userId, 10);
+              console.log('[DASHBOARD] 2️⃣ Procurando estudante com usuario_id:', userIdNum);
+              
+              // Debug: mostrar todos os estudantes com seus usuario_id
+              console.log('[DASHBOARD] Estudantes disponíveis:', estudantes.map(e => ({
+                id_estudante: e.id_estudante,
+                nome: e.nome_estudante,
+                usuario_id: e.usuario_id,
+                turma_id: e.turma_id
+              })));
+              
+              // Tentar encontrar estudante com usuario_id (comparação numérica)
+              estudante = estudantes.find(e => {
+                const estUsuarioId = e.usuario_id ? parseInt(e.usuario_id, 10) : null;
+                return estUsuarioId === userIdNum;
+              });
+              
+              if (estudante) {
+                console.log('%c[DASHBOARD] ✓ Estudante encontrado por usuario_id', 'color: green;', estudante);
+              } else {
+                console.warn('[DASHBOARD] ⚠️ Nenhum estudante encontrado com usuario_id:', userIdNum);
+              }
+            }
+            
+            // Fallback 3: Usar o primeiro estudante
+            if (!estudante) {
+              console.warn('[DASHBOARD] ⚠️ Usando fallback: primeiro estudante da lista');
+              estudante = estudantes[0];
+              console.warn('[DASHBOARD] ⚠️ AVISO: Isto pode estar incorreto! Verifique a tabela `estudante` e o relacionamento `usuario_id`');
+            }
+            
+            estudanteId = estudante.id_estudante;
+            estudanteData = estudante;
+            api.setEstudanteId(estudanteId);
+
+            console.log('[DASHBOARD] Estudante Logado:', {
+              id: estudanteId,
+              nome: estudante.nome_estudante,
+              turma_id: estudante.turma_id
+            });
+
+            // Passo 1: Carregar turma com disciplinas
+            if (estudante.turma_id) {
+              console.log('[DASHBOARD] Passo 1: Carregando turma #' + estudante.turma_id);
+              await loadTurmaComDisciplinas(estudante.turma_id);
+              console.log('[DASHBOARD] Passo 1 concluído. Disciplinas carregadas:', disciplinasDoEstudante?.length ?? 0);
+              atualizarQtdDisciplinas();
+              atualizarBannerEstudante(estudante, turmaDoEstudante);
+            } else {
+              console.warn('[DASHBOARD] Estudante sem turma. Carregando todas as disciplinas.');
+              try {
+                disciplinasDoEstudante = await api.getDisciplinas();
+                console.log('[DASHBOARD] Disciplinas carregadas (todas):', disciplinasDoEstudante?.length ?? 0);
+                atualizarQtdDisciplinas();
+                atualizarBannerEstudante(estudante, turmaDoEstudante);
+              } catch (e) {
+                console.error('[DASHBOARD] Erro ao carregar disciplinas:', e);
+                disciplinasDoEstudante = [];
+              }
+            }
+
+            // Passo 2: Carregar notas do estudante
+            console.log('[DASHBOARD] Passo 2: Carregando notas do estudante');
+            await loadNotasDoEstudante();
+            console.log('[DASHBOARD] Passo 2 concluído');
+          } else {
+            console.error('[DASHBOARD] Nenhum estudante encontrado!');
+            showFlashMessage('Erro: Estudante não encontrado', 'danger');
+          }
+        } catch (error) {
+          console.error('[DASHBOARD] Erro ao carregar dados do estudante:', error);
+          showFlashMessage('Erro ao carregar dados: ' + error.message, 'danger');
+        }
+      }
+
+      // ========== FUNÇÃO: CARREGAR TURMA COM DISCIPLINAS ==========
+      async function loadTurmaComDisciplinas(turmaId) {
+        try {
+          console.log('[DASHBOARD] Carregando turma com disciplinas:', turmaId);
+          
+          // Buscar turma
+          const turma = await api.getTurma(turmaId);
+          turmaDoEstudante = turma;
+          console.log('[DASHBOARD] Turma carregada:', turma);
+
+          if (turma && turma.classe_id) {
+            // Buscar disciplinas da classe
+            try {
+              const disciplinas = await api.getDisciplinasClasse(turma.classe_id);
+              console.log('[DASHBOARD] Disciplinas da classe encontradas:', disciplinas);
+              
+              // Armazenar disciplinas globalmente
+              if (disciplinas && disciplinas.length > 0) {
+                disciplinasDoEstudante = disciplinas;
+              } else {
+                console.warn('[DASHBOARD] Nenhuma disciplina encontrada para classe:', turma.classe_id);
+                // Fallback: buscar todas as disciplinas
+                disciplinasDoEstudante = await api.getDisciplinas();
+                console.log('[DASHBOARD] Fallback: usando todas as disciplinas:', disciplinasDoEstudante);
+              }
+            } catch (classeError) {
+              console.error('[DASHBOARD] Erro ao buscar disciplinas da classe:', classeError);
+              // Fallback: buscar todas as disciplinas
+              disciplinasDoEstudante = await api.getDisciplinas();
+              console.log('[DASHBOARD] Fallback (erro): usando todas as disciplinas:', disciplinasDoEstudante);
+            }
+          } else {
+            console.warn('[DASHBOARD] Turma sem classe associada. Carregando todas as disciplinas.');
+            // Se não tem classe, buscar todas as disciplinas
+            disciplinasDoEstudante = await api.getDisciplinas();
+            console.log('[DASHBOARD] Todas as disciplinas carregadas:', disciplinasDoEstudante);
+          }
+        } catch (error) {
+          console.error('[DASHBOARD] Erro ao carregar turma:', error);
+          // Fallback final: buscar todas as disciplinas
+          try {
+            disciplinasDoEstudante = await api.getDisciplinas();
+            console.log('[DASHBOARD] Fallback final: usando todas as disciplinas:', disciplinasDoEstudante);
+          } catch (fallbackError) {
+            console.error('[DASHBOARD] Erro no fallback final:', fallbackError);
+            disciplinasDoEstudante = [];
+          }
+        }
+      }
+
+      // ========== VARIÁVEL ADICIONAL: DISCIPLINAS DO ESTUDANTE ==========
+      let disciplinasDoEstudante = [];
+
+      // ========== FUNÇÃO: CARREGAR NOTAS DO BACKEND ==========
+      async function loadNotasDoEstudante() {
+        try {
+          if (!estudanteId) {
+            console.warn('[DASHBOARD] Estudante ID não definido');
+            return;
+          }
+
+          console.log('[DASHBOARD] Chamando API para notas do estudante:', estudanteId);
+          console.log('[DASHBOARD] Disciplinas disponíveis antes das notas:', disciplinasDoEstudante?.length ?? 0);
+          
+          // Buscar notas do API
+          notasData = await api.getNotas(estudanteId);
+          console.log('[DASHBOARD] Notas carregadas da API:', notasData?.length ?? 0, 'notas');
+
+          if (notasData && notasData.length > 0) {
+            console.log('[DASHBOARD] Notas encontradas:');
+            notasData.forEach(n => {
+              console.log('  - Disciplina ID:', n.disciplina_id, 'PT:', n.pt_notas, 'Disciplina:', n.disciplina?.descricao_disc);
+            });
+          } else {
+            console.warn('[DASHBOARD] Nenhuma nota encontrada. Usando array vazio.');
+            notasData = [];
+          }
+
+          // Combinar disciplinas com notas
+          const notasCompletas = combinarDisciplinasComNotas(disciplinasDoEstudante, notasData);
+          console.log('[DASHBOARD] Total de registros após combinar:', notasCompletas?.length ?? 0);
+          
+          displayNotas(notasCompletas);
+        } catch (error) {
+          console.error('[DASHBOARD] Erro ao carregar notas:', error);
+          showFlashMessage('Erro ao carregar notas: ' + error.message, 'warning');
+          
+          // Fallback: mostrar apenas as notas que conseguimos junto
+          console.log('[DASHBOARD] Fallback: tentando mostrar notas sem combinar com disciplinas');
+          displayNotas([]);
+        }
+      }
+
+      // ========== FUNÇÃO: COMBINAR DISCIPLINAS COM NOTAS ==========
+      function combinarDisciplinasComNotas(disciplinas, notas) {
+        console.log('[DASHBOARD] Combinando:', disciplinas?.length ?? 0, 'disciplinas com', (notas || []).length, 'notas');
+
+        if (!disciplinas || disciplinas.length === 0) {
+          console.warn('[DASHBOARD] Nenhuma disciplina disponível');
+          // Se não houver disciplinas carregadas, extrair dos dados de notas
+          if (!notas || notas.length === 0) {
+            console.warn('[DASHBOARD] Também sem notas. Retornando vazio.');
+            return [];
+          }
+          // Usar disciplinas das notas que existem
+          const disciplinasUnicas = {};
+          notas.forEach(nota => {
+            if (nota.disciplina_id && !disciplinasUnicas[nota.disciplina_id]) {
+              disciplinasUnicas[nota.disciplina_id] = nota.disciplina || { 
+                id_disc: nota.disciplina_id,
+                descricao_disc: `Disciplina ${nota.disciplina_id}`
+              };
+            }
+          });
+          return notas; // Retornar as notas que temos
+        }
+
+        // Criar mapa de notas por disciplina_id
+        const notasPorDisciplina = {};
+        (notas || []).forEach(nota => {
+          const key = nota.disciplina_id;
+          notasPorDisciplina[key] = nota;
+        });
+
+        // Para cada disciplina, usar nota existente ou criar com zero
+        const resultado = disciplinas.map(disciplina => {
+          const notaId = disciplina.id_disc || disciplina.id;
+          const nota = notasPorDisciplina[notaId];
+          
+          if (nota) {
+            console.log('[DASHBOARD] Disciplina com nota:', disciplina.descricao_disc || disciplina.sigla_disc);
+            return nota;
+          } else {
+            // Criar nota padrão com zero
+            console.log('[DASHBOARD] Disciplina SEM nota (preenchendo com zero):', disciplina.descricao_disc || disciplina.sigla_disc);
+            return {
+              id_nota: null,
+              estudante_id: estudanteId,
+              disciplina_id: notaId,
+              disciplina: disciplina,
+              trimestre_nota: 1,
+              mac_notas: 0,
+              pp_notas: 0,
+              pt_notas: 0,
+              ano_letivo: 2025,
+              nota_zero: true // Flag para indicar que é um dado preenchido
+            };
+          }
+        });
+
+        console.log('[DASHBOARD] Notas combinadas:', resultado.length, 'disciplinas');
+        return resultado;
+      }
+
+      // ========== FUNÇÃO: CARREGAR FALTAS DO BACKEND ==========
+      async function loadFaltasDoEstudante() {
+        try {
+          if (!estudanteId) {
+            console.warn('[DASHBOARD] Estudante ID não definido para faltas');
+            return;
+          }
+
+          console.log('[DASHBOARD] Carregando faltas para estudante:', estudanteId);
+          faltasData = await api.getFaltas(estudanteId);
+          console.log('[DASHBOARD] Faltas carregadas:', faltasData?.length ?? 0, 'registos');
+
+          if (faltasData && faltasData.length > 0) {
+            console.log('[DASHBOARD] Exibindo', faltasData.length, 'faltas');
+            displayFaltas(faltasData);
+          } else {
+            console.log('[DASHBOARD] Nenhuma falta encontrada. Exibindo tabela vazia com disciplinas');
+            displayFaltas([]);
+          }
+        } catch (error) {
+          console.error('[DASHBOARD] Erro ao carregar faltas:', error);
+          showFlashMessage('Erro ao carregar faltas: ' + error.message, 'warning');
+          // Usar dados de fallback
+          displayFaltas([]);
+        }
+      }
+
+      // ========== FUNÇÃO: MOSTRAR NOTAS NA TABELA ==========
+      function displayNotas(notas) {
+        console.log('[DASHBOARD] displayNotas() chamada com:', notas?.length ?? 0, 'notas');
+        const tbody = document.getElementById('avaliacoesTableBody');
+        tbody.innerHTML = '';
+
+        if (!notas || notas.length === 0) {
+          console.warn('[DASHBOARD] Nenhuma avaliação para exibir');
+          tbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted">Nenhuma avaliação registada</td></tr>';
+          atualizarMediaGeral([]);
+          return;
+        }
+
+        console.log('[DASHBOARD] Exibindo', notas.length, 'avaliações');
+        
+        notas.forEach((nota, index) => {
+          const row = document.createElement('tr');
+          const disciplinaName = nota.disciplina?.descricao_disc || nota.disciplina?.sigla_disc || 'Disciplina Desconhecida';
+          const valoresPT = parseFloat(nota.pt_notas || 0);
+          const valoresMAC = parseFloat(nota.mac_notas || 0).toFixed(2);
+          const valoresPP = parseFloat(nota.pp_notas || 0).toFixed(2);
+          
+          // Determinar classe CSS baseado no valor de PT
+          // Verde se PT >= 10, Vermelho se PT < 10
+          const badgeClass = valoresPT >= 10 ? 'badge-success' : 'badge-danger';
+          
+          console.log(`[DASHBOARD] Linha ${index + 1}: ${disciplinaName} - PT: ${valoresPT.toFixed(2)} (${badgeClass})`);
+          
+          row.innerHTML = `
+            <td><strong>${disciplinaName}</strong></td>
+            <td class="text-center">${valoresMAC}</td>
+            <td class="text-center">${valoresPP}</td>
+            <td class="text-center">
+              <span class="badge ${badgeClass}">${valoresPT.toFixed(2)}</span>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+
+        // Atualizar a média geral
+        atualizarMediaGeral(notas);
+      }
+
+      // ========== FUNÇÃO: MOSTRAR FALTAS NA TABELA ==========
+      function displayFaltas(faltas) {
+        console.log('[DASHBOARD] displayFaltas() chamada com:', faltas?.length ?? 0, 'faltas');
+        const tbody = document.getElementById('faltasTableBody');
+        tbody.innerHTML = '';
+
+        if (!faltas || faltas.length === 0) {
+          console.warn('[DASHBOARD] Nenhuma falta encontrada. Criando linhas vazias para disciplinas...');
+          
+          // Se não há faltas, criar linhas vazias para cada disciplina
+          if (disciplinasDoEstudante && disciplinasDoEstudante.length > 0) {
+            console.log('[DASHBOARD] Exibindo', disciplinasDoEstudante.length, 'disciplinas sem faltas');
+            disciplinasDoEstudante.forEach(disc => {
+              const row = document.createElement('tr');
+              const discName = disc.descricao_disc || disc.sigla_disc || 'Disciplina';
+              row.innerHTML = `
+                <td><strong>${discName}</strong></td>
+                <td class="text-center">0</td>
+                <td class="text-center text-muted">10</td>
+                <td class="text-center"><span class="badge badge-success">OK</span></td>
+              `;
+              tbody.appendChild(row);
+            });
+          } else {
+            tbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted">Sem faltas registadas</td></tr>';
+          }
+          // Atualizar card de faltas totais
+          atualizarFaltasTotais([]);
+          return;
+        }
+
+        // Agrupar faltas por disciplina
+        const faltasPorDisciplina = {};
+        faltas.forEach(falta => {
+          const discKey = falta.disciplina?.id_disc || falta.disciplina_id || 'unknown';
+          if (!faltasPorDisciplina[discKey]) {
+            faltasPorDisciplina[discKey] = {
+              disciplina: falta.disciplina?.descricao_disc || falta.disciplina?.sigla_disc || 'Disciplina',
+              count: 0,
+              limite: 10
+            };
+          }
+          faltasPorDisciplina[discKey].count++;
+        });
+
+        // Exibir resumo por disciplina
+        console.log('[DASHBOARD] Exibindo', Object.keys(faltasPorDisciplina).length, 'disciplinas com faltas');
+        Object.values(faltasPorDisciplina).forEach(falta => {
+          const statusClass = falta.count < falta.limite ? 'badge-success' : 'badge-warning';
+          const status = falta.count < falta.limite ? 'OK' : 'ALERTA';
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td><strong>${falta.disciplina}</strong></td>
+            <td class="text-center">${falta.count}</td>
+            <td class="text-center text-muted">${falta.limite}</td>
+            <td class="text-center"><span class="badge ${statusClass}">${status}</span></td>
+          `;
+          tbody.appendChild(row);
+        });
+
+        // Atualizar card de faltas totais
+        atualizarFaltasTotais(faltas);
+      }
+
+      // ========== FUNÇÃO: ATUALIZAR CARD DE FALTAS TOTAIS ==========
+      function atualizarFaltasTotais(faltas) {
+        console.log('[DASHBOARD] Atualizando card de faltas totais com', faltas?.length ?? 0, 'registos');
+        
+        const totalFaltas = faltas ? faltas.length : 0;
+        const element = document.getElementById('faltasTotaisValue');
+        
+        if (element) {
+          element.textContent = totalFaltas;
+          console.log('[DASHBOARD] ✓ Card de faltas totais atualizado:', totalFaltas);
+        } else {
+          console.warn('[DASHBOARD] ⚠️ Elemento faltasTotaisValue não encontrado');
+        }
+      }
+
+      // ========== FUNÇÃO: ATUALIZAR MÉDIA GERAL ==========
+      function atualizarMediaGeral(notas) {
+        console.log('[DASHBOARD] Calculando média geral de', (notas || []).length, 'notas');
+        
+        if (!notas || notas.length === 0) {
+          console.warn('[DASHBOARD] Nenhuma nota para calcular média');
+          document.getElementById('mediaGeralValue').textContent = '-';
+          document.getElementById('mediaGeralValue').style.color = 'gray';
+          return;
+        }
+
+        // Calcular a média das notas PT (Prova Trimestral)
+        const notasValidas = notas
+          .filter(nota => nota.pt_notas !== null && nota.pt_notas !== undefined && nota.pt_notas !== '')
+          .map(nota => parseFloat(nota.pt_notas) || 0);
+
+        if (notasValidas.length === 0) {
+          console.warn('[DASHBOARD] Nenhuma nota PT válida encontrada');
+          document.getElementById('mediaGeralValue').textContent = '-';
+          document.getElementById('mediaGeralValue').style.color = 'gray';
+          return;
+        }
+
+        // Calcular a média
+        const somaNotas = notasValidas.reduce((sum, nota) => sum + nota, 0);
+        const mediaGeral = somaNotas / notasValidas.length;
+        
+        console.log('[DASHBOARD] Notas para cálculo:', notasValidas);
+        console.log('[DASHBOARD] Soma:', somaNotas, 'Quantidade:', notasValidas.length, 'Média:', mediaGeral.toFixed(2));
+
+        // Atualizar o elemento com a média
+        const elemento = document.getElementById('mediaGeralValue');
+        elemento.textContent = mediaGeral.toFixed(2);
+        
+        // Mudar cor baseado na média
+        // Verde se >= 10, Amarelo se >= 7 e < 10, Vermelho se < 7
+        if (mediaGeral >= 10) {
+          elemento.style.color = '#10b981'; // Verde
+        } else if (mediaGeral >= 7) {
+          elemento.style.color = '#f59e0b'; // Amarelo/Laranja
+        } else {
+          elemento.style.color = '#ef4444'; // Vermelho
+        }
+
+        console.log('[DASHBOARD] ✓ Média geral atualizada:', mediaGeral.toFixed(2));
+      }
+
+      // ========== FUNÇÃO: ATUALIZAR QUANTIDADE DE DISCIPLINAS ==========
+      function atualizarQtdDisciplinas() {
+        const qtd = disciplinasDoEstudante?.length ?? 0;
+        console.log('[DASHBOARD] Atualizando quantidade de disciplinas:', qtd);
+        
+        const elemento = document.getElementById('disciplinasValue');
+        elemento.textContent = qtd;
+        
+        console.log('[DASHBOARD] ✓ Quantidade de disciplinas atualizada:', qtd);
+      }
+
+      // ========== FUNÇÃO: ATUALIZAR INFORMAÇÕES DO BANNER ==========
+      function atualizarBannerEstudante(estudante, turma) {
+        console.log('[DASHBOARD] Atualizando banner com informações do estudante');
+        
+        // Atualizar nome
+        if (estudante && estudante.nome_estudante) {
+          const nomeElement = document.getElementById('nomeBemVindo');
+          nomeElement.textContent = estudante.nome_estudante.split(' ')[0]; // Apenas o primeiro nome
+        }
+
+        // Atualizar informações da turma
+        if (turma) {
+          const siglaTurma = turma.sigla_turma || '-';
+          const descricaoClasse = turma.classe?.descricao_classe || '-';
+          const turnoTurma = turma.turno_turma || '-';
+          const anoLectivo = turma.ano_lectivo_turma || '-';
+
+          const infoText = `${siglaTurma} - ${descricaoClasse} | Periodo: ${turnoTurma} | Ano Lectivo ${anoLectivo}/${anoLectivo - 1}`;
+          
+          const infoElement = document.getElementById('infoEstudanteText');
+          infoElement.textContent = infoText;
+
+          console.log('[DASHBOARD] ✓ Banner atualizado:', infoText);
+        } else {
+          console.warn('[DASHBOARD] ⚠️ Turma não disponível para atualizar banner');
+        }
+      }
+
+      // ========== DADOS DE FALLBACK (para quando não houver dados do backend) ==========
+      const avaliacoesFallback = [
+        { titulo: 'Prova 1 - Funções', disciplina: 'Matematica', data: '15/11/2026', nota: 15 },
+        { titulo: 'Teste - Leis de Newton', disciplina: 'Fisica', data: '12/11/2026', nota: 13 },
+        { titulo: 'Trabalho - Sistema Digestivo', disciplina: 'Biologia', data: '10/11/2026', nota: 16 },
+        { titulo: 'Prova - Reações Químicas', disciplina: 'Quimica', data: '08/11/2026', nota: 14 },
+        { titulo: 'Teste - Literatura Portuguesa', disciplina: 'Lingua Portuguesa', data: '05/11/2026', nota: 12 }
+      ];
+
+      const faltasFallback = [
+        { disciplina: 'Matematica', faltas: 2, limite: 10, status: 'OK' },
+        { disciplina: 'Fisica', faltas: 1, limite: 10, status: 'OK' },
+        { disciplina: 'Quimica', faltas: 0, limite: 10, status: 'OK' },
+        { disciplina: 'Biologia', faltas: 1, limite: 10, status: 'OK' },
+        { disciplina: 'Lingua Portuguesa', faltas: 1, limite: 10, status: 'OK' }
+      ];
+
+      // ========== FUNÇÃO AUXILIAR: FUNÇÃO DE BUSCA ==========
+      function handleSearch(searchTerm) {
+        // Filtrar notas pelo nome da disciplina
+        if (notasData && notasData.length > 0) {
+          const filtered = notasData.filter(item =>
+            (item.disciplina?.descricao_disc || '').toLowerCase().includes(searchTerm.toLowerCase())
+          );
+          displayNotas(filtered);
+        } else {
+          console.warn('[DASHBOARD] Nenhuma nota para filtrar');
+        }
+
+        if (faltasData && faltasData.length > 0) {
+          const filtered = faltasData.filter(item =>
+            (item.disciplina?.descricao_disc || '').toLowerCase().includes(searchTerm.toLowerCase())
+          );
+          displayFaltas(filtered);
+        }
+
+        if (searchTerm) {
+          showFlashMessage(`Resultados filtrados para: "${searchTerm}"`, 'info');
+        }
+      }
+
+      // ========== ADICIONAR CAMPO DE BUSCA ==========
+      const searchContainer = document.createElement('div');
+      searchContainer.className = 'card mb-4';
+      searchContainer.innerHTML = `
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="input-group">
+                <span class="input-group-text">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                  </svg>
+                </span>
+                <input type="text" id="searchInput" class="form-control" placeholder="Buscar por disciplina..." autocomplete="off">
+                <button class="btn btn-outline-secondary" type="button" id="clearSearch">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-primary w-100" id="refreshBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2">
+                  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                  <path d="M21 3v5h-5"/>
+                  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                  <path d="M8 16H3v5"/>
+                </svg>
+                Actualizar
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Inserir campo de busca após o banner de boas-vindas
+      const welcomeCard = document.querySelector('.card[style*="background: linear-gradient"]');
+      welcomeCard.insertAdjacentElement('afterend', searchContainer);
+
+      // ========== EVENT LISTENERS ==========
+      const searchInput = document.getElementById('searchInput');
+      const clearSearch = document.getElementById('clearSearch');
+      const refreshBtn = document.getElementById('refreshBtn');
+
+      // Busca com debounce
+      let searchTimeout;
+      searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          handleSearch(this.value);
+        }, 300);
+      });
+
+      clearSearch.addEventListener('click', function() {
+        searchInput.value = '';
+        handleSearch('');
+        showFlashMessage('Busca limpa', 'info');
+      });
+
+      refreshBtn.addEventListener('click', function() {
+        this.disabled = true;
+        this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Actualizando...';
+        
+        // Recarregar dados do backend
+        Promise.all([
+          loadNotasDoEstudante(),
+          loadFaltasDoEstudante()
+        ]).then(() => {
+          this.disabled = false;
+          this.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+              <path d="M21 3v5h-5"/>
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+              <path d="M8 16H3v5"/>
+            </svg>
+            Actualizar
+          `;
+          showFlashMessage('Dados actualizados com sucesso!', 'success');
+        }).catch(error => {
+          this.disabled = false;
+          this.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+              <path d="M21 3v5h-5"/>
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+              <path d="M8 16H3v5"/>
+            </svg>
+            Actualizar
+          `;
+          showFlashMessage('Erro ao actualizar: ' + error.message, 'danger');
+        });
+      });
+
+      // ========== CARREGAR DADOS INICIAIS ==========
+      console.log('[DASHBOARD] DOMContentLoaded: iniciando carregamento de dados');
+      loadEstudanteData();
+      
+      // Também carregar faltas após carregar dados do estudante
+      setTimeout(() => {
+        console.log('[DASHBOARD] Carregando faltas após 500ms');
+        loadFaltasDoEstudante();
+      }, 500);
+    });
+  </script>
+
+  <!-- API Scripts -->
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/data-loader.js"></script>
+
+  <script>
+    // Proteger página para ESTUDANTE
+    AuthHelper.checkRole(['ESTUDANTE']);
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      // Update header com dados do usuário
+      const headerUserName = document.querySelector('.header-user-name');
+      const headerUserRole = document.querySelector('.header-user-role');
+      
+      if (headerUserName) {
+        headerUserName.textContent = api.getUserName() || 'Aluno';
+      }
+      if (headerUserRole) {
+        headerUserRole.textContent = AuthHelper.translateRole(api.getUserRole());
+      }
+
+      // Logout
+      document.querySelectorAll('[data-logout]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          AuthHelper.logout();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

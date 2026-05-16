@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avisos - Administração | SGEB MED Angola</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay"></div>
+
+     <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Sistema de Geatão Escolar Betânia</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- Principal -->
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link active" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Comunicação -->
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicação</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 11 18-5v12L3 13v-2z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">2</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gestão -->
+        <div class="nav-group">
+          <div class="nav-group-title">Gestão</div>
+          <div class="nav-item">
+            <a href="professores.html" class="nav-link" data-title="Professores">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Professores</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v4H4z" />
+                  <path d="M4 12h16v8H4z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="usuarios-sistema.html" class="nav-link" data-title="Usuários do Sistema">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-4-4h-1" />
+                  <circle cx="17" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Usuários do Sistema</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Disciplinas">
+              <span class="nav-link-icon">
+
+                <!-- Ícone Livro / Disciplinas -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                  <path d="M2 4h7a4 4 0 0 1 4 4v12a4 4 0 0 0-4-4H2z" />
+                  <path d="M22 4h-7a4 4 0 0 0-4 4v12a4 4 0 0 1 4-4h7z" />
+
+                </svg>
+
+              </span>
+              <span class="nav-link-text">Disciplinas</span>
+            </a>
+          </div>
+
+          <div class="nav-item">
+            <a href="classe.html" class="nav-link" data-title="Classes">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Classes</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="alunos.html" class="nav-link" data-title="Alunos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Alunos</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Conta -->
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="../../../index.html" class="nav-link" data-title="Sair">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+          <h1 class="header-title">Avisos</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">AD</div>
+            <div class="header-user-info">
+              <span class="header-user-name" data-user-name>Administrador</span>
+              <span class="header-user-role" data-user-role>Administração</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <!-- Page Header -->
+        <div class="page-header d-flex justify-content-between align-items-start flex-wrap gap-3">
+          <div>
+            <h2 class="page-title">Gestão de Avisos</h2>
+            <p class="page-subtitle mb-0">Publique avisos para toda a comunidade escolar</p>
+          </div>
+          <button id="btnNovoAviso" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#avisoModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Novo Aviso
+          </button>
+        </div>
+
+        <!-- Filters -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row g-3 align-items-end">
+              <div class="col-md-4">
+                <label class="form-label">Pesquisar</label>
+                <input type="text" id="filterAvisoTitulo" class="form-control" placeholder="Título ou conteúdo...">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Destinatário</label>
+                <select id="filterAvisoDestinatarios" class="form-control form-select">
+                  <option value="">Todos</option>
+                  <option value="TODOS">Todos</option>
+                  <option value="PROFESSORES">Professores</option>
+                  <option value="ESTUDANTES">Estudantes</option>
+                  <option value="PAIS">Pais/Encarregados</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Prioridade</label>
+                <select id="filterAvisoPrioridade" class="form-control form-select">
+                  <option value="">Todos</option>
+                  <option value="BAIXA">Baixa</option>
+                  <option value="MEDIA">Média</option>
+                  <option value="ALTA">Alta</option>
+                  <option value="URGENTE">Urgente</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avisos Table -->
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Título</th>
+                  <th>Destinatário</th>
+                  <th>Prioridade</th>
+                  <th>Data Publicação</th>
+                  <th>Expiração</th>
+                  <th style="width: 120px;">Ações</th>
+                </tr>
+              </thead>
+              <tbody id="avisosTableBody">
+                <tr>
+                  <td colspan="6" class="text-center text-muted py-4">
+                    <div class="spinner-border spinner-border-sm me-2" role="status">
+                      <span class="visually-hidden">Carregando...</span>
+                    </div>
+                    Carregando avisos...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Geatão Escolar Betânia &copy; 2026</p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Modal: Novo/Editar Aviso -->
+  <div class="modal fade" id="avisoModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="avisoModalTitle">Publicar Novo Aviso</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form id="formAviso">
+          <input type="hidden" id="avisoId">
+          <div class="modal-body">
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label">Título <span class="text-danger">*</span></label>
+                <input type="text" id="avisoTitulo" class="form-control" name="titulo" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Destinatário <span class="text-danger">*</span></label>
+                <select id="avisoDestinatarios" class="form-control form-select" name="destinatarios" required>
+                  <option value="">Selecione...</option>
+                  <option value="TODOS">Todos</option>
+                  <option value="PROFESSORES">Professores</option>
+                  <option value="ESTUDANTES">Estudantes</option>
+                  <option value="PAIS">Pais/Encarregados</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Prioridade <span class="text-danger">*</span></label>
+                <select id="avisoPrioridade" class="form-control form-select" name="prioridade" required>
+                  <option value="">Selecione...</option>
+                  <option value="BAIXA">Baixa</option>
+                  <option value="MEDIA">Média</option>
+                  <option value="ALTA">Alta</option>
+                  <option value="URGENTE">Urgente</option>
+                </select>
+              </div>
+              <div class="col-md-12">
+                <label class="form-label">Data Expiração</label>
+                <input type="date" id="avisoDataExpiracao" class="form-control" name="data_expiracao">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Conteúdo <span class="text-danger">*</span></label>
+                <textarea id="avisoConteudo" class="form-control" name="conteudo" rows="5" required></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" id="avisoSubmitBtn" class="btn btn-primary">Publicar Aviso</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Global JS -->
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/data-loader.js"></script>
+
+  <script>
+    let avisosData = [];
+
+    // Carregar avisos ao abrir a página
+    async function carregarAvisos() {
+      try {
+        avisosData = await api.getAvisos();
+        renderAvisosTable();
+      } catch (error) {
+        console.error('Erro ao carregar avisos:', error);
+        DataLoader.showError('Erro ao carregar avisos');
+      }
+    }
+
+    // Renderizar tabela de avisos
+    function renderAvisosTable() {
+      const tbody = document.getElementById('avisosTableBody');
+      
+      if (avisosData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-4">Nenhum aviso encontrado</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = avisosData.map(aviso => `
+        <tr>
+          <td>
+            <strong>${aviso.titulo}</strong>
+            <br>
+            <small class="text-muted">${aviso.conteudo.substring(0, 50)}...</small>
+          </td>
+          <td>
+            <span class="badge bg-info">${aviso.destinatarios}</span>
+          </td>
+          <td>
+            <span class="badge ${
+              aviso.prioridade === 'URGENTE' ? 'bg-danger' :
+              aviso.prioridade === 'ALTA' ? 'bg-warning' :
+              aviso.prioridade === 'MEDIA' ? 'bg-info' :
+              'bg-secondary'
+            }">${aviso.prioridade}</span>
+          </td>
+          <td><small>${new Date(aviso.data_publicacao).toLocaleDateString('pt-AO')}</small></td>
+          <td><small>${aviso.data_expiracao ? new Date(aviso.data_expiracao).toLocaleDateString('pt-AO') : '-'}</small></td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary edit-btn" data-id="${aviso.id}" title="Editar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+            <button class="btn btn-sm btn-outline-danger delete-btn" data-id="${aviso.id}" title="Eliminar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+
+      // Event listeners para editar e deletar
+      document.querySelectorAll('.edit-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.dataset.id;
+          editAviso(id);
+        });
+      });
+
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.dataset.id;
+          this.disabled = true;
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">...</span></span>';
+          
+          setTimeout(() => {
+            deleteAviso(id);
+            this.disabled = false;
+            this.innerHTML = originalText;
+          }, 300);
+        });
+      });
+    }
+
+    // Editar aviso
+    function editAviso(id) {
+      const aviso = avisosData.find(a => a.id == id);
+      if (aviso) {
+        document.getElementById('avisoId').value = aviso.id;
+        document.getElementById('avisoTitulo').value = aviso.titulo;
+        document.getElementById('avisoDestinatarios').value = aviso.destinatarios;
+        document.getElementById('avisoPrioridade').value = aviso.prioridade;
+        document.getElementById('avisoConteudo').value = aviso.conteudo;
+        
+        if (aviso.data_expiracao) {
+          const dataExp = new Date(aviso.data_expiracao);
+          document.getElementById('avisoDataExpiracao').value = dataExp.toISOString().slice(0, 10);
+        }
+
+        document.getElementById('avisoModalTitle').textContent = 'Editar Aviso';
+        document.getElementById('avisoSubmitBtn').textContent = 'Atualizar Aviso';
+
+        const modal = new bootstrap.Modal(document.getElementById('avisoModal'));
+        modal.show();
+      }
+    }
+
+    // Deletar aviso
+    async function deleteAviso(id) {
+      try {
+        await api.deleteAviso(id);
+        DataLoader.showSuccess('Aviso eliminado com sucesso');
+        carregarAvisos();
+      } catch (error) {
+        console.error('Erro ao eliminar aviso:', error);
+        DataLoader.showError('Erro ao eliminar aviso');
+      }
+    }
+
+    // Form submission
+    document.getElementById('formAviso').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('avisoSubmitBtn');
+      submitBtn.disabled = true;
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"><span class="visually-hidden">...</span></span>Processando...';
+
+      try {
+        const id = document.getElementById('avisoId').value;
+        const titulo = document.getElementById('avisoTitulo').value;
+        const destinatarios = document.getElementById('avisoDestinatarios').value;
+        const prioridade = document.getElementById('avisoPrioridade').value;
+        const conteudo = document.getElementById('avisoConteudo').value;
+        const data_expiracao = document.getElementById('avisoDataExpiracao').value;
+
+        const data = {
+          titulo,
+          destinatarios,
+          prioridade,
+          conteudo,
+          data_publicacao: new Date().toISOString(),
+          professor_id: parseInt(localStorage.getItem('userId')) || null
+        };
+
+        if (data_expiracao) {
+          data.data_expiracao = new Date(data_expiracao).toISOString().split('T')[0];
+        }
+
+        if (id) {
+          await api.updateAviso(id, data);
+          DataLoader.showSuccess('Aviso atualizado com sucesso');
+        } else {
+          await api.createAviso(data);
+          DataLoader.showSuccess('Aviso publicado com sucesso');
+        }
+
+        bootstrap.Modal.getInstance(document.getElementById('avisoModal')).hide();
+        this.reset();
+        document.getElementById('avisoId').value = '';
+        document.getElementById('avisoModalTitle').textContent = 'Publicar Novo Aviso';
+        document.getElementById('avisoSubmitBtn').textContent = 'Publicar Aviso';
+        
+        carregarAvisos();
+      } catch (error) {
+        console.error('Erro ao salvar aviso:', error);
+        DataLoader.showError('Erro ao salvar aviso');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+
+    // Reset modal
+    document.getElementById('avisoModal').addEventListener('hidden.bs.modal', function () {
+      document.getElementById('avisoModalTitle').textContent = 'Publicar Novo Aviso';
+      document.getElementById('avisoSubmitBtn').textContent = 'Publicar Aviso';
+      document.getElementById('formAviso').reset();
+      document.getElementById('avisoId').value = '';
+    });
+
+    // Filtrar avisos
+    function filtrarAvisos() {
+      const titulo = document.getElementById('filterAvisoTitulo').value.toLowerCase();
+      const destinatarios = document.getElementById('filterAvisoDestinatarios').value;
+      const prioridade = document.getElementById('filterAvisoPrioridade').value;
+
+      const avisofiltrados = avisosData.filter(aviso => {
+        const matchTitulo = aviso.titulo.toLowerCase().includes(titulo) || 
+                           aviso.conteudo.toLowerCase().includes(titulo);
+        const matchDestinatarios = !destinatarios || aviso.destinatarios === destinatarios;
+        const matchPrioridade = !prioridade || aviso.prioridade === prioridade;
+        
+        return matchTitulo && matchDestinatarios && matchPrioridade;
+      });
+
+      // Mostrar avisos filtrados
+      const tbody = document.getElementById('avisosTableBody');
+      
+      if (avisofiltrados.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-4">Nenhum aviso encontrado com estes critérios</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = avisofiltrados.map(aviso => `
+        <tr>
+          <td>
+            <strong>${aviso.titulo}</strong>
+            <br>
+            <small class="text-muted">${aviso.conteudo.substring(0, 50)}...</small>
+          </td>
+          <td>
+            <span class="badge bg-info">${aviso.destinatarios}</span>
+          </td>
+          <td>
+            <span class="badge ${
+              aviso.prioridade === 'URGENTE' ? 'bg-danger' :
+              aviso.prioridade === 'ALTA' ? 'bg-warning' :
+              aviso.prioridade === 'MEDIA' ? 'bg-info' :
+              'bg-secondary'
+            }">${aviso.prioridade}</span>
+          </td>
+          <td><small>${new Date(aviso.data_publicacao).toLocaleDateString('pt-AO')}</small></td>
+          <td><small>${aviso.data_expiracao ? new Date(aviso.data_expiracao).toLocaleDateString('pt-AO') : '-'}</small></td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary edit-btn" data-id="${aviso.id}" title="Editar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+            <button class="btn btn-sm btn-outline-danger delete-btn" data-id="${aviso.id}" title="Eliminar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+
+      // Re-adicionar event listeners
+      document.querySelectorAll('.edit-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.dataset.id;
+          editAviso(id);
+        });
+      });
+
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = this.dataset.id;
+          this.disabled = true;
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">...</span></span>';
+          
+          setTimeout(() => {
+            deleteAviso(id);
+            this.disabled = false;
+            this.innerHTML = originalText;
+          }, 300);
+        });
+      });
+    }
+
+    // Event listeners para filtros
+    document.getElementById('filterAvisoTitulo').addEventListener('input', filtrarAvisos);
+    document.getElementById('filterAvisoDestinatarios').addEventListener('change', filtrarAvisos);
+    document.getElementById('filterAvisoPrioridade').addEventListener('change', filtrarAvisos);
+
+    // Inicializar ao carregar a página
+    document.addEventListener('DOMContentLoaded', carregarAvisos);
+  </script>
+</body>
+
+</html>

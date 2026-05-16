@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes da Turma - Administração | SGEB MED Angola</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  
+  <style>
+    .detail-header {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-left: 4px solid #1a4480;
+      border-radius: 4px;
+    }
+    
+    .detail-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a4480;
+      margin: 0 0 0.3rem 0;
+    }
+    
+    .detail-subtitle {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .info-item {
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      padding: 1rem;
+    }
+    
+    .info-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    
+    .info-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a4480;
+      word-break: break-word;
+    }
+    
+    .section-header {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a4480;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 2px solid #1a4480;
+    }
+    
+    .table-responsive-custom {
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    
+    .table-custom {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    
+    .table-custom thead {
+      background-color: #f8f9fa;
+    }
+    
+    .table-custom thead th {
+      color: #1a4480;
+      font-weight: 600;
+      padding: 0.7rem;
+      border-bottom: 2px solid #dee2e6;
+    }
+    
+    .table-custom td {
+      padding: 0.7rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+    
+    .table-custom tbody tr:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .action-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .action-buttons .btn {
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .detail-header {
+        padding: 1rem;
+      }
+      
+      .detail-title {
+        font-size: 1.1rem;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      
+      .info-item {
+        padding: 0.8rem;
+      }
+      
+      .section-header {
+        font-size: 0.95rem;
+        margin-top: 1rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .table-custom {
+        font-size: 0.8rem;
+      }
+      
+      .table-custom thead th,
+      .table-custom td {
+        padding: 0.5rem;
+      }
+      
+      .action-buttons {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Gestao Escolar</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Academico</div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link active" data-title="Minhas Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Turmas</span>
+            </a>
+          </div>
+         
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          
+          <div class="nav-item">
+            <a href="faltas.html" class="nav-link" data-title="Faltas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="10" y1="14" x2="14" y2="18"/><line x1="14" y1="14" x2="10" y2="18"/></svg>
+              </span>
+              <span class="nav-link-text">Faltas</span>
+            </a>
+          </div>
+
+           <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Minhas Disciplinas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Disciplinas</span>
+            </a>
+          </div>
+          
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicacao</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">3</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+             <a href="#" class="nav-link" data-title="Sair" onclick="AuthHelper.logout(); return false;">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">☰</button>
+          <h1 class="header-title">Detalhes da Turma</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user"><div class="header-user-avatar">AD</div><div class="header-user-info"><span class="header-user-name" data-user-name>Administrador</span><span class="header-user-role" data-user-role>Administração</span></div></div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <!-- Spinner de carregamento -->
+        <div id="loadingSpinner" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+          <p class="text-muted mt-3">Carregando detalhes da turma...</p>
+        </div>
+
+        <!-- Conteúdo da página (oculto enquanto carrega) -->
+        <div id="pageContent" style="display: none;">
+          <a href="turmas.html" class="btn-back btn btn-outline-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Voltar
+          </a>
+
+          <!-- Header Section -->
+          <div class="detail-header">
+            <h1 class="detail-title" id="turmaTitle">-</h1>
+            <p class="detail-subtitle" id="turmaSubtitle">-</p>
+          </div>
+
+          <!-- Informações da Turma -->
+          <h2 class="section-header">Informações da Turma</h2>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">Código da Turma</span>
+              <div class="info-value" id="codigoTurma">-</div>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Curso</span>
+              <div class="info-value" id="nomeCurso">-</div>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Classe</span>
+              <div class="info-value" id="classe">-</div>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Turno</span>
+              <div class="info-value" id="turno">-</div>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Sala de Aula</span>
+              <div class="info-value" id="sala">-</div>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Total de Alunos</span>
+              <div class="info-value" id="totalAlunos">-</div>
+            </div>
+          </div>
+
+          <!-- Diretor de Turma -->
+          <h2 class="section-header">Diretor de Turma</h2>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">Nome</span>
+              <div class="info-value" id="nomeDirector">-</div>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Especialidade</span>
+              <div class="info-value" id="especialidade">-</div>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Email</span>
+              <div class="info-value" id="emailDirector">-</div>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Telefone</span>
+              <div class="info-value" id="telefoneDirector">-</div>
+            </div>
+          </div>
+
+          <!-- Alunos da Turma -->
+          <h2 class="section-header" id="alunosHeader">Alunos Inscritos</h2>
+          <div class="table-responsive-custom">
+            <table class="table table-custom align-middle">
+              <thead>
+                <tr>
+                  <th>Nº Processo</th>
+                  <th>Nome</th>
+                  <th>BI</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="alunosTableBody">
+                <tr>
+                  <td colspan="4" class="text-center text-muted">Nenhum aluno inscrito</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <footer class="main-footer"><p class="mb-0">Sistema de Geatão Escolar Betânia &copy; 2026</p></footer>
+    </main>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+
+  <script>
+    async function carregarTurmDetalhes() {
+      try {
+        // Obter ID da turma da URL
+        const params = new URLSearchParams(window.location.search);
+        const turmaId = params.get('id');
+
+        if (!turmaId) {
+          throw new Error('ID da turma não fornecido');
+        }
+
+        // Carregar turma
+        const turma = await api.getTurma(turmaId);
+
+        // Preencher informações da turma
+        document.getElementById('turmaTitle').textContent = turma.sigla_turma;
+        document.getElementById('turmaSubtitle').textContent = `${turma.classe?.descricao_classe || 'N/A'} • ${turma.sigla_turma}`;
+        
+        document.getElementById('codigoTurma').textContent = turma.sigla_turma;
+        document.getElementById('nomeCurso').textContent = turma.classe?.sigla_classe || 'N/A';
+        document.getElementById('classe').textContent = `${turma.classe_turma}ª Classe`;
+        document.getElementById('turno').textContent = turma.turno_turma || 'N/A';
+        document.getElementById('sala').textContent = turma.sala_turma || 'N/A';
+        document.getElementById('totalAlunos').textContent = turma.estudantes?.length || 0;
+
+        // Preencher informações do diretor
+        if (turma.diretor) {
+          document.getElementById('nomeDirector').textContent = turma.diretor.nome_prof;
+          document.getElementById('especialidade').textContent = turma.diretor.area_formacao_prof || 'N/A';
+          document.getElementById('emailDirector').textContent = turma.diretor.email_prof || 'N/A';
+          document.getElementById('telefoneDirector').textContent = turma.diretor.telefone_prof || 'N/A';
+        }
+
+        // Atualizar header
+        document.querySelector('.header-user-name').textContent = 'Professor';
+        document.querySelector('.header-user-avatar').textContent = 'PR';
+
+        // Preencher tabela de alunos
+        const tabelaAlunos = document.getElementById('alunosTableBody');
+        tabelaAlunos.innerHTML = '';
+
+        if (turma.estudantes && turma.estudantes.length > 0) {
+          document.getElementById('alunosHeader').textContent = `Alunos Inscritos (${turma.estudantes.length} alunos)`;
+
+          turma.estudantes.forEach((aluno, index) => {
+            const row = document.createElement('tr');
+            const badge = aluno.status === 'ATIVO' ? 'bg-success' : 'bg-warning';
+            const statusText = aluno.status === 'ATIVO' ? 'Ativo' : aluno.status;
+
+            row.innerHTML = `
+              <td>${index + 1}</td>
+              <td><strong>${aluno.nome_estudante}</strong></td>
+              <td>${aluno.numero_bi_estudante || 'N/A'}</td>
+              <td><span class="badge ${badge}">${statusText}</span></td>
+            `;
+
+            tabelaAlunos.appendChild(row);
+          });
+        }
+
+        // Mostrar conteúdo e esconder spinner
+        document.getElementById('loadingSpinner').style.display = 'none';
+        document.getElementById('pageContent').style.display = 'block';
+
+      } catch (error) {
+        console.error('Erro ao carregar detalhes da turma:', error);
+        document.getElementById('loadingSpinner').innerHTML = `
+          <div class="alert alert-danger mt-3">
+            <strong>Erro ao carregar dados!</strong>
+            <p>${error.message}</p>
+          </div>
+        `;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', carregarTurmDetalhes);
+  </script>
+</body>
+</html>

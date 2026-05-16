@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <title>Minhas Notas - Aluno | SGEB MED Angola</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="css/aluno.css">
+</head>
+<body>
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Gestao Escolar</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Academico</div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link active" data-title="Minhas Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Notas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="faltas.html" class="nav-link" data-title="Minhas Faltas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Faltas</span>
+            </a>
+          </div>
+        </div>
+
+          <div class="nav-group">
+          <div class="nav-group-title">Comunicacao</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link active" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 11 18-5v12L3 13v-2z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">2</span>
+            </a>
+          </div>
+        </div>
+        
+
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+             <a href="../../../index.html" class="nav-link" data-title="Sair">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="header-title">Minhas Notas</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">MS</div>
+            <div class="header-user-info">
+              <span class="header-user-name" data-user-name>~</span>
+              <span class="header-user-role" data-user-role>Aluno</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div class="page-content">
+        <!-- Trimester Selector -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row g-3 align-items-end">
+              <div class="col-md-3">
+                <label class="form-label">Trimestre</label>
+                <select class="form-control form-select" id="trimestreSelect">
+                  <option value="1" selected>I Trimestre (em curso)</option>
+                  <option value="2">II Trimestre</option>
+                  <option value="3">III Trimestre</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Ano Lectivo</label>
+                <select class="form-control form-select" id="anoSelect">
+                  <option value="2026" selected>2026/2025</option>
+                  <option value="2025">2025/2024</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Disciplina</label>
+                <select class="form-control form-select" id="disciplinaSelect">
+                  <option value="todas" selected>Todas</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <button id="btnCarregarNotas" class="btn btn-primary w-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Carregar Notas
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Boletim Preview -->
+        <div class="boletim-preview mb-4" id="boletimContainer">
+          <div class="boletim-header">
+            <h4>BOLETIM DE NOTAS - <span id="trimestreTitle">I TRIMESTRE</span></h4>
+            <p>Escola Secundaria do I e EIA-10AD N. 1234 - Luanda</p>
+          </div>
+          <div class="boletim-info">
+            <div class="boletim-info-item">
+              <span class="boletim-info-label">Aluno:</span>
+              <span class="boletim-info-value" id="boletimAluno">~</span>
+            </div>
+            <div class="boletim-info-item">
+              <span class="boletim-info-label">Classe/Turma:</span>
+              <span class="boletim-info-value" id="boletimTurma">~</span>
+            </div>
+            <div class="boletim-info-item">
+              <span class="boletim-info-label">Curso:</span>
+              <span class="boletim-info-value" id="boletimCurso">~</span>
+            </div>
+            <div class="boletim-info-item">
+              <span class="boletim-info-label">Ano Lectivo:</span>
+              <span class="boletim-info-value" id="anoLectivo">~</span>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="boletim-table" id="boletimTable">
+              <thead id="boletimTableHead">
+                <tr>
+                  <th>Disciplina</th>
+                  <th>Data</th>
+                  <th>MAC</th>
+                  <th>NPP</th>
+                  <th>NPT</th>
+                  <th>MT</th>
+                </tr>
+              </thead>
+              <tbody id="boletimTableBody">
+                <!-- Dados serão carregados via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Legend -->
+        <div class="card mt-4">
+          <div class="card-body">
+            <h6 class="mb-3">Legenda</h6>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-unstyled mb-0 small text-muted">
+                  <li><strong>MAC</strong> - Media de Avaliacao Continua</li>
+                  <li><strong>NPP</strong> - Nota da Prova do Professor</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="list-unstyled mb-0 small text-muted">
+                  <li><strong>NPT</strong> - Nota da Prova Trimestral</li>
+                  <li><strong>MT</strong> - Media Trimestral = (MAC + NPP + NPT) / 3</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Gestao Escolar - 2026 - Ministerio da Educacao de Angola</p>
+      </footer>
+    </main>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  
+  <!-- API Scripts -->
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/data-loader.js"></script>
+
+  <script>
+    // Proteger página para ESTUDANTE
+    AuthHelper.checkRole(['ESTUDANTE']);
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      // ========== VARIÁVEIS GLOBAIS ==========
+      let estudanteId = null;
+      let turmaData = null;
+      let disciplinasData = [];
+      let notasData = [];
+      let notasCombinadas = [];
+
+      // ========== FUNÇÃO AUXILIAR: MOSTRAR NOTIFICAÇÕES ==========
+      function showNotification(message, type = 'success') {
+        const existingNotification = document.querySelector('.alert');
+        if (existingNotification) {
+          existingNotification.remove();
+        }
+
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type} alert-dismissible fade show`;
+        notification.innerHTML = `
+          ${message}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        document.querySelector('.page-content').insertBefore(notification, document.querySelector('.page-content').firstChild);
+        
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.remove();
+          }
+        }, 5000);
+      }
+
+      // ========== FUNÇÃO: ATUALIZAR INFORMAÇÕES DO BOLETIM ==========
+      function updateBoletimInfo(estudante, turma) {
+        try {
+          console.log('[NOTAS] Atualizando informações do boletim...');
+          
+          // Atualizar nome do aluno no header
+          const headerUserName = document.querySelector('.header-user-name');
+          if (headerUserName) {
+            headerUserName.textContent = api.getUserName() || 'Aluno';
+          }
+
+          // Atualizar role no header
+          const headerUserRole = document.querySelector('.header-user-role');
+          if (headerUserRole && turma) {
+            headerUserRole.textContent = 'Aluno - ' + (turma.sigla_turma || 'EIA');
+          }
+
+          // Atualizar boletim aluno
+          const boletimAluno = document.getElementById('boletimAluno');
+          if (boletimAluno) {
+            boletimAluno.textContent = api.getUserName() || 'Aluno';
+          }
+
+          // Atualizar boletim turma
+          const boletimTurma = document.getElementById('boletimTurma');
+          if (boletimTurma && turma) {
+            boletimTurma.textContent = turma.sigla_turma || 'EIA';
+          }
+
+          // Atualizar boletim curso
+          const boletimCurso = document.getElementById('boletimCurso');
+          if (boletimCurso && turma && turma.curso) {
+            boletimCurso.textContent = turma.curso.descricao_curso || 'Curso';
+          }
+
+          // Atualizar ano letivo
+          const anoLectivo = document.getElementById('anoLectivo');
+          if (anoLectivo && turma && turma.ano_lectivo_turma) {
+            anoLectivo.textContent = turma.ano_lectivo_turma + '/' + (turma.ano_lectivo_turma - 1);
+          }
+
+          console.log('[NOTAS] Informações do boletim atualizadas');
+        } catch (error) {
+          console.error('[NOTAS] Erro ao atualizar boletim:', error);
+        }
+      }
+
+      // ========== FUNÇÃO: CARREGAR DADOS INICIAIS DO ESTUDANTE ==========
+      async function loadEstudanteInitialData() {
+        try {
+          console.log('[NOTAS] Iniciando carregamento de dados do estudante...');
+          
+          // Obter ID do usuário logado do localStorage
+          const userId = api.getUserId();
+          const estudanteIdLocalStorage = localStorage.getItem('estudanteId');
+          console.log('[NOTAS] ID do usuário logado:', userId);
+          console.log('[NOTAS] EstudanteId do localStorage:', estudanteIdLocalStorage);
+          
+          // Buscar estudantes
+          const estudantes = await api.getEstudantes();
+          console.log('[NOTAS] Estudantes retornados:', estudantes?.length ?? 0);
+          console.log('[NOTAS] userId do localStorage:', userId, 'tipo:', typeof userId);
+
+          // Procurar o estudante do usuário logado
+          let estudante = null;
+          
+          // Prioridade 1: Usar estudanteId do localStorage se existir (vem do login)
+          if (estudanteIdLocalStorage && estudantes && estudantes.length > 0) {
+            console.log('[NOTAS] 1️⃣ Procurando por estudanteId armazenado:', estudanteIdLocalStorage);
+            estudante = estudantes.find(e => e.id_estudante == estudanteIdLocalStorage);
+            if (estudante) {
+              console.log('%c[NOTAS] ✓ Encontrado por estudanteId do login', 'color: green;', estudante);
+            }
+          }
+          
+          // Prioridade 2: Procurar por usuario_id
+          if (!estudante && userId && estudantes && estudantes.length > 0) {
+            // Converter userId para número para comparação
+            const userIdNum = parseInt(userId, 10);
+            console.log('[NOTAS] 2️⃣ Procurando estudante com usuario_id:', userIdNum);
+            
+            // Debug: mostrar todos os estudantes com seus usuario_id
+            console.log('[NOTAS] Estudantes disponíveis:', estudantes.map(e => ({
+              id_estudante: e.id_estudante,
+              nome: e.nome_estudante,
+              usuario_id: e.usuario_id,
+              turma_id: e.turma_id
+            })));
+            
+            // Tentar encontrar estudante com usuario_id (comparação numérica)
+            estudante = estudantes.find(e => {
+              const estUsuarioId = e.usuario_id ? parseInt(e.usuario_id, 10) : null;
+              return estUsuarioId === userIdNum;
+            });
+            
+            if (estudante) {
+              console.log('%c[NOTAS] ✓ Estudante encontrado por usuario_id', 'color: green;', estudante);
+            } else {
+              console.warn('[NOTAS] ⚠️ Nenhum estudante encontrado com usuario_id:', userIdNum);
+            }
+          }
+          
+          // Fallback 3: Usar o primeiro estudante
+          if (!estudante && estudantes && estudantes.length > 0) {
+            console.warn('[NOTAS] ⚠️ Usando fallback: primeiro estudante da lista');
+            estudante = estudantes[0];
+            console.warn('[NOTAS] ⚠️ AVISO: Isto pode estar incorreto! Verifique a tabela `estudante` e o relacionamento `usuario_id`');
+          }
+
+          if (estudante) {
+            estudanteId = estudante.id_estudante;
+            api.setEstudanteId(estudanteId);
+
+            console.log('[NOTAS] Estudante logado:', {
+              id: estudanteId,
+              nome: estudante.nome_estudante,
+              turma_id: estudante.turma_id,
+              usuario_id: estudante.usuario_id
+            });
+
+            // Atualizar header
+            const headerUserName = document.querySelector('.header-user-name');
+            if (headerUserName) {
+              headerUserName.textContent = api.getUserName() || 'Aluno';
+            }
+
+            // Carregar turma e disciplinas
+            if (estudante.turma_id) {
+              await loadTurmaComDisciplinas(estudante.turma_id);
+              // Atualizar informações do boletim
+              updateBoletimInfo(estudante, turmaData);
+            }
+
+            // Carregar notas
+            await loadNotasDoEstudante();
+          } else {
+            showNotification('Erro: Estudante não encontrado', 'danger');
+          }
+        } catch (error) {
+          console.error('[NOTAS] Erro ao carregar dados iniciais:', error);
+          showNotification('Erro ao carregar dados: ' + error.message, 'danger');
+        }
+      }
+
+      // ========== FUNÇÃO: CARREGAR TURMA COM DISCIPLINAS ==========
+      async function loadTurmaComDisciplinas(turmaId) {
+        try {
+          console.log('[NOTAS] Carregando turma e disciplinas da turma:', turmaId);
+          
+          // Buscar turma
+          const turma = await api.getTurma(turmaId);
+          turmaData = turma;
+          console.log('[NOTAS] Turma carregada:', turma);
+
+          // Atualizar boletim header
+          if (turma.ano_lectivo_turma) {
+            document.getElementById('anoLectivo').textContent = 
+              turma.ano_lectivo_turma + '/' + (turma.ano_lectivo_turma - 1);
+          }
+
+          // Buscar disciplinas DA CLASSE desta turma (APENAS DA TURMA DO ESTUDANTE)
+          let disciplinasDaTurma = [];
+          if (turma && turma.classe_id) {
+            console.log('[NOTAS] Buscando disciplinas da classe ID:', turma.classe_id);
+            try {
+              disciplinasDaTurma = await api.getDisciplinasClasse(turma.classe_id) || [];
+              console.log('[NOTAS] Disciplinas da classe carregadas:', disciplinasDaTurma?.length ?? 0);
+              console.log('[NOTAS] Disciplinas:', disciplinasDaTurma.map(d => d.descricao_disc || d.sigla_disc));
+            } catch (classError) {
+              console.error('[NOTAS] Erro ao buscar disciplinas da classe:', classError);
+              disciplinasDaTurma = [];
+            }
+          } else {
+            console.warn('[NOTAS] ⚠️ Turma sem classe_id associado');
+          }
+
+          // ✅ Usar APENAS as disciplinas da classe (sem fallback para todas)
+          disciplinasData = disciplinasDaTurma;
+          
+          console.log('[NOTAS] Total de disciplinas da turma:', disciplinasData?.length ?? 0);
+          
+          // Atualizar selector de disciplinas
+          updateDisciplinaSelector();
+        } catch (error) {
+          console.error('[NOTAS] Erro ao carregar turma:', error);
+          disciplinasData = [];
+          updateDisciplinaSelector();
+        }
+      }
+
+      // ========== FUNÇÃO: CARREGAR NOTAS DO BACKEND ==========
+      async function loadNotasDoEstudante() {
+        try {
+          if (!estudanteId) {
+            console.warn('[NOTAS] Estudante ID não definido');
+            return;
+          }
+
+          console.log('[NOTAS] Carregando notas do estudante:', estudanteId);
+          notasData = await api.getNotas(estudanteId) || [];
+          console.log('[NOTAS] Notas carregadas:', notasData?.length ?? 0);
+
+          // Combinar disciplinas com notas
+          combinarDisciplinasComNotas();
+          
+          // Carregar notas inicial
+          loadNotas();
+        } catch (error) {
+          console.error('[NOTAS] Erro ao carregar notas:', error);
+          showNotification('Erro ao carregar notas: ' + error.message, 'warning');
+        }
+      }
+
+      // ========== FUNÇÃO: COMBINAR DISCIPLINAS COM NOTAS ==========
+      function combinarDisciplinasComNotas() {
+        console.log('[NOTAS] === COMBINAR DISCIPLINAS COM NOTAS ===');
+        console.log('[NOTAS] disciplinasData:', disciplinasData);
+        console.log('[NOTAS] disciplinasData.length:', disciplinasData?.length ?? 0);
+        console.log('[NOTAS] notasData.length:', (notasData || []).length ?? 0);
+
+        if (!disciplinasData || disciplinasData.length === 0) {
+          console.warn('[NOTAS] ⚠️ PROBLEMA: Nenhuma disciplina disponível!');
+          console.warn('[NOTAS] disciplinasData value:', disciplinasData);
+          // Se não houver disciplinas carregadas, extrair dos dados de notas
+          if (!notasData || notasData.length === 0) {
+            console.warn('[NOTAS] ⚠️ PROBLEMA: Também sem notas. Retornando vazio.');
+            notasCombinadas = [];
+            return;
+          }
+          // Usar disciplinas das notas que existem
+          console.warn('[NOTAS] ⚠️ FALLBACK: Usando apenas as notas disponíveis como resultado');
+          notasCombinadas = notasData; // Retornar as notas que temos
+          return;
+        }
+
+        // Criar mapa de notas por disciplina_id
+        const notasPorDisciplina = {};
+        (notasData || []).forEach(nota => {
+          const key = nota.disciplina_id;
+          notasPorDisciplina[key] = nota;
+          console.log('[NOTAS] Mapeando nota: disciplina_id=' + key);
+        });
+
+        console.log('[NOTAS] Total de disciplinas com notas encontradas no mapa:', Object.keys(notasPorDisciplina).length);
+
+        // Para cada disciplina, usar nota existente ou criar com zero
+        console.log('[NOTAS] Iniciando map sobre', disciplinasData.length, 'disciplinas...');
+        const resultado = disciplinasData.map((disciplina, index) => {
+          const notaId = disciplina.id_disc || disciplina.id;
+          console.log('[NOTAS] [' + (index+1) + '/' + disciplinasData.length + '] Disciplina:', disciplina.descricao_disc || disciplina.sigla_disc, '(id=' + notaId + ')');
+          
+          const nota = notasPorDisciplina[notaId];
+          
+          if (nota) {
+            console.log('[NOTAS]   ✓ Nota encontrada:', nota);
+            // Retornar a nota mas SEMPRE incluindo a disciplina completa
+            return {
+              ...nota,
+              disciplina: disciplina,
+              disciplina_id: notaId
+            };
+          } else {
+            // Criar nota padrão com zero
+            console.log('[NOTAS]   ✗ PREENCHENDO COM ZERO');
+            return {
+              id_nota: null,
+              estudante_id: estudanteId,
+              disciplina_id: notaId,
+              disciplina: disciplina,
+              trimestre_nota: 1,
+              mac_notas: 0,
+              pp_notas: 0,
+              pt_notas: 0,
+              ano_letivo: 2026,
+              nota_zero: true // Flag para indicar que é um dado preenchido
+            };
+          }
+        });
+
+        console.log('[NOTAS] ✓ Mapeamento concluído. Resultado tem', resultado.length, 'itens');
+
+        notasCombinadas = resultado;
+        console.log('[NOTAS] ✓ notasCombinadas atualizado com', notasCombinadas.length, 'disciplinas');
+        console.log('[NOTAS] Lista final:', notasCombinadas.map(n => n.disciplina?.descricao_disc || 'N/A'));
+        console.log('[NOTAS] === FIM COMBINAR DISCIPLINAS COM NOTAS ===');
+      }
+
+      // ========== FUNÇÃO: ATUALIZAR SELECTOR DE DISCIPLINAS ==========
+      function updateDisciplinaSelector() {
+        const selector = document.getElementById('disciplinaSelect');
+        
+        // Remover opções antigas (exceto "Todas")
+        while (selector.options.length > 1) {
+          selector.remove(1);
+        }
+
+        // Adicionar disciplinas carregadas
+        disciplinasData.forEach(disciplina => {
+          const option = document.createElement('option');
+          option.value = disciplina.id_disc || disciplina.id;
+          option.textContent = disciplina.descricao_disc || disciplina.sigla_disc;
+          selector.appendChild(option);
+        });
+
+        console.log('[NOTAS] Selector de disciplinas atualizado');
+      }
+
+      // ========== FUNÇÃO: CARREGAR NOTAS COM FILTROS ==========
+      function loadNotas() {
+        console.log('[NOTAS] Carregando notas das disciplinas da turma...');
+
+        // Usar todas as notas combinadas SEM filtros
+        let notasParaExibir = notasCombinadas || [];
+
+        console.log('[NOTAS] Total de notas a exibir:', notasParaExibir.length);
+        console.log('[NOTAS] Notas para exibir:', notasParaExibir);
+
+        // Ordenar por disciplina
+        notasParaExibir.sort((a, b) => {
+          const discA = (a.disciplina?.descricao_disc || a.disciplina?.sigla_disc || '').toLowerCase();
+          const discB = (b.disciplina?.descricao_disc || b.disciplina?.sigla_disc || '').toLowerCase();
+          return discA.localeCompare(discB);
+        });
+
+        const tbody = document.getElementById('boletimTableBody');
+        tbody.innerHTML = '';
+
+        if (notasParaExibir.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">Nenhuma nota encontrada.</td></tr>';
+          return;
+        }
+
+        // Renderizar tabela
+        notasParaExibir.forEach(nota => {
+          const row = document.createElement('tr');
+          
+          // Calcular média trimestral: (MAC + NPP + NPT) / 3
+          const mac = parseFloat(nota.mac_notas) || 0;
+          const npp = parseFloat(nota.pp_notas) || 0;
+          const npt = parseFloat(nota.pt_notas) || 0;
+          const mediaTrimestral = npt > 0 ? ((mac + npp + npt) / 3).toFixed(2) : '-';
+
+          const discName = nota.disciplina?.descricao_disc || nota.disciplina?.sigla_disc || 'Disciplina';
+          const dataFormatada = nota.data_nota || '-';
+
+          row.innerHTML = `
+            <td>${discName}</td>
+            <td>${dataFormatada}</td>
+            <td>${mac}</td>
+            <td>${npp}</td>
+            <td>${npt || '-'}</td>
+            <td>${mediaTrimestral}</td>
+          `;
+
+          // Destacar notas adicionadas recentemente (zeros preenchidos)
+          if (nota.nota_zero) {
+            row.style.opacity = '0.7';
+          }
+
+          tbody.appendChild(row);
+        });
+
+        showNotification(`${notasParaExibir.length} notas carregadas.`, 'success');
+      }
+
+      // ========== EVENT LISTENERS ==========
+      document.getElementById('btnCarregarNotas').addEventListener('click', function() {
+        loadNotas();
+      });
+
+      // Atualizar ao mudar filtros
+      document.getElementById('trimestreSelect').addEventListener('change', loadNotas);
+      document.getElementById('anoSelect').addEventListener('change', loadNotas);
+      document.getElementById('disciplinaSelect').addEventListener('change', loadNotas);
+
+      // ========== CARREGAR DADOS INICIAIS ==========
+      console.log('[NOTAS] DOMContentLoaded: iniciando carregamento');
+      loadEstudanteInitialData();
+    });
+  </script>
+</body>
+</html>

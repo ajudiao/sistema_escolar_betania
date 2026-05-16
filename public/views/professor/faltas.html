@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registo de Faltas - Professor | SGEB MED Angola</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="css/professor.css">
+</head>
+<body>
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Gestao Escolar</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Academico</div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Minhas Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          
+          <div class="nav-item">
+            <a href="faltas.html" class="nav-link active" data-title="Faltas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="10" y1="14" x2="14" y2="18"/><line x1="14" y1="14" x2="10" y2="18"/></svg>
+              </span>
+              <span class="nav-link-text">Faltas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Minhas Disciplinas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Disciplinas</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicacao</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">3</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+             <a href="../../../index.html" class="nav-link" data-title="Sair">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="header-title">Registo de Faltas</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">PR</div>
+            <div class="header-user-info">
+              <span class="header-user-name" data-user-name>Carregando...</span>
+              <span class="header-user-role" data-user-role>Professor</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div class="page-content">
+        <!-- Spinner de carregamento inicial -->
+        <div id="loadingSpinner" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status" style="width: 2rem; height: 2rem;">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+          <p class="text-muted mt-2">Carregando dados...</p>
+        </div>
+
+        <!-- Conteúdo (oculto enquanto carrega) -->
+        <div id="pageContent" style="display: none;">
+          <!-- Filters -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row g-3 align-items-end">
+                <div class="col-md-6">
+                  <label class="form-label">Data</label>
+                  <input type="date" class="form-control" id="dataFalta">
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Turma</label>
+                  <select class="form-control form-select" id="selectTurma">
+                    <option value="">Selecione...</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Disciplina</label>
+                  <select class="form-control form-select" id="selectDisciplina">
+                    <option value="">Selecione...</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-12">
+                  <button class="btn btn-primary" id="btnCarregar">Carregar Alunos</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        <!-- Attendance Summary -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="totalAlunos">0</span>
+                <span class="stat-label">Total Alunos</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="totalPresentes">0</span>
+                <span class="stat-label">Presentes</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="totalFaltas">0</span>
+                <span class="stat-label">Faltas</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="totalAtrasos">0</span>
+                <span class="stat-label">Atrasos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Estatísticas de Faltas Histórico -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h6 class="card-title mb-0">📋 Estudantes com Faltas Registadas</h6>
+          </div>
+          <div class="card-body">
+            <div id="estatisticasFaltasContainer" style="display: none;">
+              <div id="listaEstudantesComFaltas" style="max-height: 400px; overflow-y: auto;">
+                <!-- Lista dinamicamente preenchida -->
+              </div>
+            </div>
+            <div id="semFaltasMsg" class="text-center text-muted py-4" style="display: none;">
+              <p>✓ Nenhuma falta registada para este filtro</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Attendance Table -->
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h6 class="card-title mb-0">Lista de Presença</h6>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-success" id="btnMarcarTodos">Marcar Todos Presentes</button>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th style="width: 60px;">N.</th>
+                    <th>Nome do Aluno</th>
+                    <th style="width: 120px;" class="text-center">Status</th>
+                    <th style="width: 200px;">Observacao</th>
+                  </tr>
+                </thead>
+                <tbody id="tabelaPresenca">
+                  <!-- Alunos carregados dinamicamente quando turma é selecionada -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer d-flex justify-content-between align-items-center">
+            <small class="text-muted">Alunos com mais de 10 faltas podem ser reprovados por falta</small>
+            <button class="btn btn-primary" id="btnGuardarFaltas">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-1"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Guardar Registo
+            </button>
+          </div>
+        </div>
+        </div>
+      </div>
+      
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Gestao Escolar - 2026 - Ministerio da Educacao de Angola</p>
+      </footer>
+    </main>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  <script src="js/professor.js"></script>
+  <script>
+    // Carregamento inicial de dados
+    async function carregarDados() {
+      const spinner = document.getElementById('loadingSpinner');
+      const content = document.getElementById('pageContent');
+      
+      try {
+        console.log('%c[Faltas] INICIANDO CARREGAMENTO', 'color: blue; font-weight: bold; font-size: 12px');
+        console.log('[Faltas] window.api:', typeof window.api);
+        console.log('[Faltas] typeof api (sem window):', typeof api);
+        
+        // Check if api exists
+        if (typeof api === 'undefined') {
+          throw new Error('Objeto API não inicializado. Verifique se api-service.js foi carregado.');
+        }
+        
+        // 1. Set today's date
+        const hoje = new Date().toISOString().split('T')[0];
+        document.getElementById('dataFalta').value = hoje;
+        console.log('[Faltas] Data hoje:', hoje);
+        
+        // 2. Load professor
+        const usuarioId = localStorage.getItem('userId');
+        console.log('[Faltas] UserId do localStorage:', usuarioId);
+        
+        if (!usuarioId) {
+          throw new Error('Usuário não encontrado em localStorage. Faça login primeiro.');
+        }
+        
+        console.log('[Faltas] Chamando api.getProfessorByUsuario...');
+        const professor = await api.getProfessorByUsuario(usuarioId);
+        console.log('%c[Faltas] PROFESSOR RECEBIDO COM SUCESSO', 'color: green; font-size: 12px');
+        console.log('[Faltas] Estrutura completa:', JSON.stringify(professor, null, 2));
+        console.log('[Faltas] Campos do professor:', Object.keys(professor));
+        
+        // 3. Update professor name in header
+        document.querySelector('.header-user-name').textContent = professor.nome_prof;
+        console.log('[Faltas] Nome professor atualizado:', professor.nome_prof);
+        
+        // 4. Populate turmas dropdown
+        const selectTurma = document.getElementById('selectTurma');
+        
+        // Tentar obter turmas de vários campos possíveis
+        let todasAsTurmas = [];
+        
+        // Opção 1: turmas_dirigidas
+        if (professor.turmas_dirigidas && Array.isArray(professor.turmas_dirigidas) && professor.turmas_dirigidas.length > 0) {
+          console.log('[Faltas] Turmas encontradas em turmas_dirigidas:', professor.turmas_dirigidas.length);
+          todasAsTurmas = professor.turmas_dirigidas;
+        }
+        // Opção 2: turmas (array de objetos com turma dentro)
+        else if (professor.turmas && Array.isArray(professor.turmas) && professor.turmas.length > 0) {
+          console.log('[Faltas] Turmas encontradas em turmas (ProfessorTurma):', professor.turmas.length);
+          // Extrair objetos turma de dentro do array
+          todasAsTurmas = professor.turmas
+            .map(pt => pt.turma)
+            .filter(t => t !== null && t !== undefined);
+          console.log('[Faltas] Após extração:', todasAsTurmas.length, 'turmas válidas');
+        }
+        // Opção 3: nenhuma encontrada
+        else {
+          console.warn('[Faltas] AVISO: Nenhuma turma encontrada');
+        }
+        
+        console.log('[Faltas] Quantidade de turmas:', todasAsTurmas.length);
+        
+        if (todasAsTurmas.length > 0) {
+          todasAsTurmas.forEach((item, idx) => {
+            console.log(`[Faltas] Processando turma ${idx}:`, item);
+            
+            // Try different possible structures
+            let turma = null;
+            
+            // Opção 1: É um objeto turma direto
+            if (item && item.id_turma) {
+              turma = item;
+            }
+            // Opção 2: É um objeto ProfessorTurma com turma dentro
+            else if (item && item.turma && item.turma.id_turma) {
+              turma = item.turma;
+            }
+            
+            if (!turma) {
+              console.warn('[Faltas] Turma inválida, pulando:', item);
+              return;
+            }
+            
+            const option = document.createElement('option');
+            option.value = turma.id_turma;
+            option.textContent = turma.sigla_turma || `Turma ${turma.id_turma}`;
+            selectTurma.appendChild(option);
+            console.log('[Faltas] Turma adicionada:', turma.sigla_turma, '(ID:', turma.id_turma + ')');
+          });
+        } else {
+          console.warn('[Faltas] AVISO: Nenhuma turma encontrada para o professor');
+          console.log('[Faltas] Campos de turmas analisados:');
+          console.log('[Faltas] - professor.turmas_dirigidas:', professor.turmas_dirigidas);
+          console.log('[Faltas] - professor.turmas:', professor.turmas);
+          spinner.innerHTML = `<div class="alert alert-warning">Nenhuma turma encontrada para este professor. Entre em contato com o administrador.</div>`;
+          return;
+        }
+        
+        // 5. Show content, hide spinner
+        console.log('%c[Faltas] CARREGAMENTO COMPLETO COM SUCESSO', 'color: green; font-weight: bold; font-size: 12px');
+        spinner.style.display = 'none';
+        content.style.display = 'block';
+        
+      } catch (erro) {
+        console.error('%c[Faltas] ERRO CRÍTICO:', 'color: red; font-weight: bold; font-size: 12px', erro);
+        console.error('Stack:', erro.stack);
+        spinner.innerHTML = `<div class="alert alert-danger"><strong>Erro:</strong> ${erro.message}</div>`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('[Faltas] DOMContentLoaded disparado');
+      
+      // Definir todas as variáveis ANTES de chamar carregarDados()
+      const btnCarregar = document.getElementById('btnCarregar');
+      const tabela = document.getElementById('tabelaPresenca');
+      const btnMarcarTodos = document.getElementById('btnMarcarTodos');
+      const totalPresentesEl = document.getElementById('totalPresentes');
+      const totalFaltasEl = document.getElementById('totalFaltas');
+      const totalAtrasosEl = document.getElementById('totalAtrasos');
+      const btnGuardar = document.getElementById('btnGuardarFaltas');
+      
+      console.log('[Faltas] Elementos carregados:', {
+        btnCarregar: !!btnCarregar,
+        tabela: !!tabela,
+        btnMarcarTodos: !!btnMarcarTodos,
+        totalPresentesEl: !!totalPresentesEl,
+        totalFaltasEl: !!totalFaltasEl,
+        totalAtrasosEl: !!totalAtrasosEl,
+        btnGuardar: !!btnGuardar
+      });
+      
+      // AGORA chamar carregarDados()
+      carregarDados();
+
+      function criarLinhaAluno(aluno) {
+        console.log('[Faltas] Criando linha para aluno:', aluno);
+        
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${aluno.numero}</td>
+          <td>${aluno.nome}</td>
+          <td class="text-center">
+            <select class="form-select form-select-sm status-select" data-aluno="${aluno.numero}" data-aluno-id="${aluno.id || ''}">
+              <option value="presente" selected>Presente</option>
+              <option value="falta">Falta</option>
+              <option value="atraso">Atraso</option>
+            </select>
+          </td>
+          <td><input type="text" class="form-control form-control-sm obs-input" placeholder="Observacao..."></td>
+        `;
+
+        // events
+        const select = tr.querySelector('.status-select');
+        select.addEventListener('change', function() {
+          console.log('[Faltas] Select mudou para:', this.value);
+          atualizarLinha(tr);
+        });
+
+        return tr;
+      }
+
+      function atualizarLinha(tr) {
+        const select = tr.querySelector('.status-select');
+        const status = select.value;
+        console.log('[Faltas] Atualizando linha, novo status:', status);
+        
+        if (status === 'presente') {
+          tr.classList.remove('table-danger');
+        } else if (status === 'falta') {
+          tr.classList.add('table-danger');
+        } else if (status === 'atraso') {
+          tr.classList.remove('table-danger');
+        }
+        atualizarTotais();
+      }
+
+      function atualizarTotais() {
+        const rows = Array.from(tabela.querySelectorAll('tr'));
+        console.log('[Faltas] Atualizando totais, linhas na tabela:', rows.length);
+        
+        let presentes = 0, faltas = 0, atrasos = 0;
+        rows.forEach((r, idx) => {
+          const sel = r.querySelector('.status-select');
+          if (!sel) {
+            console.warn('[Faltas] Linha', idx, 'sem select');
+            return;
+          }
+          const v = sel.value;
+          console.log('[Faltas] Linha', idx, 'status:', v);
+          
+          if (v === 'presente') presentes++;
+          if (v === 'falta') faltas++;
+          if (v === 'atraso') atrasos++;
+        });
+        
+        console.log('[Faltas] Totais - Alunos:', rows.length, 'Presentes:', presentes, 'Faltas:', faltas, 'Atrasos:', atrasos);
+        
+        // Atualizar cards
+        const totalAllunosCard = document.getElementById('totalAlunos');
+        const totalPresentesCard = document.getElementById('totalPresentes');
+        const totalFaltasCard = document.getElementById('totalFaltas');
+        const totalAtrasosCard = document.getElementById('totalAtrasos');
+        
+        if (totalAllunosCard) totalAllunosCard.textContent = rows.length;
+        if (totalPresentesCard) totalPresentesCard.textContent = presentes;
+        if (totalFaltasCard) totalFaltasCard.textContent = faltas;
+        if (totalAtrasosCard) totalAtrasosCard.textContent = atrasos;
+        
+        console.log('[Faltas] ✓ Cards atualizados com totais em tempo real');
+      }
+
+      // Carregar estatísticas de faltas histórico do banco de dados
+      async function carregarEstatisticasFaltas(turmaId, disciplinaId = null) {
+        try {
+          console.log('%c[Faltas] === CARREGANDO ESTATÍSTICAS REAIS ===', 'color: darkblue; font-weight: bold; font-size: 12px');
+          console.log('[Faltas] TurmaId:', turmaId, '| DisciplinaId:', disciplinaId);
+          
+          if (!turmaId) {
+            console.warn('[Faltas] ⚠️ TurmaId nulo, não carregando estatísticas');
+            return null;
+          }
+          
+          const estatisticas = await api.getFaltasEstatisticas(turmaId, disciplinaId);
+          console.log('%c[Faltas] ✓ ESTATÍSTICAS RECEBIDAS DO API-SERVICE', 'color: green; font-weight: bold; font-size: 12px');
+          console.log('[Faltas] Objeto completo de estatísticas:', estatisticas);
+          
+          if (!estatisticas) {
+            console.warn('[Faltas] ⚠️ Estatísticas retornou nulo');
+            return null;
+          }
+          
+          // Atualizar cards com dados históricos (já registados no banco)
+          const totalAlunos = estatisticas.totalAlunos || 0;
+          const totalFaltasRegistadas = estatisticas.totalFaltas || 0;
+          const porEstudante = estatisticas.porEstudante || {};
+          const porDisciplina = estatisticas.porDisciplina || {};
+          const estudantesComFaltas = estatisticas.estudantesComFaltas || [];
+          
+          console.log('[Faltas] Estatísticas calculadas:');
+          console.log('[Faltas]   - Total Alunos com faltas:', totalAlunos);
+          console.log('[Faltas]   - Total de faltas registadas:', totalFaltasRegistadas);
+          console.log('[Faltas]   - Disciplinas:', Object.keys(porDisciplina).length);
+          console.log('[Faltas]   - Estudantes com faltas:', Object.keys(porEstudante).length);
+          console.log('[Faltas]   - Detalhes por disciplina:', porDisciplina);
+          console.log('[Faltas]   - Detalhes por estudante:', porEstudante);
+          
+          // ===== RENDERIZAR NA PÁGINA =====
+          const containerEstatisticas = document.getElementById('estatisticasFaltasContainer');
+          const listaEstudantes = document.getElementById('listaEstudantesComFaltas');
+          const semFaltasMsg = document.getElementById('semFaltasMsg');
+          
+          if (estudantesComFaltas.length === 0) {
+            console.log('%c✓ Nenhuma falta encontrada para este filtro', 'color: green; font-style: italic');
+            containerEstatisticas.style.display = 'none';
+            semFaltasMsg.style.display = 'block';
+          } else {
+            containerEstatisticas.style.display = 'block';
+            semFaltasMsg.style.display = 'none';
+            
+            // Criar HTML da lista
+            let htmlLista = '<div class="list-group list-group-flush">';
+            
+            estudantesComFaltas.forEach((falta, idx) => {
+              const numero = idx + 1;
+              const marcador = falta.tipo === 'JUSTIFICADA' ? '📋' : '';
+              const badgeClass = falta.tipo === 'JUSTIFICADA' ? 'badge bg-warning text-dark' : 'badge bg-danger';
+              
+              htmlLista += `
+                <div class="list-group-item px-3 py-3">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div class="flex-grow-1">
+                      <h6 class="mb-1">
+                        <span style="font-size: 1.3em; margin-right: 8px;">${marcador}</span>
+                        ${falta.nome}
+                        <span class="${badgeClass}" style="margin-left: 8px; font-size: 0.75rem;">
+                          ${falta.tipo === 'JUSTIFICADA' ? 'Justificada' : 'Injustificada'}
+                        </span>
+                      </h6>
+                      <p class="mb-2 text-muted">
+                        <small>
+                          📚 <strong>${falta.disciplina}</strong> | 
+                          📅 ${falta.data}
+                        </small>
+                      </p>
+                      <p class="mb-0">
+                        <small class="text-secondary">
+                          <strong>Observação:</strong> ${falta.observacao}
+                        </small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              `;
+            });
+            
+            htmlLista += '</div>';
+            listaEstudantes.innerHTML = htmlLista;
+            console.log('[Faltas] ✓ Lista renderizada na página com', estudantesComFaltas.length, 'faltas');
+          }
+          
+          // IMPRIMIR LISTA FORMATADA NO CONSOLE
+          console.log('%c\n╔════════════════════════════════════════════════════════════════╗', 'color: #3b82f6; font-weight: bold');
+          console.log('%c║           ESTUDANTES COM FALTAS - CONSULTA DO PROFESSOR         ║', 'color: #3b82f6; font-weight: bold');
+          console.log('%c╚════════════════════════════════════════════════════════════════╝', 'color: #3b82f6; font-weight: bold');
+          
+          if (estudantesComFaltas.length === 0) {
+            console.log('%c✓ Nenhuma falta encontrada para este filtro', 'color: green; font-style: italic');
+          } else {
+            estudantesComFaltas.forEach((falta, idx) => {
+              const numeroFalta = idx + 1;
+              const marcador = falta.tipo === 'JUSTIFICADA' ? '📋' : '❌';
+              console.log(`${marcador} [${numeroFalta}] ${falta.nome}`);
+              console.log(`    📚 Disciplina: ${falta.disciplina}`);
+              console.log(`    📅 Data: ${falta.data}`);
+              console.log(`    🏷️  Tipo: ${falta.tipo === 'JUSTIFICADA' ? 'Justificada' : 'Injustificada'}`);
+              console.log(`    💬 Observação: ${falta.observacao}`);
+              console.log('    ─────────────────────────────────────────────');
+            });
+          }
+          
+          // ATUALIZAR OS CARDS COM OS DADOS DO BANCO
+          console.log('%c[Faltas] === ATUALIZANDO CARDS ===', 'color: orange; font-weight: bold; font-size: 12px');
+          
+          // Verificar se elementos existem
+          console.log('[Faltas] Verificando elementos dos cards:');
+          const totalAllunosCard = document.getElementById('totalAlunos');
+          const totalFaltasCard = document.getElementById('totalFaltas');
+          console.log('[Faltas]   - totalAlunos elemento:', totalAllunosCard ? '✓ Encontrado' : '✗ NÃO ENCONTRADO');
+          console.log('[Faltas]   - totalFaltas elemento:', totalFaltasCard ? '✓ Encontrado' : '✗ NÃO ENCONTRADO');
+          
+          // Atualizar card de Total Alunos (com faltas registadas)
+          if (totalAllunosCard) {
+            const valorAnterior = totalAllunosCard.textContent;
+            totalAllunosCard.textContent = totalAlunos;
+            console.log(`[Faltas] ✓ Card "Total Alunos" atualizado: ${valorAnterior} → ${totalAlunos}`);
+          } else {
+            console.warn('[Faltas] ✗ Card "totalAlunos" não encontrado');
+          }
+          
+          // Atualizar card de Faltas (total de faltas registadas)
+          if (totalFaltasCard) {
+            const valorAnterior = totalFaltasCard.textContent;
+            totalFaltasCard.textContent = totalFaltasRegistadas;
+            console.log(`[Faltas] ✓ Card "Total Faltas" atualizado: ${valorAnterior} → ${totalFaltasRegistadas}`);
+          } else {
+            console.warn('[Faltas] ✗ Card "totalFaltas" não encontrado');
+          }
+          
+          // Nota: Os cards "Presentes" e "Atrasos" continuam mostrando dados em tempo real da tabela
+          // Armazenar as estatísticas para referência
+          window.estatisticasFaltasAtuais = estatisticas;
+          console.log('[Faltas] ✓ Estatísticas armazenadas em window.estatisticasFaltasAtuais');
+          console.log('%c[Faltas] ✓ CARDS ATUALIZADOS COM SUCESSO', 'color: green; font-weight: bold; font-size: 12px');
+          
+          return estatisticas;
+        } catch (erro) {
+          console.error('%c[Faltas] ✗ ERRO AO CARREGAR ESTATÍSTICAS', 'color: red; font-weight: bold; font-size: 12px', erro);
+          console.error('[Faltas] Stack:', erro.stack);
+          return null;
+        }
+      }
+
+      btnCarregar.addEventListener('click', async function() {
+        const data = document.getElementById('dataFalta').value;
+        const turmaId = document.getElementById('selectTurma').value;
+        
+        console.log('%c[Faltas] BOTÃO CARREGAR CLICADO', 'color: blue; font-weight: bold; font-size: 12px');
+        console.log('[Faltas] Data:', data, '| TurmaId:', turmaId);
+        
+        if (!data || !turmaId) {
+          console.warn('[Faltas] Validação falhou - campos vazios');
+          if (window.Utils && Utils.mostrarNotificacao) Utils.mostrarNotificacao('Selecione data e turma.', 'warning');
+          else alert('Selecione data e turma.');
+          return;
+        }
+        
+        try {
+          // Carregar estatísticas atualizado
+          console.log('[Faltas] Carregando estatísticas para turma:', turmaId);
+          await carregarEstatisticasFaltas(turmaId);
+          
+          console.log('[Faltas] Chamando api.getTurma com turmaId:', turmaId);
+          const turma = await api.getTurma(turmaId);
+          console.log('%c[Faltas] TURMA RECEBIDA COM SUCESSO', 'color: green; font-size: 12px');
+          console.log('[Faltas] Estrutura completa da turma:', JSON.stringify(turma, null, 2));
+          
+          console.log('[Faltas] Verificando campo "estudantes":', turma.estudantes);
+          console.log('[Faltas] Tipo:', Array.isArray(turma.estudantes) ? 'array' : typeof turma.estudantes);
+          
+          if (!turma.estudantes) {
+            console.warn('[Faltas] AVISO: Campo "estudantes" não encontrado na turma');
+            console.log('[Faltas] Campos disponíveis na turma:', Object.keys(turma));
+          }
+          
+          // Clear table
+          tabela.innerHTML = '';
+          
+          // Check if estudantes exist and is an array
+          if (turma.estudantes && Array.isArray(turma.estudantes) && turma.estudantes.length > 0) {
+            console.log('[Faltas] Encontrados', turma.estudantes.length, 'estudantes');
+            
+            // Carregar as faltas já registadas para a data selecionada
+            console.log('[Faltas] Carregando faltas registadas para:', data);
+            
+            let faltasNaData = {};
+            try {
+              const todasAsFaltas = await api.getFaltas(null, null, turmaId);
+              console.log('[Faltas] Todas as faltas da turma:', todasAsFaltas);
+              
+              // Filtrar apenas as faltas da data selecionada
+              if (todasAsFaltas && Array.isArray(todasAsFaltas)) {
+                todasAsFaltas.forEach(falta => {
+                  if (falta.data_falta === data) {
+                    const key = falta.estudante_id;
+                    faltasNaData[key] = falta;
+                    console.log('[Faltas] Falta encontrada para estudante', key, ':', falta);
+                  }
+                });
+              }
+              console.log('[Faltas] Total de faltas na data mapeadas:', Object.keys(faltasNaData).length);
+            } catch (erro) {
+              console.warn('[Faltas] Erro ao carregar faltas da data:', erro);
+            }
+            
+            turma.estudantes.forEach((estudante, idx) => {
+              console.log(`[Faltas] Processando estudante ${idx}:`, estudante);
+              
+              const aluno = {
+                numero: idx + 1,
+                nome: estudante.nome_estudante || 'Nome desconhecido',
+                id: estudante.id_estudante || estudante.id || null
+              };
+              
+              if (!aluno.id) {
+                console.warn('[Faltas] AVISO: Estudante sem ID:', estudante);
+              }
+              
+              console.log('[Faltas] Adicionando aluno:', aluno);
+              const linha = criarLinhaAluno(aluno);
+              
+              // Se este aluno tem falta registada nesta data, atualizar o select
+              const faltaDoAluno = faltasNaData[aluno.id];
+              if (faltaDoAluno) {
+                const select = linha.querySelector('.status-select');
+                select.value = 'falta';
+                console.log(`[Faltas] ✓ Estudante ${aluno.nome} marcado como falta`);
+                
+                // Atualizar observação se existe
+                const obsInput = linha.querySelector('.obs-input');
+                if (faltaDoAluno.observacao && obsInput) {
+                  obsInput.value = faltaDoAluno.observacao;
+                  console.log(`[Faltas] ✓ Observação adicionada: ${faltaDoAluno.observacao}`);
+                }
+              }
+              
+              tabela.appendChild(linha);
+            });
+            
+            console.log('[Faltas] Todas as linhas adicionadas à tabela');
+            atualizarTotais();
+            if (window.Utils && Utils.mostrarNotificacao) Utils.mostrarNotificacao(`${turma.estudantes.length} alunos carregados com sucesso.`, 'success');
+          } else {
+            console.warn('[Faltas] Turma sem estudantes ou estudantes inválido');
+            tabela.innerHTML = '<tr><td colspan="4" class="text-center text-muted">Nenhum estudante encontrado nesta turma</td></tr>';
+            if (window.Utils && Utils.mostrarNotificacao) Utils.mostrarNotificacao('Nenhum estudante encontrado nesta turma.', 'info');
+          }
+          
+        } catch (erro) {
+          console.error('%c[Faltas] ERRO AO CARREGAR ALUNOS', 'color: red; font-weight: bold; font-size: 12px', erro);
+          console.error('Stack:', erro.stack);
+          tabela.innerHTML = `<tr><td colspan="4" class="text-danger"><strong>Erro:</strong> ${erro.message}</td></tr>`;
+          if (window.Utils && Utils.mostrarNotificacao) Utils.mostrarNotificacao('Erro ao carregar alunos: ' + erro.message, 'danger');
+        }
+      });
+
+      btnMarcarTodos.addEventListener('click', function() {
+        const selects = tabela.querySelectorAll('.status-select');
+        selects.forEach(s => s.value = 'presente');
+        atualizarTotais();
+      });
+
+      // Listener para carregar alunos automaticamente quando turma muda
+      const selectTurma = document.getElementById('selectTurma');
+      const selectDisciplina = document.getElementById('selectDisciplina');
+      
+      selectTurma.addEventListener('change', async function() {
+        const turmaId = this.value;
+        
+        console.log('%c[Faltas] TURMA SELECIONADA', 'color: purple; font-weight: bold; font-size: 12px');
+        console.log('[Faltas] TurmaId:', turmaId);
+        
+        if (!turmaId) {
+          console.warn('[Faltas] Turma inválida, pulando carregamento');
+          // Limpar disciplinas
+          selectDisciplina.innerHTML = '<option value="">Selecione...</option>';
+          tabela.innerHTML = '';
+          return;
+        }
+        
+        try {
+          console.log('[Faltas] Carregando turma e disciplinas...');
+          const turma = await api.getTurma(turmaId);
+          console.log('%c[Faltas] TURMA CARREGADA AUTOMATICAMENTE', 'color: teal; font-size: 12px');
+          console.log('[Faltas] Turma ID:', turma.id_turma, '| Sigla:', turma.sigla_turma);
+          console.log('[Faltas] Campos disponíveis na turma:', Object.keys(turma));
+          console.log('[Faltas] Turma JSON completo:', JSON.stringify(turma, null, 2));
+          
+          // CARREGAR ESTATÍSTICAS DE FALTAS HISTÓRICO
+          console.log('%c[Faltas] === INICIANDO CARREGAMENTO DE ESTATÍSTICAS ===', 'color: darkgreen; font-weight: bold');
+          const estatisticas = await carregarEstatisticasFaltas(turmaId);
+          console.log('%c[Faltas] ✓ ESTATÍSTICAS CARREGADAS COM SUCESSO', 'color: darkgreen; font-weight: bold; font-size: 12px');
+          console.log('[Faltas] Estatísticas:', estatisticas);
+          
+          // 1. CARREGAR DISCIPLINAS DA TURMA
+          console.log('%c[Faltas] === PROCURANDO DISCIPLINAS ===', 'color: orange; font-weight: bold');
+          console.log('[Faltas] 1. turma.classe existe?', !!turma.classe);
+          
+          if (turma.classe) {
+            console.log('[Faltas] 2. turma.classe fields:', Object.keys(turma.classe));
+            console.log('[Faltas] 3. turma.classe.disciplinas existe?', !!turma.classe.disciplinas);
+            console.log('[Faltas] 4. turma.classe.disciplinas é array?', Array.isArray(turma.classe.disciplinas));
+            console.log('[Faltas] 5. turma.classe.disciplinas length:', turma.classe.disciplinas?.length ?? 0);
+            
+            if (turma.classe.disciplinas && turma.classe.disciplinas.length > 0) {
+              console.log('[Faltas] 6. Primeiro elemento de disciplinas:', JSON.stringify(turma.classe.disciplinas[0], null, 2));
+              console.log('[Faltas] 7. Keys do primeiro elemento:', Object.keys(turma.classe.disciplinas[0]));
+            }
+          }
+          
+          let disciplinas = [];
+          
+          // Tentar várias estruturas possíveis
+          if (turma.classe?.disciplinas && Array.isArray(turma.classe.disciplinas) && turma.classe.disciplinas.length > 0) {
+            console.log('%c[Faltas] ✓ Encontrado turma.classe.disciplinas', 'color: green');
+            
+            // Ver exatamente qual é a estrutura
+            const firstItem = turma.classe.disciplinas[0];
+            console.log('[Faltas] Estrutura do primeiro item:', firstItem);
+            console.log('[Faltas] firstItem.disciplina existe?', !!firstItem.disciplina);
+            console.log('[Faltas] firstItem.id_disc existe?', !!firstItem.id_disc);
+            console.log('[Faltas] firstItem.descricao_disc existe?', !!firstItem.descricao_disc);
+            
+            // Se tem disciplina nested, extrair
+            if (firstItem.disciplina) {
+              console.log('[Faltas] ✓ Estructura com disciplina nested - mapeando');
+              disciplinas = turma.classe.disciplinas
+                .filter(cd => cd.disciplina)
+                .map(cd => cd.disciplina);
+            } 
+            // Se a própria item já é disciplina
+            else if (firstItem.id_disc) {
+              console.log('[Faltas] ✓ Items são disciplinas diretas - usando como está');
+              disciplinas = turma.classe.disciplinas;
+            }
+          } else {
+            console.warn('[Faltas] ⚠️ turma.classe.disciplinas vazio ou não existe');
+          }
+          
+          console.log('[Faltas] Disciplinas finais a adicionar:', disciplinas.length);
+          selectDisciplina.innerHTML = '<option value="">Selecione...</option>';
+          
+          if (disciplinas && disciplinas.length > 0) {
+            console.log('[Faltas] ✓ Encontradas', disciplinas.length, 'disciplinas');
+            disciplinas.forEach((disciplina, idx) => {
+              console.log(`[Faltas] Processando disciplina ${idx}:`, disciplina);
+              const option = document.createElement('option');
+              option.value = disciplina.id_disc;
+              option.textContent = disciplina.descricao_disc || disciplina.nome_disc || `Disciplina ${disciplina.id_disc}`;
+              selectDisciplina.appendChild(option);
+              console.log('[Faltas] ✓ Adicionada disciplina:', disciplina.descricao_disc);
+            });
+            console.log('[Faltas] ✓ Total de disciplinas adicionadas:', disciplinas.length);
+          } else {
+            console.warn('[Faltas] ⚠️ Nenhuma disciplina para adicionar após processamento');
+          }
+          
+          // 2. CARREGAR ESTUDANTES
+          // Clear table
+          tabela.innerHTML = '';
+          
+          // Check if estudantes exist and is an array
+          if (turma.estudantes && Array.isArray(turma.estudantes) && turma.estudantes.length > 0) {
+            console.log('[Faltas] Encontrados', turma.estudantes.length, 'estudantes');
+            
+            // Carregar as faltas já registadas para hoje
+            const dataHoje = document.getElementById('dataFalta').value;
+            console.log('[Faltas] Carregando faltas registadas para:', dataHoje);
+            
+            let faltasHoje = {};
+            try {
+              const todasAsFaltas = await api.getFaltas(null, null, turmaId);
+              console.log('[Faltas] Todas as faltas da turma:', todasAsFaltas);
+              
+              // Filtrar apenas as faltas de hoje
+              if (todasAsFaltas && Array.isArray(todasAsFaltas)) {
+                todasAsFaltas.forEach(falta => {
+                  if (falta.data_falta === dataHoje) {
+                    const key = falta.estudante_id;
+                    faltasHoje[key] = falta;
+                    console.log('[Faltas] Falta encontrada para estudante', key, ':', falta);
+                  }
+                });
+              }
+              console.log('[Faltas] Total de faltas de hoje mapeadas:', Object.keys(faltasHoje).length);
+            } catch (erro) {
+              console.warn('[Faltas] Erro ao carregar faltas de hoje:', erro);
+            }
+            
+            turma.estudantes.forEach((estudante, idx) => {
+              console.log(`[Faltas] Processando estudante ${idx}:`, estudante);
+              
+              const aluno = {
+                numero: idx + 1,
+                nome: estudante.nome_estudante || 'Nome desconhecido',
+                id: estudante.id_estudante || estudante.id || null
+              };
+              
+              if (!aluno.id) {
+                console.warn('[Faltas] AVISO: Estudante sem ID:', estudante);
+              }
+              
+              const linha = criarLinhaAluno(aluno);
+              
+              // Se este aluno tem falta registada, atualizar o select
+              const faltaDoAluno = faltasHoje[aluno.id];
+              if (faltaDoAluno) {
+                const select = linha.querySelector('.status-select');
+                const tipoStatus = faltaDoAluno.tipo_falta === 'JUSTIFICADA' ? 'falta' : 'falta';
+                select.value = tipoStatus;
+                console.log(`[Faltas] ✓ Estudante ${aluno.nome} marcado como ${tipoStatus}`);
+                
+                // Atualizar observação se existe
+                const obsInput = linha.querySelector('.obs-input');
+                if (faltaDoAluno.observacao && obsInput) {
+                  obsInput.value = faltaDoAluno.observacao;
+                  console.log(`[Faltas] ✓ Observação adicionada: ${faltaDoAluno.observacao}`);
+                }
+              }
+              
+              tabela.appendChild(linha);
+            });
+            
+            console.log('[Faltas] Estudantes carregados e adicionados à tabela');
+            atualizarTotais();
+            if (window.Utils && Utils.mostrarNotificacao) Utils.mostrarNotificacao(`${turma.estudantes.length} alunos carregados automaticamente.`, 'success');
+          } else {
+            console.warn('[Faltas] Turma sem estudantes');
+            tabela.innerHTML = '<tr><td colspan="4" class="text-center text-muted">Nenhum estudante encontrado nesta turma</td></tr>';
+          }
+          
+        } catch (erro) {
+          console.error('%c[Faltas] ERRO AO CARREGAR AUTOMATICAMENTE', 'color: red; font-weight: bold; font-size: 12px', erro);
+          console.error('[Faltas] Stack:', erro.stack);
+          tabela.innerHTML = `<tr><td colspan="4" class="text-danger"><strong>Erro:</strong> ${erro.message}</td></tr>`;
+        }
+      });
+
+      // submit to backend
+      btnGuardar.addEventListener('click', async function() {
+        const data = document.getElementById('dataFalta').value;
+        const turmaId = document.getElementById('selectTurma').value;
+        const disciplinaId = document.getElementById('selectDisciplina').value;
+
+        console.log('%c[Faltas] === INICIANDO ENVIO DE FALTAS ===', 'color: blue; font-weight: bold; font-size: 14px');
+        console.log('[Faltas] Data:', data);
+        console.log('[Faltas] TurmaId:', turmaId);
+        console.log('[Faltas] DisciplinaId:', disciplinaId);
+
+        if (!data || !turmaId || !disciplinaId) {
+          console.warn('[Faltas] Validação falhou - campos vazios');
+          if (window.Utils && Utils.mostrarNotificacao) Utils.mostrarNotificacao('Selecione data, turma e disciplina.', 'warning');
+          else alert('Selecione data, turma e disciplina.');
+          return;
+        }
+
+        // Carregar apenas os registos com "falta" ou "atraso"
+        const rows = Array.from(tabela.querySelectorAll('tr'));
+        console.log('[Faltas] Total de linhas na tabela:', rows.length);
+        
+        const faltasParaEnviar = rows.map((r, idx) => {
+          const statusSelect = r.querySelector('.status-select');
+          const estudanteId = statusSelect ? statusSelect.getAttribute('data-aluno-id') : null;
+          const status = statusSelect ? statusSelect.value : 'presente';
+          const observacao = r.querySelector('.obs-input') ? r.querySelector('.obs-input').value : '';
+          
+          console.log(`[Faltas] Linha ${idx}: estudanteId=${estudanteId}, status=${status}, obs=${observacao}`);
+          
+          if (status !== 'presente' && estudanteId && estudanteId.trim() !== '') {
+            const falta = {
+              estudante_id: parseInt(estudanteId, 10),
+              turma_id: parseInt(turmaId, 10),
+              disciplina_id: parseInt(disciplinaId, 10),
+              data_falta: data, // ISO string como "2026-05-04"
+              tipo_falta: status === 'falta' ? 'INJUSTIFICADA' : 'INJUSTIFICADA',
+              observacao: observacao || null
+            };
+            console.log('[Faltas] ✓ Falta adicionada:', falta);
+            return falta;
+          } else {
+            console.log(`[Faltas] ✗ Linha ${idx} ignorada - status presente ou estudanteId vazio`);
+          }
+          return null;
+        }).filter(x => x !== null);
+
+        console.log('[Faltas] Total de faltas a enviar:', faltasParaEnviar.length);
+        console.log('[Faltas] Detalhes das faltas:', JSON.stringify(faltasParaEnviar, null, 2));
+
+        if (faltasParaEnviar.length === 0) {
+          console.warn('[Faltas] Nenhuma falta para registar');
+          if (window.Utils && Utils.mostrarNotificacao) Utils.mostrarNotificacao('Nenhuma falta para registar.', 'info');
+          else alert('Nenhuma falta para registar.');
+          return;
+        }
+
+        console.log('%c[Faltas] ENVIANDO FALTAS PARA BACKEND...', 'color: darkblue; font-weight: bold; font-size: 12px');
+
+        try {
+          // Enviar cada falta individualmente usando a API service
+          const promessas = faltasParaEnviar.map((falta, idx) => {
+            console.log(`[Faltas] Enviando falta ${idx}:`, falta);
+            return api.createFalta(falta);
+          });
+
+          const respostas = await Promise.allSettled(promessas);
+          const sucessos = respostas.filter(r => r.status === 'fulfilled').length;
+          const falhas = respostas.filter(r => r.status === 'rejected').length;
+
+          console.log('%c[Faltas] RESPOSTA DO SERVIDOR', 'color: purple; font-weight: bold; font-size: 12px');
+          console.log('[Faltas] Sucessos:', sucessos);
+          console.log('[Faltas] Falhas:', falhas);
+          respostas.forEach((r, idx) => {
+            if (r.status === 'fulfilled') {
+              console.log(`[Faltas] ✓ Falta ${idx} enviada com sucesso:`, r.value);
+            } else {
+              console.error(`[Faltas] ✗ Falta ${idx} falhou:`, r.reason);
+            }
+          });
+
+          if (falhas === 0) {
+            console.log('%c[Faltas] ✓✓✓ TODAS AS FALTAS FORAM GUARDADAS COM SUCESSO ✓✓✓', 'color: green; font-weight: bold; font-size: 14px');
+            if (window.Utils && Utils.mostrarNotificacao) Utils.mostrarNotificacao(`${sucessos} falta(s) registada(s) com sucesso.`, 'success');
+            // Limpar tabela
+            tabela.innerHTML = '';
+            atualizarTotais();
+          } else {
+            console.error(`[Faltas] ✗✗✗ ${sucessos} faltas registadas, ${falhas} falharam ✗✗✗`, 'color: red; font-weight: bold');
+            if (window.Utils && Utils.mostrarNotificacao) Utils.mostrarNotificacao(`${sucessos} faltas registadas, ${falhas} falharam.`, 'warning');
+          }
+        } catch (err) {
+          console.error('%c[Faltas] ✗✗✗ ERRO CRÍTICO AO ENVIAR FALTAS ✗✗✗', 'color: red; font-weight: bold; font-size: 14px', err);
+          console.error('[Faltas] Stack:', err.stack);
+          if (window.Utils && Utils.mostrarNotificacao) Utils.mostrarNotificacao('Erro ao enviar faltas: ' + err.message, 'danger');
+          else alert('Erro ao enviar faltas: ' + err.message);
+        }
+      });
+
+      // Listener para atualizar estatísticas quando disciplina é selecionada
+      selectDisciplina.addEventListener('change', async function() {
+        const turmaId = document.getElementById('selectTurma').value;
+        const disciplinaId = this.value;
+        
+        if (!turmaId) {
+          console.log('[Faltas] Nenhuma turma selecionada, pulando carregamento de estatísticas');
+          return;
+        }
+        
+        if (disciplinaId) {
+          console.log('%c[Faltas] DISCIPLINA SELECIONADA', 'color: purple; font-weight: bold; font-size: 12px');
+          console.log('[Faltas] DisciplinaId:', disciplinaId, '| TurmaId:', turmaId);
+          
+          try {
+            const estatisticas = await carregarEstatisticasFaltas(turmaId, disciplinaId);
+            console.log('[Faltas] ✓ Estatísticas filtradas por disciplina carregadas');
+            console.log('[Faltas] Estatísticas:', estatisticas);
+          } catch (erro) {
+            console.error('[Faltas] Erro ao carregar estatísticas filtradas:', erro);
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

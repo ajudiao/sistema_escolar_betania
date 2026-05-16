@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alunos - Administração | SGEB MED Angola</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <style>
+    #alunoModal .modal-body {
+      max-height: 70vh !important;
+      overflow-y: auto !important;
+      display: block !important;
+    }
+    #alunoModal .modal-content {
+      max-height: 90vh !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+   
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Sistema de Geatão Escolar Betânia</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- Principal -->
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link active" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Comunicação -->
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicação</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 11 18-5v12L3 13v-2z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">2</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gestão -->
+        <div class="nav-group">
+          <div class="nav-group-title">Gestão</div>
+          <div class="nav-item">
+            <a href="professores.html" class="nav-link" data-title="Professores">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Professores</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v4H4z" />
+                  <path d="M4 12h16v8H4z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="usuarios-sistema.html" class="nav-link" data-title="Usuários do Sistema">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-4-4h-1" />
+                  <circle cx="17" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Usuários do Sistema</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Disciplinas">
+              <span class="nav-link-icon">
+
+                <!-- Ícone Livro / Disciplinas -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                  <path d="M2 4h7a4 4 0 0 1 4 4v12a4 4 0 0 0-4-4H2z" />
+                  <path d="M22 4h-7a4 4 0 0 0-4 4v12a4 4 0 0 1 4-4h7z" />
+
+                </svg>
+
+              </span>
+              <span class="nav-link-text">Disciplinas</span>
+            </a>
+          </div>
+
+          <div class="nav-item">
+            <a href="classe.html" class="nav-link" data-title="Classes">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Classes</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="alunos.html" class="nav-link" data-title="Alunos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Alunos</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Conta -->
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="../../../index.html" class="nav-link" data-title="Sair">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left"><button class="mobile-toggle">☰</button>
+          <h1 class="header-title">Alunos</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">AD</div>
+            <div class="header-user-info"><span class="header-user-name" data-user-name>Administrador</span><span
+                class="header-user-role" data-user-role>Administração</span></div>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div id="flashMessage" class="alert" style="display: none;" role="alert"></div>
+        <div class="page-header d-flex justify-content-between align-items-center">
+          <div>
+            <h2 class="page-title">Gestão de Alunos</h2>
+            <p class="page-subtitle">Lista de alunos inscritos</p>
+          </div>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#alunoModal">Novo Aluno</button>
+        </div>
+
+        <!-- Filters -->
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row g-3 align-items-end">
+              <div class="col-md-6">
+                <label class="form-label">Pesquisar</label>
+                <input id="filterAlunoSearch" type="text" class="form-control" placeholder="Nome ou nº processo">
+              </div>
+              <!-- <div class="col-md-3">
+                <label class="form-label">Turma</label>
+                <select id="filterAlunoTurma" class="form-control form-select">
+                  <option value="">Todos</option>
+                  <option>TUR-10A</option>
+                  <option>TUR-11B</option>
+                  <option>TUR-12C</option>
+                </select>
+              </div> -->
+              <div class="col-md-3">
+                <button id="btnFilterAluno" class="btn btn-outline-primary w-100">Filtrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Classe</th>
+                    <th>Turma</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="alunosTableBody">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal: Ver Detalhes do Aluno -->
+        <div class="modal fade" id="alunoDetailsModal" tabindex="-1">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="alunoDetailsTitle">Detalhes do Aluno</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+                <!-- Informações Pessoais -->
+                <h6 class="text-primary border-bottom pb-2 mb-3">Informações Pessoais</h6>
+                <div class="row mb-3">
+                  <div class="col-md-8">
+                    <label class="form-label fw-bold">Nome</label>
+                    <p id="detailNome">-</p>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-bold">Status</label>
+                    <p id="detailStatus">-</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label fw-bold">Data Nascimento</label>
+                    <p id="detailDataNascimento">-</p>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-bold">Naturalidade</label>
+                    <p id="detailNaturalidade">-</p>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-bold">Número de BI</label>
+                    <p id="detailIdentidade">-</p>
+                  </div>
+                </div>
+
+                <!-- Contacto -->
+                <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Contacto</h6>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Telefone</label>
+                    <p id="detailTelefone">-</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Email</label>
+                    <p id="detailEmail">-</p>
+                  </div>
+                </div>
+
+                <!-- Endereço -->
+                <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Endereço</h6>
+                <div class="row mb-3">
+                  <div class="col-md-12">
+                    <label class="form-label fw-bold">Endereço Físico</label>
+                    <p id="detailEndereco">-</p>
+                  </div>
+                </div>
+
+                <!-- Encarregado -->
+                <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Encarregado</h6>
+                <div class="row mb-3">
+                  <div class="col-md-12">
+                    <label class="form-label fw-bold">Nome do Encarregado</label>
+                    <p id="detailEncarregado">-</p>
+                  </div>
+                </div>
+
+                <!-- Escolar -->
+                <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Informações Escolares</h6>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label fw-bold">Classe</label>
+                    <p id="detailCurso">-</p>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-bold">Turma</label>
+                    <p id="detailTurma">-</p>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-bold">Ano Letivo</label>
+                    <p id="detailAnoLetivo">-</p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal: Adicionar / Editar Aluno -->
+        <div class="modal fade" id="alunoModal" tabindex="-1">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="alunoModalTitle">Novo Aluno</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <form id="formAluno">
+                <div class="modal-body" style="max-height: 70vh; overflow-y: auto; display: block !important;">
+                  <input type="hidden" id="alunoId" value="">
+                  <input type="hidden" id="alunoAction" value="add">
+                  <div class="mb-3">
+                    <label class="form-label">Nome Completo</label>
+                    <input id="alunoNome" class="form-control" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Classe</label>
+                    <select id="alunoCurso" class="form-control form-select" required>
+                      <option value="">Selecionar Curso</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Turma</label>
+                    <select id="alunoTurma" class="form-control form-select" required>
+                      <option value="">Selecionar Turma</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Tipo de Documento</label>
+                    <div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipoDocumento" id="bi" value="BI" checked>
+                        <label class="form-check-label" for="bi">BI</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipoDocumento" id="passaporte" value="Passaporte">
+                        <label class="form-check-label" for="passaporte">Passaporte</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Número de Identidade</label>
+                    <input id="alunoIdentidade" class="form-control" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Telefone</label>
+                    <input id="alunoTelefone" class="form-control" type="tel" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Data de Nascimento</label>
+                    <input id="alunoDataNascimento" class="form-control" type="date" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Naturalidade</label>
+                    <input id="alunoNaturalidade" class="form-control" placeholder="Ex: Luanda" required>
+                  </div>
+
+                  <fieldset class="mb-3">
+                    <legend>Dados do Encarregado</legend>
+                    <div class="mb-3">
+                      <label class="form-label">Nome do Encarregado</label>
+                      <input id="encarregadoNome" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Telefone do Encarregado</label>
+                      <input id="encarregadoTelefone" class="form-control" type="tel">
+                    </div>
+                  </fieldset>
+
+                  <!-- ================= SEGURANÇA ================= -->
+                  <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Segurança</h6>
+                  <div class="mb-3">
+                    <label class="form-label">Email para Login</label>
+                    <input id="alunoEmail" name="alunoEmail" class="form-control" type="email" placeholder="Ex: maria.joao@aluno.school">
+                    <small class="form-text text-muted">Este email será usado para fazer login no sistema.</small>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Senha Inicial</label>
+                    <input id="alunoSenha" name="alunoSenha" class="form-control" type="password" placeholder="Senha para acesso ao sistema" autocomplete="new-password">
+                    <small class="form-text text-muted">O aluno poderá alterar a senha posteriormente.</small>
+                  </div>
+
+                  <!-- ================= ENDEREÇO ================= -->
+                  <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Endereço</h6>
+                  <div class="row">
+                    <div class="col-md-3 mb-3">
+                      <label class="form-label">Rua</label>
+                      <input id="alunoRua" class="form-control" type="text">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <label class="form-label">Bairro</label>
+                      <input id="alunoBairro" class="form-control" type="text">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <label class="form-label">Cidade</label>
+                      <input id="alunoCidade" class="form-control" type="text">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <label class="form-label">Província</label>
+                      <input id="alunoProvincia" class="form-control" type="text">
+                    </div>
+                  </div>
+
+                  <!-- ================= ESCOLA ANTERIOR ================= -->
+                  <div class="mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="alunoTransferido">
+                      <label class="form-check-label" for="alunoTransferido">
+                        Estudante transferido de outra instituição?
+                      </label>
+                    </div>
+                  </div>
+                  <div id="escolaAnterior" style="display: none;">
+                    <h6 class="text-primary border-bottom pb-2 mb-3">Escola Anterior</h6>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">Nome da Escola</label>
+                        <input id="escolaNome" class="form-control" type="text">
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label class="form-label">Classe</label>
+                        <input id="escolaClasse" class="form-control" type="text">
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label class="form-label">Turma</label>
+                        <input id="escolaTurma" class="form-control" type="text">
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label class="form-label">Turno</label>
+                        <select id="escolaTurno" class="form-control form-select">
+                          <option value="">Selecionar</option>
+                          <option>Manhã</option>
+                          <option>Tarde</option>
+                          <option>Noite</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label class="form-label">Ano de Conclusão</label>
+                        <input id="escolaAnoConclusao" class="form-control" type="number" min="2000" placeholder="Caso tenha concluido" max="2030">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Geatão Escolar Betânia &copy; 2026</p>
+      </footer>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/data-loader.js"></script>
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  <script src="../../js/alunos.js"></script>
+  <script>
+    // Debug: Teste de visibilidade do modal
+    console.log('[DEBUG] Página carregada');
+    
+    // Função para teste rápido do modal
+    window.testarModal = function() {
+      console.log('[DEBUG] Abrindo modal de teste...');
+      const modal = new bootstrap.Modal(document.getElementById('alunoModal'));
+      
+      // Preencher alguns campos para teste
+      document.getElementById('alunoNome').value = 'TESTE NOME';
+      document.getElementById('alunoTelefone').value = '923456789';
+      document.getElementById('alunoNaturalidade').value = 'Luanda';
+      
+      modal.show();
+      console.log('[DEBUG] Modal aberto. Verificar se os campos aparecem visíveis.');
+    };
+    
+    console.log('[DEBUG] Use window.testarModal() no console para testar');
+    
+    // Filter functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const filterBtn = document.getElementById('btnFilterAluno');
+      if (filterBtn) {
+        filterBtn.addEventListener('click', function () {
+          const searchValue = document.getElementById('filterAlunoSearch').value.toLowerCase();
+          const turmaValue = document.getElementById('filterAlunoTurma').value;
+
+          const rows = document.querySelectorAll('#alunosTableBody tr');
+          rows.forEach(row => {
+            const nome = row.cells[0].textContent.toLowerCase();
+            const turma = row.cells[2].textContent;
+
+            const matchesSearch = !searchValue || nome.includes(searchValue);
+            const matchesTurma = !turmaValue || turma === turmaValue;
+
+            row.style.display = matchesSearch && matchesTurma ? '' : 'none';
+          });
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

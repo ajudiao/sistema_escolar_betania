@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análise de Notas | SGEB</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <style>
+    .badge-pending { background-color: #f59e0b; }
+    .badge-approved { background-color: #10b981; }
+    .badge-rejected { background-color: #ef4444; }
+  </style>
+</head>
+<body>
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+    
+   <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Sistema de Geatão Escolar Betânia</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- Principal -->
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link active" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Comunicação -->
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicação</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 11 18-5v12L3 13v-2z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">2</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gestão -->
+        <div class="nav-group">
+          <div class="nav-group-title">Gestão</div>
+          <div class="nav-item">
+            <a href="professores.html" class="nav-link" data-title="Professores">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Professores</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v4H4z" />
+                  <path d="M4 12h16v8H4z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="usuarios-sistema.html" class="nav-link" data-title="Usuários do Sistema">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-4-4h-1" />
+                  <circle cx="17" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Usuários do Sistema</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Disciplinas">
+              <span class="nav-link-icon">
+
+                <!-- Ícone Livro / Disciplinas -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                  <path d="M2 4h7a4 4 0 0 1 4 4v12a4 4 0 0 0-4-4H2z" />
+                  <path d="M22 4h-7a4 4 0 0 0-4 4v12a4 4 0 0 1 4-4h7z" />
+
+                </svg>
+
+              </span>
+              <span class="nav-link-text">Disciplinas</span>
+            </a>
+          </div>
+
+          <div class="nav-item">
+            <a href="classe.html" class="nav-link" data-title="Classes">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Classes</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="alunos.html" class="nav-link" data-title="Alunos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Alunos</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Conta -->
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="../../../index.html" class="nav-link" data-title="Sair">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="header-title">Análise de Notas</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">AD</div>
+            <div class="header-user-info">
+              <span class="header-user-name" data-user-name>Administrador</span>
+              <span class="header-user-role" data-user-role>Admin</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div class="page-content">
+        <div class="page-header mb-4">
+          <h2 class="page-title">Análise de Notas Lançadas</h2>
+          <p class="page-subtitle">Revisar e aprovar notas dos professores</p>
+        </div>
+
+        <!-- Filtros -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-3">
+                <label class="form-label">Turma</label>
+                <select class="form-control">
+                  <option value="">Todas</option>
+                  <option value="11A">11ª A</option>
+                  <option value="12B">12ª B</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Status</label>
+                <select class="form-control">
+                  <option value="">Todos</option>
+                  <option value="pendente">Pendente</option>
+                  <option value="aprovado">Aprovado</option>
+                  <option value="rejeitado">Rejeitado</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Trimestre</label>
+                <select class="form-control">
+                  <option value="1">I Trimestre</option>
+                  <option value="2">II Trimestre</option>
+                  <option value="3">III Trimestre</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">&nbsp;</label>
+                <button class="btn btn-primary w-100">Filtrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela de Análise -->
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Notas Lançadas para Revisão</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Professor</th>
+                    <th>Turma</th>
+                    <th>Disciplina</th>
+                    <th>Trimestre</th>
+                    <th>Alunos</th>
+                    <th>Status</th>
+                    <th>Data Lançamento</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tabelaNotas">
+                  <tr>
+                    <td>João Ferreira</td>
+                    <td>11ª A</td>
+                    <td>Matemática</td>
+                    <td>I</td>
+                    <td>25</td>
+                    <td><span class="badge badge-pending">Pendente</span></td>
+                    <td>2026-11-18</td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-info btn-view" data-professor="João Ferreira" data-turma="11ª A" data-disciplina="Matemática" data-status="pendente" data-bs-toggle="modal" data-bs-target="#detalhesModal">Ver</button>
+                      <button class="btn btn-sm btn-outline-success btn-aprovar" data-id="1">Aprovar</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Maria João</td>
+                    <td>12ª B</td>
+                    <td>Física</td>
+                    <td>I</td>
+                    <td>28</td>
+                    <td><span class="badge badge-approved">Aprovado</span></td>
+                    <td>2026-11-15</td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-info btn-view" data-professor="Maria João" data-turma="12ª B" data-disciplina="Física" data-status="aprovado" data-bs-toggle="modal" data-bs-target="#detalhesModal">Ver</button>
+                      <button class="btn btn-sm btn-outline-danger btn-liberar" data-id="2">Liberar para Alunos</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Joaquim Silva</td>
+                    <td>13ª A</td>
+                    <td>Química</td>
+                    <td>I</td>
+                    <td>22</td>
+                    <td><span class="badge badge-rejected">Rejeitado</span></td>
+                    <td>2026-11-12</td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-info btn-view" data-professor="Joaquim Silva" data-turma="13ª A" data-disciplina="Química" data-status="rejeitado" data-bs-toggle="modal" data-bs-target="#detalhesModal">Ver</button>
+                      <button class="btn btn-sm btn-outline-secondary" disabled>Enviado</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: Detalhes das Notas -->
+  <div class="modal fade" id="detalhesModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalhes do Lançamento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Professor</label>
+              <p id="detailProfessor">-</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Status</label>
+              <p><span id="detailStatus" class="badge">-</span></p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Turma</label>
+              <p id="detailTurma">-</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Disciplina</label>
+              <p id="detailDisciplina">-</p>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-sm table-hover">
+              <thead>
+                <tr>
+                  <th>Aluno</th>
+                  <th class="text-center">MAC</th>
+                  <th class="text-center">NPP</th>
+                  <th class="text-center">NPT</th>
+                  <th class="text-center">MT</th>
+                </tr>
+              </thead>
+              <tbody id="detailNotas">
+                <tr>
+                  <td>Ana Silva</td>
+                  <td class="text-center">15</td>
+                  <td class="text-center">14</td>
+                  <td class="text-center">16</td>
+                  <td class="text-center fw-bold">15</td>
+                </tr>
+                <tr>
+                  <td>Bruno Costa</td>
+                  <td class="text-center">14</td>
+                  <td class="text-center">13</td>
+                  <td class="text-center">15</td>
+                  <td class="text-center fw-bold">14</td>
+                </tr>
+                <tr>
+                  <td>Carla Santos</td>
+                  <td class="text-center">16</td>
+                  <td class="text-center">15</td>
+                  <td class="text-center">17</td>
+                  <td class="text-center fw-bold">16</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Função para mostrar notificação
+      function showNotification(message, type = 'success') {
+        let container = document.querySelector('.toast-container');
+        if (!container) {
+          container = document.createElement('div');
+          container.className = 'toast-container position-fixed top-0 end-0 p-3';
+          container.style.zIndex = '1100';
+          document.body.appendChild(container);
+        }
+
+        const toastId = 'toast-' + Date.now();
+        const bgClass = {
+          'success': 'bg-success',
+          'danger': 'bg-danger',
+          'warning': 'bg-warning',
+          'info': 'bg-primary'
+        }[type] || 'bg-primary';
+
+        const toastHtml = `
+          <div id="${toastId}" class="toast align-items-center text-white ${bgClass} border-0" role="alert">
+            <div class="d-flex">
+              <div class="toast-body">${message}</div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+          </div>
+        `;
+
+        container.insertAdjacentHTML('beforeend', toastHtml);
+        const toastElement = document.getElementById(toastId);
+        const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
+        toast.show();
+      }
+
+      // Ver detalhes
+      document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.btn-view');
+        if (!btn) return;
+
+        const professor = btn.getAttribute('data-professor');
+        const turma = btn.getAttribute('data-turma');
+        const disciplina = btn.getAttribute('data-disciplina');
+        const status = btn.getAttribute('data-status');
+
+        document.getElementById('detailProfessor').textContent = professor;
+        document.getElementById('detailTurma').textContent = turma;
+        document.getElementById('detailDisciplina').textContent = disciplina;
+        
+        const statusEl = document.getElementById('detailStatus');
+        statusEl.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+        statusEl.className = 'badge badge-' + status;
+
+        console.log('[API] GET /api/admin/analise-notas/' + disciplina, {
+          professor: professor,
+          turma: turma,
+          disciplina: disciplina,
+          status: status
+        });
+      });
+
+      // Aprovar notas
+      document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.btn-aprovar');
+        if (!btn) return;
+
+        const id = btn.getAttribute('data-id');
+        const data = { acao: 'aprovar_notas', id: id };
+        console.log('[API] POST /api/admin/aprovar-notas', data);
+        showNotification('Notas aprovadas com sucesso!', 'success');
+      });
+
+      // Liberar para alunos
+      document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.btn-liberar');
+        if (!btn) return;
+
+        const id = btn.getAttribute('data-id');
+        const data = { acao: 'liberar_notas_alunos', id: id };
+        console.log('[API] POST /api/admin/liberar-notas', data);
+        showNotification('Notas liberadas para os alunos!', 'success');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avisos - Professor | SGEB MED Angola</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="css/professor.css">
+</head>
+<body>
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Gestao Escolar</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Academico</div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Minhas Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          
+          <div class="nav-item">
+            <a href="faltas.html" class="nav-link" data-title="Faltas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="10" y1="14" x2="14" y2="18"/><line x1="14" y1="14" x2="10" y2="18"/></svg>
+              </span>
+              <span class="nav-link-text">Faltas</span>
+            </a>
+          </div>
+
+           <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Minhas Disciplinas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </span>
+              <span class="nav-link-text">Minhas Disciplinas</span>
+            </a>
+          </div>
+
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicacao</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link active" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">3</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+             <a href="../../../index.html" class="nav-link" data-title="Sair">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="header-title">Avisos</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">JF</div>
+            <div class="header-user-info">
+              <span class="header-user-name" data-user-name>Joao Ferreira</span>
+              <span class="header-user-role" data-user-role>Professor</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div class="page-content">
+        <!-- Spinner de carregamento -->
+        <div id="loadingSpinner" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status" style="width: 2rem; height: 2rem;">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+          <p class="text-muted mt-2">Carregando avisos...</p>
+        </div>
+
+        <!-- Conteúdo (oculto enquanto carrega) -->
+        <div id="pageContent" style="display: none;">
+          <!-- Filters -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                  <label class="form-label">Tipo</label>
+                  <select class="form-control form-select" id="filtroTipo">
+                    <option value="">Todos os tipos</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Status</label>
+                  <select class="form-control form-select" id="filtroStatus">
+                    <option value="">Todos</option>
+                    <option value="nao_lido">Não lidos</option>
+                    <option value="lido">Lidos</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Pesquisar</label>
+                  <input type="text" class="form-control" id="buscaAviso" placeholder="Buscar aviso...">
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-primary w-100" id="btnFiltrar">Filtrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Avisos List -->
+          <div class="avisos-list" id="avisosList">
+          </div>
+        </div>
+      </div>
+      
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Gestao Escolar - 2026 - Ministerio da Educacao de Angola</p>
+      </footer>
+    </main>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/sidebar.js"></script>
+  <script src="js/professor.js"></script>
+  <script>
+    // ========== HELPERS ==========
+    function getClassesTipo(tipo) {
+      const tiposMap = {
+        'urgente': 'aviso-urgente badge-danger',
+        'informativo': 'aviso-informativo badge-info',
+        'evento': 'aviso-evento badge-success',
+        'default': 'aviso-informativo badge-secondary'
+      };
+      return tiposMap[tipo] || tiposMap.default;
+    }
+
+    function nomeadoBadgeTipo(tipo) {
+      const tiposNome = {
+        'urgente': 'Urgente',
+        'informativo': 'Informativo',
+        'evento': 'Evento'
+      };
+      return tiposNome[tipo] || 'Aviso';
+    }
+
+    function formatarData(data) {
+      if (!data) return '-';
+      const dt = new Date(data);
+      return dt.toLocaleDateString('pt-AO', { 
+        day: '2-digit', 
+        month: 'short', 
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      }) + ', ' + dt.toLocaleTimeString('pt-AO', { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+      });
+    }
+
+    function showFlashMessage(message, type = 'success') {
+      const existingFlash = document.querySelector('.alert');
+      if (existingFlash) {
+        existingFlash.remove();
+      }
+      const flash = document.createElement('div');
+      flash.className = `alert alert-${type} alert-dismissible fade show`;
+      flash.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      `;
+      const pageContent = document.getElementById('pageContent');
+      if (pageContent.firstChild) {
+        pageContent.insertBefore(flash, pageContent.firstChild);
+      } else {
+        pageContent.prepend(flash);
+      }
+      setTimeout(() => {
+        if (flash.parentNode) {
+          flash.remove();
+        }
+      }, 5000);
+    }
+
+    // ========== GERENCIAR AVISOS LIDOS ==========
+    function getAvisosLidosDoLocalStorage() {
+      const avisosLidos = localStorage.getItem('avisosLidos');
+      console.log('%c[STORAGE] Lendo avisosLidos do localStorage:', 'color: purple;', avisosLidos);
+      return avisosLidos ? JSON.parse(avisosLidos) : [];
+    }
+
+    function salvarAvisoComoLidoNoLocalStorage(avisoId) {
+      // Converter para número para garantir consistência
+      const id = parseInt(avisoId, 10);
+      console.log('%c[STORAGE] Tentando guardar aviso como lido - ID:', 'color: purple;', id, '(tipo:', typeof id + ')');
+      
+      const avisosLidos = getAvisosLidosDoLocalStorage();
+      
+      if (!avisosLidos.includes(id)) {
+        avisosLidos.push(id);
+        localStorage.setItem('avisosLidos', JSON.stringify(avisosLidos));
+        console.log('%c[STORAGE] Aviso guardado! Lista atual:', 'color: green;', avisosLidos);
+      } else {
+        console.log('%c[STORAGE] Aviso já estava na lista:', 'color: orange;', avisosLidos);
+      }
+    }
+
+    function verificarSeAvisoEstaLido(avisoId) {
+      // Converter para número para garantir consistência
+      const id = parseInt(avisoId, 10);
+      const avisosLidos = getAvisosLidosDoLocalStorage();
+      const estaLido = avisosLidos.includes(id);
+      console.log('%c[STORAGE] Verificando se aviso %d está lido:', 'color: purple;', id, estaLido, '| Lista:', avisosLidos);
+      return estaLido;
+    }
+
+    // ========== CARREGAMENTO INICIAL ==========
+    async function carregarDados() {
+      const spinner = document.getElementById('loadingSpinner');
+      const content = document.getElementById('pageContent');
+      
+      try {
+        console.log('%c[AVISOS] Iniciando carregamento...', 'color: blue; font-weight: bold;');
+        
+        // Carregar dados do professor
+        const usuarioId = localStorage.getItem('userId');
+        const professor = await api.getProfessorByUsuario(usuarioId);
+        
+        console.log('%c[AVISOS] Professor carregado:', 'color: green;', professor);
+        
+        // Atualizar header
+        const headerName = document.querySelector('.header-user-name');
+        const headerAvatar = document.querySelector('.header-user-avatar');
+        
+        headerName.textContent = professor.nome_prof || 'Professor';
+        headerAvatar.textContent = professor.nome_prof
+          ? professor.nome_prof.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)
+          : 'JF';
+        
+        // Carregar avisos
+        const avisos = await api.getAvisos();
+        
+        console.log('%c[AVISOS] Avisos carregados:', 'color: green;', avisos);
+        
+        if (!avisos || avisos.length === 0) {
+          const avisosList = document.getElementById('avisosList');
+          avisosList.innerHTML = '<div class="alert alert-info">Nenhum aviso disponível.</div>';
+          spinner.style.display = 'none';
+          content.style.display = 'block';
+          return;
+        }
+        
+        // Popular avisos
+        renderizarAvisos(avisos);
+        
+        // Preencher tipos únicos no dropdown
+        const tiposUnicos = [...new Set(avisos.map(a => a.tipo || 'informativo'))];
+        const filtroTipo = document.getElementById('filtroTipo');
+        tiposUnicos.forEach(tipo => {
+          const option = document.createElement('option');
+          option.value = tipo;
+          option.textContent = nomeadoBadgeTipo(tipo);
+          filtroTipo.appendChild(option);
+        });
+        
+        // Setup event listeners
+        // setupEventListeners(); // Removido - botão "Marcar como Lido" foi removido
+        
+        spinner.style.display = 'none';
+        content.style.display = 'block';
+        
+        console.log('%c[AVISOS] Carregamento concluído!', 'color: green; font-weight: bold;');
+        
+      } catch (erro) {
+        console.error('%c[AVISOS] Erro ao carregar:', 'color: red;', erro);
+        spinner.innerHTML = `<div class="alert alert-danger">Erro ao carregar avisos: ${erro.message}</div>`;
+      }
+    }
+
+    // ========== RENDERIZAR AVISOS ==========
+    function renderizarAvisos(avisos) {
+      const avisosList = document.getElementById('avisosList');
+      avisosList.innerHTML = '';
+      
+      console.log('%c[AVISOS] Iniciando renderização com', 'color: blue; font-weight: bold;', avisos.length, 'avisos');
+      console.log('%c[AVISOS] Avisos lidos no localStorage:', 'color: purple;', getAvisosLidosDoLocalStorage());
+      
+      avisos.forEach((aviso, index) => {
+        console.log(`%c[AVISOS] Renderizando aviso ${index + 1}:`, 'color: blue;', 'ID:', aviso.id, 'Título:', aviso.titulo);
+        const tipo = aviso.tipo || 'informativo';
+        // Verificar se o aviso já foi lido
+        const jaLido = verificarSeAvisoEstaLido(aviso.id);
+        console.log(`%c[AVISOS] ↳ Aviso ID ${aviso.id} já lido: ${jaLido}`, 'color: ' + (jaLido ? 'green' : 'orange') + ';');
+        const status = jaLido ? 'lido' : 'nao_lido';
+        const classes = getClassesTipo(tipo);
+        const nomeStatus = status === 'nao_lido' ? 'Não Lido' : 'Lido';
+        const badgeStatus = status === 'nao_lido' ? 'badge-warning' : 'badge-secondary';
+        
+        const avisoCard = document.createElement('div');
+        avisoCard.className = `aviso-card ${classes} aviso-${status}`;
+        avisoCard.dataset.tipo = tipo;
+        avisoCard.dataset.status = status;
+        avisoCard.dataset.id = aviso.id;
+        
+        const badgesClasses = classes.split(' ');
+        const badgeColor = badgesClasses[1] || 'badge-secondary';
+        
+        // Se já está lido, não mostrar o botão "Marcar como Lido"
+        const botaoMarcarLido = '';
+        
+        avisoCard.innerHTML = `
+          <div class="aviso-header">
+            <div class="aviso-badges">
+              <span class="badge ${badgeColor}">${nomeadoBadgeTipo(tipo)}</span>
+              <span class="badge ${badgeStatus}">${nomeStatus}</span>
+            </div>
+            <span class="aviso-data">${formatarData(aviso.data_aviso || aviso.createdAt)}</span>
+          </div>
+          <h5 class="aviso-titulo">${aviso.titulo_aviso || aviso.titulo || 'Sem título'}</h5>
+          <p class="aviso-texto">${aviso.conteudo_aviso || aviso.conteudo || 'Sem conteúdo'}</p>
+          <div class="aviso-footer">
+            <span class="aviso-autor">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              ${aviso.autor_aviso || 'Sistema'}
+            </span>
+            ${botaoMarcarLido}
+          </div>
+        `;
+        
+        avisosList.appendChild(avisoCard);
+      });
+    }
+ 
+    // ========== FILTRAR AVISOS ==========
+    function filtrarAvisos() {
+      const tipoSelecionado = document.getElementById('filtroTipo').value;
+      const statusSelecionado = document.getElementById('filtroStatus').value;
+      const termoBusca = document.getElementById('buscaAviso').value.toLowerCase().trim();
+      const avisos = document.querySelectorAll('.aviso-card');
+
+      avisos.forEach(aviso => {
+        const tipo = aviso.dataset.tipo;
+        const status = aviso.dataset.status;
+        const titulo = aviso.querySelector('.aviso-titulo').textContent.toLowerCase();
+        const texto = aviso.querySelector('.aviso-texto').textContent.toLowerCase();
+
+        const matchTipo = !tipoSelecionado || tipo === tipoSelecionado;
+        const matchStatus = !statusSelecionado || status === statusSelecionado;
+        const matchBusca = !termoBusca || titulo.includes(termoBusca) || texto.includes(termoBusca);
+
+        if (matchTipo && matchStatus && matchBusca) {
+          aviso.style.display = 'block';
+        } else {
+          aviso.style.display = 'none';
+        }
+      });
+    }
+
+    // ========== ATUALIZAR CONTADOR ==========
+    function atualizarContadorNaoLidos() {
+      const naoLidos = document.querySelectorAll('.aviso-card[data-status="nao_lido"]').length;
+      const badge = document.querySelector('.nav-badge');
+      if (badge) {
+        badge.textContent = naoLidos;
+        if (naoLidos === 0) {
+          badge.style.display = 'none';
+        } else {
+          badge.style.display = 'inline';
+        }
+      }
+    }
+
+    // ========== SETUP EVENT LISTENERS ==========
+    function setupEventListeners() {
+      const btnFiltrar = document.getElementById('btnFiltrar');
+      const buscaAviso = document.getElementById('buscaAviso');
+      const filtroTipo = document.getElementById('filtroTipo');
+      const filtroStatus = document.getElementById('filtroStatus');
+
+      if (btnFiltrar) {
+        btnFiltrar.addEventListener('click', filtrarAvisos);
+      }
+      if (buscaAviso) {
+        buscaAviso.addEventListener('input', filtrarAvisos);
+      }
+      if (filtroTipo) {
+        filtroTipo.addEventListener('change', filtrarAvisos);
+      }
+      if (filtroStatus) {
+        filtroStatus.addEventListener('change', filtrarAvisos);
+      }
+
+      document.addEventListener('click', function (e) {
+        // Event listener para botões "Marcar como Lido" removido - botão foi removido
+      });
+
+      atualizarContadorNaoLidos();
+    }
+
+    // ========== INICIALIZAÇÃO ==========
+    document.addEventListener('DOMContentLoaded', carregarDados);
+  </script>
+</body>
+</html>

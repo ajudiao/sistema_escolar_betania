@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professores - Administração | SGEB MED Angola</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
+</head>
+
+<body data-protected="true">
+  <div class="main-wrapper">
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="sidebar-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">SGEB</div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">Sistema de Geatão Escolar Betânia</span>
+          <span class="sidebar-brand-subtitle">MED Angola</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- Principal -->
+        <div class="nav-group">
+          <div class="nav-group-title">Principal</div>
+          <div class="nav-item">
+            <a href="dashboard.html" class="nav-link active" data-title="Dashboard">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Comunicação -->
+        <div class="nav-group">
+          <div class="nav-group-title">Comunicação</div>
+          <div class="nav-item">
+            <a href="avisos.html" class="nav-link" data-title="Avisos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 11 18-5v12L3 13v-2z" />
+                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Avisos</span>
+              <span class="nav-badge">2</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gestão -->
+        <div class="nav-group">
+          <div class="nav-group-title">Gestão</div>
+          <div class="nav-item">
+            <a href="professores.html" class="nav-link" data-title="Professores">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Professores</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="turmas.html" class="nav-link" data-title="Turmas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Turmas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="notas.html" class="nav-link" data-title="Notas">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v4H4z" />
+                  <path d="M4 12h16v8H4z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Notas</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="usuarios-sistema.html" class="nav-link" data-title="Usuários do Sistema">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-4-4h-1" />
+                  <circle cx="17" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Usuários do Sistema</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="disciplinas.html" class="nav-link" data-title="Disciplinas">
+              <span class="nav-link-icon">
+
+                <!-- Ícone Livro / Disciplinas -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                  <path d="M2 4h7a4 4 0 0 1 4 4v12a4 4 0 0 0-4-4H2z" />
+                  <path d="M22 4h-7a4 4 0 0 0-4 4v12a4 4 0 0 1 4-4h7z" />
+
+                </svg>
+
+              </span>
+              <span class="nav-link-text">Disciplinas</span>
+            </a>
+          </div>
+
+          <div class="nav-item">
+            <a href="classe.html" class="nav-link" data-title="Classes">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Classes</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="alunos.html" class="nav-link" data-title="Alunos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Alunos</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Conta -->
+        <div class="nav-group">
+          <div class="nav-group-title">Conta</div>
+          <div class="nav-item">
+            <a href="perfil.html" class="nav-link" data-title="Meu Perfil">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Meu Perfil</span>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#" class="nav-link" data-title="Sair" data-logout>
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Sair</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle">
+          <span class="sidebar-toggle-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </span>
+          <span class="sidebar-toggle-text">Recolher menu</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="mobile-toggle">☰</button>
+          <h1 class="header-title">Professores</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-user">
+            <div class="header-user-avatar">AD</div>
+            <div class="header-user-info"><span class="header-user-name" data-user-name>Administrador</span><span
+                class="header-user-role" data-user-role>Administração</span></div>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="page-header d-flex justify-content-between align-items-center">
+          <div>
+            <h2 class="page-title">Gestão de Professores</h2>
+            <p class="page-subtitle">Lista de docentes registados no sistema</p>
+          </div>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profModal">Novo Professor</button>
+        </div>
+
+        <!-- Filters -->
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row g-3 align-items-end">
+              <div class="col-md-5">
+                <label class="form-label">Pesquisar</label>
+                <input type="text" id="filterProfSearch" class="form-control" placeholder="Nome do professor">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Disciplina</label>
+                <select id="filterProfDisc" class="form-control form-select">
+                  <option value="">Todas</option>
+                  <option>Matemática</option>
+                  <option>Física</option>
+                  <option>Biologia</option>
+                  <option>Biologia</option>
+                  <option>Biologia</option>
+                </select>
+              </div>
+              <!-- <div class="col-md-2">
+                <label class="form-label">Turma</label>
+                <select id="filterProfTurma" class="form-control form-select">
+                  <option value="">Todas</option>
+                  <option value="1">INFGEST-10AD1 — Manhã — A101</option>
+                  <option value="2">Turma B1 — Tarde — B202</option>
+                  <option value="3">Turma C1 — Noite — C303</option>
+                </select>
+              </div> -->
+              <div class="col-md-2">
+                <button id="btnFilterProf" class="btn btn-outline-primary w-100">Filtrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Formação</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal: Ver Detalhes do Professor -->
+        <div class="modal fade" id="profDetailsModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Detalhes do Professor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Nome</label>
+                    <p id="profDetailNome">-</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Email</label>
+                    <p id="profDetailEmail">-</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Telefone</label>
+                    <p id="profDetailTelefone">-</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Disciplinas</label>
+                    <p id="profDetailDisciplinas">-</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Formação</label>
+                    <p id="profDetailFormacao">-</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Status</label>
+                    <p id="profDetailStatus">-</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Turma(s)</label>
+                    <p id="profDetailTurmas">-</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Disciplinas lecionadas</label>
+                    <p id="profDetailDisciplinasLecionadas">-</p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal: Adicionar / Editar Professor -->
+        <div class="modal fade" id="profModal" tabindex="-1">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="profModalTitle">Novo Professor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <form id="formProfessor">
+                <div class="modal-body">
+
+                  <input type="hidden" id="profModalForm">
+                  <input type="hidden" id="profId">
+
+                  <!-- ================= DADOS PESSOAIS ================= -->
+                  <h6 class="text-primary border-bottom pb-2 mb-3">Dados Pessoais</h6>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Nome Completo</label>
+                      <input type="text" id="profNome" class="form-control" name="nome_completo" autocomplete="name" required>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                      <label class="form-label">Data de Nascimento</label>
+                      <input type="date" class="form-control" name="data_nascimento" autocomplete="bday" required>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                      <label class="form-label">Status</label>
+                      <select id="profStatus" class="form-select" name="status">
+                        <option value="ATIVO">Ativo</option>
+                        <option value="INATIVO">Inativo</option>
+                        <option value="LICENCA">Licença</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Filiação</label>
+                      <input type="text" class="form-control" name="filiacao" autocomplete="additional-name">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Nacionalidade</label>
+                      <input type="text" class="form-control" name="nacionalidade" autocomplete="country-name">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Email</label>
+                      <input type="email" id="profEmail" class="form-control" name="email" autocomplete="email">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Telefone</label>
+                      <input type="tel" id="profTelefone" class="form-control" name="telefone" autocomplete="tel">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-3" id="senhaGroup">
+                      <label class="form-label">Senha Inicial</label>
+                      <input type="password" id="profSenha" class="form-control" name="senha" autocomplete="new-password">
+                    </div>
+                  </div>
+
+                  <!-- ================= DOCUMENTO ================= -->
+                  <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Documento de Identificação</h6>
+
+                  <div class="row">
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label d-block">Tipo</label>
+
+                      <div class="d-flex gap-2">
+                        <input type="radio" class="btn-check" name="documento_tipo" id="bi" value="BI" checked>
+                        <label class="btn btn-outline-primary" for="bi">BI</label>
+
+                          <input type="radio" class="btn-check" name="documento_tipo" id="passaporte" value="Passaporte">
+                          <label class="btn btn-outline-primary" for="passaporte">Passaporte</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Número</label>
+                      <input type="text" class="form-control" name="documento_numero" autocomplete="off">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Data de Emissão</label>
+                      <input type="date" class="form-control" name="documento_emissao" autocomplete="off">
+                    </div>
+                  </div>
+
+                  <!-- ================= ENDEREÇO ================= -->
+                  <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Endereço</h6>
+
+                  <div class="row">
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Rua</label>
+                      <input type="text" class="form-control" name="rua" autocomplete="address-line1">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Bairro</label>
+                      <input type="text" class="form-control" name="bairro" autocomplete="address-line2">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Cidade</label>
+                      <input type="text" class="form-control" name="cidade" autocomplete="address-level2">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Província</label>
+                      <input type="text" class="form-control" name="provincia" autocomplete="address-level1">
+                    </div>
+                  </div>
+
+                  <!-- ================= ACADÉMICO ================= -->
+                  <h6 class="text-primary border-bottom pb-2 mb-3 mt-4">Habilitações & Ensino</h6>
+
+                  <div class="row">
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Grau Académico</label>
+                      <select class="form-select" name="grau_academico" autocomplete="off">
+                        <option value="">Selecione...</option>
+                        <option value="LICENCIATURA">Licenciatura</option>
+                        <option value="MESTRADO">Mestrado</option>
+                        <option value="DOUTORAMENTO">Doutoramento</option>
+                        <option value="BACHARELATO">Bacharelato</option>
+                        <option value="OUTRO">Outro</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Área de Formação</label>
+                      <input type="text" id="profFormacao" class="form-control" name="area_formacao" autocomplete="off">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label">Ano de Conclusão</label>
+                      <input type="number" class="form-control" name="ano_conclusao" autocomplete="off">
+                    </div>
+                  </div>
+
+                  <!-- DISCIPLINAS -->
+                  <div class="mb-3">
+                    <label class="form-label">Disciplinas</label>
+                    <div id="disciplinasContainer" class="border rounded p-3 d-grid gap-2" style="max-height:150px; overflow-y:auto;">
+                      <div class="text-muted small">Carregando disciplinas...</div>
+                    </div>
+                  </div>
+
+                  <!-- TURMAS -->
+                  <div class="mb-3">
+                    <label class="form-label">Turmas</label>
+                    <div id="turmasContainer" class="border rounded p-3 d-grid gap-2" style="max-height:150px; overflow-y:auto;">
+                      <div class="text-muted small">Carregando turmas...</div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" id="btnSalvarProf" class="btn btn-primary">
+                    <span id="btnTexto">Guardar</span>
+                    <span id="btnSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status">
+                      <span class="visually-hidden">Carregando...</span>
+                    </span>
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="main-footer">
+        <p class="mb-0">Sistema de Geatão Escolar Betânia &copy; 2026</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/global.js"></script>
+  <script src="../../js/sidebar.js"></script>
+
+  <!-- API Scripts -->
+  <script src="../../js/api-service.js"></script>
+  <script src="../../js/auth-helper.js"></script>
+  <script src="../../js/data-loader.js"></script>
+
+  <script>
+    // Proteger página para ADMIN
+    AuthHelper.checkRole(['ADMIN']);
+
+    let professoresData = [];
+    let disciplinasData = [];
+    let turmasData = [];
+
+    // =========== CARREGAR E RENDERIZAR DISCIPLINAS ===========
+    async function loadDisciplinas() {
+      try {
+        disciplinasData = await api.getDisciplinas();
+        renderDisciplinasCheckboxes();
+      } catch (error) {
+        console.error('Erro ao carregar disciplinas:', error);
+        const container = document.getElementById('disciplinasContainer');
+        container.innerHTML = '<div class="text-danger small">Erro ao carregar disciplinas</div>';
+      }
+    }
+
+    function renderDisciplinasCheckboxes(selectedIds = []) {
+      const container = document.getElementById('disciplinasContainer');
+      container.innerHTML = '';
+
+      if (!disciplinasData || disciplinasData.length === 0) {
+        container.innerHTML = '<div class="text-muted small">Nenhuma disciplina cadastrada</div>';
+        return;
+      }
+
+      disciplinasData.forEach(disciplina => {
+        const isChecked = selectedIds.includes(disciplina.id_disc) ? 'checked' : '';
+        const div = document.createElement('div');
+        div.className = 'form-check';
+        div.innerHTML = `<input class="form-check-input" type="checkbox" name="disciplinas" value="${disciplina.id_disc}" ${isChecked}> ${disciplina.sigla_disc || 'N/A'}`;
+        container.appendChild(div);
+      });
+    }
+
+    // =========== CARREGAR E RENDERIZAR TURMAS ===========
+    async function loadTurmas() {
+      try {
+        turmasData = await api.getTurmas();
+        renderTurmasCheckboxes();
+      } catch (error) {
+        console.error('Erro ao carregar turmas:', error);
+        const container = document.getElementById('turmasContainer');
+        container.innerHTML = '<div class="text-danger small">Erro ao carregar turmas</div>';
+      }
+    }
+
+    function renderTurmasCheckboxes(selectedIds = []) {
+      const container = document.getElementById('turmasContainer');
+      container.innerHTML = '';
+
+      if (!turmasData || turmasData.length === 0) {
+        container.innerHTML = '<div class="text-muted small">Nenhuma turma cadastrada</div>';
+        return;
+      }
+
+      turmasData.forEach(turma => {
+        const isChecked = selectedIds.includes(turma.id_turma) ? 'checked' : '';
+        const div = document.createElement('div');
+        div.className = 'form-check';
+        div.innerHTML = `<input class="form-check-input" type="checkbox" name="turmas" value="${turma.id_turma}" ${isChecked}> ${turma.sigla_turma || 'Turma'} - ${turma.classe_turma || ''}`;
+        container.appendChild(div);
+      });
+    }
+
+    // =========== VALIDAÇÃO ===========
+    function validateForm() {
+      let isValid = true;
+      
+      // Limpar mensagens de erro anteriores
+      document.querySelectorAll('[id*="Error"]').forEach(el => el.textContent = '');
+      
+      // Nome obrigatório
+      const profNome = document.getElementById('profNome').value.trim();
+      if (!profNome) {
+        DataLoader.showError('Nome é obrigatório');
+        isValid = false;
+      }
+      
+      // Email obrigatório
+      const profEmail = document.getElementById('profEmail').value.trim();
+      if (!profEmail) {
+        DataLoader.showError('Email é obrigatório');
+        isValid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profEmail)) {
+        DataLoader.showError('Email inválido');
+        isValid = false;
+      }
+      
+      // Telefone obrigatório
+      const profTelefone = document.getElementById('profTelefone').value.trim();
+      if (!profTelefone) {
+        DataLoader.showError('Telefone é obrigatório');
+        isValid = false;
+      }
+      
+      // Numero de BI obrigatório
+      const biNum = document.querySelector('input[name="documento_numero"]').value.trim();
+      if (!biNum) {
+        DataLoader.showError('Número de BI é obrigatório');
+        isValid = false;
+      }
+      
+      // Data de nascimento obrigatória
+      const dataNasc = document.querySelector('input[name="data_nascimento"]').value;
+      if (!dataNasc) {
+        DataLoader.showError('Data de nascimento é obrigatória');
+        isValid = false;
+      } else {
+        const dataNascError = Utils.validarDataNascimento(dataNasc, 18, 100);
+        if (dataNascError) {
+          DataLoader.showError(dataNascError);
+          isValid = false;
+        }
+      }
+      
+      // Data de emissão do BI obrigatória
+      const dataEmissao = document.querySelector('input[name="documento_emissao"]').value;
+      if (!dataEmissao) {
+        DataLoader.showError('Data de emissão do BI é obrigatória');
+        isValid = false;
+      }
+      
+      // Naturalidade obrigatória
+      const cidade = document.querySelector('input[name="cidade"]').value.trim();
+      if (!cidade) {
+        DataLoader.showError('Naturalidade é obrigatória');
+        isValid = false;
+      }
+      
+      // Endereço obrigatório (rua)
+      const rua = document.querySelector('input[name="rua"]').value.trim();
+      if (!rua) {
+        DataLoader.showError('Rua é obrigatória');
+        isValid = false;
+      }
+      
+      // Senha obrigatória apenas para novo professor
+      const profId = document.getElementById('profModalForm').getAttribute('data-id');
+      if (!profId) {
+        const profSenha = document.getElementById('profSenha').value.trim();
+        if (!profSenha) {
+          DataLoader.showError('Senha é obrigatória para novo professor');
+          isValid = false;
+        } else if (profSenha.length < 6) {
+          DataLoader.showError('Senha deve ter pelo menos 6 caracteres');
+          isValid = false;
+        }
+      }
+      
+      return isValid;
+    }
+
+    // Carregar professores da API
+    async function loadProfessores() {
+      try {
+        DataLoader.showLoading('Carregando professores...');
+        professoresData = await api.getProfessores('ATIVO');
+        DataLoader.hideLoading();
+        renderProfessoresTable(professoresData);
+      } catch (error) {
+        DataLoader.hideLoading();
+        DataLoader.showError('Erro ao carregar professores: ' + error.message);
+      }
+    }
+
+    // Renderizar tabela de professores
+    function renderProfessoresTable(professores) {
+      const tbody = document.querySelector('table tbody');
+      tbody.innerHTML = '';
+
+      if (!professores || professores.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-4">Nenhum professor encontrado</td></tr>';
+        return;
+      }
+
+      professores.forEach(prof => {
+        const row = document.createElement('tr');
+        row.setAttribute('data-professor-id', prof.id_prof);
+        row.innerHTML = `
+          <td>${prof.nome_prof || '-'}</td>
+          <td>
+            <small class="text-muted">${prof.usuario?.email || '-'}</small>
+          </td>
+          <td>${prof.telefone_prof || '-'}</td>
+          <td>
+            <span class="badge bg-info">${prof.area_formacao_prof || 'N/A'}</span>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-outline-info me-1 btn-view" data-id="${prof.id_prof}">Ver</button>
+            <button class="btn btn-sm btn-outline-warning me-1 btn-edit" data-id="${prof.id_prof}">Editar</button>
+            <button class="btn btn-sm btn-outline-danger btn-delete" data-id="${prof.id_prof}">Deletar</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+      
+      // Usar event delegation - O event listener é adicionado uma única vez ao tbody
+      // Qualquer clique nos botões dentro da tabela será capturado
+    }
+
+    // Ver detalhes do professor
+    async function viewProfessor(id, buttonElement = null) {
+      let prof = professoresData.find(p => p.id_prof == id);
+      if (!prof) {
+        DataLoader.showError('Professor não encontrado');
+        return;
+      }
+
+      const originalContent = buttonElement ? buttonElement.innerHTML : '';
+
+      try {
+        if (buttonElement) {
+          buttonElement.disabled = true;
+          buttonElement.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>Ver...';
+        } else {
+          DataLoader.showLoading('Carregando detalhes do professor...');
+        }
+
+        prof = await api.getProfessor(id);
+      } catch (error) {
+        console.warn('Falha ao carregar detalhes completos do professor:', error);
+      } finally {
+        if (buttonElement) {
+          buttonElement.disabled = false;
+          buttonElement.innerHTML = originalContent;
+        } else {
+          DataLoader.hideLoading();
+        }
+      }
+
+      document.getElementById('profDetailNome').textContent = prof.nome_prof || '-';
+      document.getElementById('profDetailEmail').textContent = prof.usuario?.email || prof.email_prof || '-';
+      document.getElementById('profDetailTelefone').textContent = prof.telefone_prof || '-';
+      document.getElementById('profDetailFormacao').textContent = prof.area_formacao_prof || '-';
+      
+      const statusBadge = prof.status === 'ATIVO' ? '<span class="badge bg-success">Ativo</span>' : '<span class="badge bg-danger">Inativo</span>';
+      document.getElementById('profDetailStatus').innerHTML = statusBadge;
+
+      const disciplinasResumo = Array.isArray(prof.disciplinas)
+        ? prof.disciplinas
+            .map(item => item.disciplina?.sigla_disc || item.disciplina?.descricao_disc || item.disciplina_id || item.id)
+            .filter(Boolean)
+            .join(', ')
+        : '-';
+      document.getElementById('profDetailDisciplinas').textContent = disciplinasResumo || '-';
+      document.getElementById('profDetailDisciplinasLecionadas').textContent = disciplinasResumo || '-';
+
+      const turmasResumo = Array.isArray(prof.turmas)
+        ? prof.turmas
+            .map(item => item.turma?.sigla_turma || item.turma?.classe_turma || item.turma_id || item.id)
+            .filter(Boolean)
+            .join(', ')
+        : '-';
+      document.getElementById('profDetailTurmas').textContent = turmasResumo || '-';
+
+      const modal = new bootstrap.Modal(document.getElementById('profDetailsModal'));
+      modal.show();
+    }
+
+    // Editar professor
+    function editProfessor(id) {
+      const prof = professoresData.find(p => p.id_prof == id);
+      if (!prof) {
+        DataLoader.showError('Professor não encontrado');
+        return;
+      }
+
+      // DEBUG: Ver toda a estrutura do professor
+      console.log('=== OBJETO PROFESSOR COMPLETO ===');
+      console.log(JSON.stringify(prof, null, 2));
+      console.log('prof.disciplinas:', prof.disciplinas);
+      console.log('prof.turmas:', prof.turmas);
+
+      // Extrair IDs das disciplinas e turmas do professor
+      const disciplinasIds = [];
+      const turmasIds = [];
+      
+      if (prof.disciplinas && Array.isArray(prof.disciplinas)) {
+        prof.disciplinas.forEach(disc => {
+          const id = disc.disciplina?.id_disc || disc.disciplina_id || disc.id;
+          if (id) disciplinasIds.push(id);
+        });
+      }
+      
+      if (prof.turmas && Array.isArray(prof.turmas)) {
+        prof.turmas.forEach(turma => {
+          const id = turma.turma?.id_turma || turma.turma_id || turma.id;
+          if (id) turmasIds.push(id);
+        });
+      }
+      
+      console.log('IDs de disciplinas a marcar:', disciplinasIds);
+      console.log('IDs de turmas a marcar:', turmasIds);
+
+      document.getElementById('profModalTitle').textContent = 'Editar Professor';
+      
+      // Esconder campo de senha ao editar ANTES de abrir modal
+      const senhaGroupEl = document.getElementById('senhaGroup');
+      if (senhaGroupEl) senhaGroupEl.style.display = 'none';
+      
+      // Preencher campos obrigatórios com proteção
+      const profNomeEl = document.getElementById('profNome');
+      const profEmailEl = document.getElementById('profEmail');
+      const profTelefoneEl = document.getElementById('profTelefone');
+      const profFormacaoEl = document.getElementById('profFormacao');
+      const profStatusEl = document.getElementById('profStatus');
+
+      if (profNomeEl) profNomeEl.value = prof.nome_prof || '';
+      if (profEmailEl) profEmailEl.value = prof.email_prof || prof.usuario?.email || '';
+      if (profTelefoneEl) profTelefoneEl.value = prof.telefone_prof || '';
+      if (profFormacaoEl) profFormacaoEl.value = prof.area_formacao_prof || '';
+      if (profStatusEl) profStatusEl.value = prof.status || 'ATIVO';
+      
+      // Preencher campos opcionais com proteção
+      const filiacaoEl = document.querySelector('input[name="filiacao"]');
+      if (filiacaoEl) filiacaoEl.value = prof.filiacao_prof || '';
+      
+      const dataNascEl = document.querySelector('input[name="data_nascimento"]');
+      if (dataNascEl && prof.data_nascimento_prof) {
+        const date = new Date(prof.data_nascimento_prof);
+        dataNascEl.value = date.toISOString().split('T')[0];
+      }
+      
+      const nacionalidadeEl = document.querySelector('input[name="nacionalidade"]');
+      if (nacionalidadeEl) nacionalidadeEl.value = prof.nacionalidade_prof || '';
+      
+      const biNumEl = document.querySelector('input[name="documento_numero"]');
+      if (biNumEl) biNumEl.value = prof.numero_bi_prof || '';
+      
+      const dataEmissaoEl = document.querySelector('input[name="documento_emissao"]');
+      if (dataEmissaoEl && prof.data_emissao_bi_prof) {
+        const date = new Date(prof.data_emissao_bi_prof);
+        dataEmissaoEl.value = date.toISOString().split('T')[0];
+      }
+      
+      const grauEl = document.querySelector('select[name="grau_academico"]');
+      if (grauEl) {
+        grauEl.value = prof.nivel_academico || 'LICENCIATURA';
+      }
+      
+      const anoConclusaoEl = document.querySelector('input[name="ano_conclusao"]');
+      if (anoConclusaoEl) anoConclusaoEl.value = prof.ano_conclusao_formacao || '';
+      
+      // Preencher endereço
+      const endereco = prof.endereco_fisico_prof || '';
+      const parts = endereco.split(',').map(p => p.trim());
+      
+      const ruaEl = document.querySelector('input[name="rua"]');
+      if (ruaEl) ruaEl.value = parts[0] || '';
+      
+      const bairroEl = document.querySelector('input[name="bairro"]');
+      if (bairroEl) bairroEl.value = parts[1] || '';
+      
+      const cidadeEl = document.querySelector('input[name="cidade"]');
+      if (cidadeEl) cidadeEl.value = prof.naturalidade_prof || '';
+      
+      const provinciaEl = document.querySelector('input[name="provincia"]');
+      if (provinciaEl) provinciaEl.value = parts[2] || '';
+
+      document.getElementById('profModalForm').setAttribute('data-id', id);
+      
+      // Carregar e marcar disciplinas e turmas APÓS abrir modal
+      Promise.all([loadDisciplinas(), loadTurmas()]).then(() => {
+        console.log('Disciplinas e turmas carregadas!');
+        console.log('disciplinasIds para marcar:', disciplinasIds);
+        console.log('turmasIds para marcar:', turmasIds);
+        
+        // Aguardar um pouco para permitir renderização
+        setTimeout(() => {
+          // Se temos dados do professor, usar renderização com pré-seleção
+          if (disciplinasIds.length > 0 || turmasIds.length > 0) {
+            console.log('Re-renderizando com IDs pré-selecionados...');
+            if (disciplinasIds.length > 0) {
+              renderDisciplinasCheckboxes(disciplinasIds);
+            }
+            if (turmasIds.length > 0) {
+              renderTurmasCheckboxes(turmasIds);
+            }
+          } else {
+            // Se não temos dados, fazer de forma manual
+            console.log('Tentando marcar checkboxes manualmente...');
+            
+            // Desmarcar todas as checkboxes
+            document.querySelectorAll('input[name="disciplinas"]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('input[name="turmas"]').forEach(cb => cb.checked = false);
+
+            // Marcar disciplinas do professor
+            if (prof.disciplinas && Array.isArray(prof.disciplinas)) {
+              console.log('Disciplinas do professor:', prof.disciplinas);
+              prof.disciplinas.forEach(disc => {
+                // Tenta pegar do objeto aninhado primeiro, depois fallback
+                const disciplinaId = disc.disciplina?.id_disc || disc.disciplina_id || disc.id;
+                console.log('Procurando disciplina com ID:', disciplinaId);
+                const checkbox = document.querySelector(`input[name="disciplinas"][value="${disciplinaId}"]`);
+                if (checkbox) {
+                  checkbox.checked = true;
+                  console.log('Disciplina marcada:', disciplinaId);
+                } else {
+                  console.log('Checkbox não encontrado para disciplina:', disciplinaId);
+                }
+              });
+            } else {
+              console.log('Nenhuma disciplina para marcar. prof.disciplinas:', prof.disciplinas);
+            }
+
+            // Marcar turmas do professor
+            if (prof.turmas && Array.isArray(prof.turmas)) {
+              console.log('Turmas do professor:', prof.turmas);
+              prof.turmas.forEach(turma => {
+                // Tenta pegar do objeto aninhado primeiro, depois fallback
+                const turmaId = turma.turma?.id_turma || turma.turma_id || turma.id;
+                console.log('Procurando turma com ID:', turmaId);
+                const checkbox = document.querySelector(`input[name="turmas"][value="${turmaId}"]`);
+                if (checkbox) {
+                  checkbox.checked = true;
+                  console.log('Turma marcada:', turmaId);
+                } else {
+                  console.log('Checkbox não encontrado para turma:', turmaId);
+                }
+              });
+            } else {
+              console.log('Nenhuma turma para marcar. prof.turmas:', prof.turmas);
+            }
+          }
+        }, 100);
+      }).catch(err => {
+        console.error('Erro ao carregar disciplinas/turmas:', err);
+      });
+      
+      // Mudar texto do botão para "Atualizar"
+      const btnTextoUpdate = document.getElementById('btnTexto');
+      if (btnTextoUpdate) btnTextoUpdate.textContent = 'Atualizar';
+      
+      const modal = new bootstrap.Modal(document.getElementById('profModal'));
+      modal.show();
+    }
+
+    // =========== DELETAR ===========
+    async function deleteProfessor(id, buttonElement = null) {
+      if (!confirm('Tem certeza que quer desativar este professor?')) return;
+
+      const originalContent = buttonElement ? buttonElement.innerHTML : '';
+
+      try {
+        if (buttonElement) {
+          buttonElement.disabled = true;
+          buttonElement.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>Deletando...';
+        } else {
+          DataLoader.showLoading('Desativando professor...');
+        }
+
+        await api.deleteProfessor(id);
+        DataLoader.showSuccess('Professor desativado com sucesso!');
+        loadProfessores();
+      } catch (error) {
+        DataLoader.showError('Erro ao desativar professor: ' + error.message);
+      } finally {
+        if (buttonElement) {
+          buttonElement.disabled = false;
+          buttonElement.innerHTML = originalContent;
+        } else {
+          DataLoader.hideLoading();
+        }
+      }
+    }
+
+    // Filtrar professores
+    document.getElementById('btnFilterProf').addEventListener('click', function() {
+      const q = document.getElementById('filterProfSearch').value.trim().toLowerCase();
+      const disc = document.getElementById('filterProfDisc').value.trim().toLowerCase();
+
+      const filtered = professoresData.filter(prof => {
+        const nome = (prof.nome_prof || '').toLowerCase();
+        const email = (prof.usuario?.email || '').toLowerCase();
+        const formacao = (prof.area_formacao_prof || '').toLowerCase();
+
+        const matchSearch = !q || nome.includes(q) || email.includes(q);
+        const matchDisc = !disc || formacao.includes(disc);
+
+        return matchSearch && matchDisc;
+      });
+
+      renderProfessoresTable(filtered);
+    });
+
+    // =========== FORMULÁRIO SUBMIT ===========
+document.getElementById('profModal').addEventListener('show.bs.modal', function() {
+        // Carregar disciplinas e turmas quando o modal abrir
+        loadDisciplinas();
+        loadTurmas();
+      });
+
+      document.getElementById('formProfessor').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Validação
+      if (!validateForm()) {
+        return;
+      }
+
+      const profId = document.getElementById('profModalForm').getAttribute('data-id');
+      
+      // Capturar TODOS os campos do formulário
+      const nivelAcademico = document.querySelector('select[name="grau_academico"]')?.value?.trim();
+      const data = {
+        nome_prof: document.getElementById('profNome')?.value.trim(),
+        email_prof: document.getElementById('profEmail')?.value.trim(),
+        telefone_prof: document.getElementById('profTelefone')?.value.trim(),
+        area_formacao_prof: document.getElementById('profFormacao')?.value?.trim() || 'Geral',
+        status: document.getElementById('profStatus')?.value || 'ATIVO',
+        filiacao_prof: document.querySelector('input[name="filiacao"]')?.value?.trim(),
+        data_nascimento_prof: document.querySelector('input[name="data_nascimento"]')?.value,
+        nacionalidade_prof: document.querySelector('input[name="nacionalidade"]')?.value?.trim(),
+        numero_bi_prof: document.querySelector('input[name="documento_numero"]')?.value?.trim(),
+        data_emissao_bi_prof: document.querySelector('input[name="documento_emissao"]')?.value,
+        naturalidade_prof: document.querySelector('input[name="cidade"]')?.value?.trim() || 'Angola',
+        nivel_academico: nivelAcademico || 'LICENCIATURA',
+        ano_conclusao_formacao: parseInt(document.querySelector('input[name="ano_conclusao"]')?.value) || null,
+        endereco_fisico_prof: [
+          document.querySelector('input[name="rua"]')?.value?.trim() || '',
+          document.querySelector('input[name="bairro"]')?.value?.trim() || '',
+          document.querySelector('input[name="provincia"]')?.value?.trim() || ''
+        ].filter(x => x).join(', ') || 'Não especificado'
+      };
+
+      // Capturar disciplinas selecionadas e converter para números
+      const disciplinasSelecionadas = Array.from(document.querySelectorAll('input[name="disciplinas"]:checked')).map(cb => Number(cb.value));
+      if (disciplinasSelecionadas.length > 0) {
+        data.disciplinas = disciplinasSelecionadas;
+      }
+
+      // Capturar turmas selecionadas e converter para números
+      const turmasSelecionadas = Array.from(document.querySelectorAll('input[name="turmas"]:checked')).map(cb => Number(cb.value));
+      if (turmasSelecionadas.length > 0) {
+        data.turmas = turmasSelecionadas;
+      }
+
+      // Se for novo professor, adicionar email e password para criar usuário
+      if (!profId) {
+        data.email = document.getElementById('profEmail').value.trim();
+        data.password = document.getElementById('profSenha').value;
+        data.user_name = document.getElementById('profNome').value.trim();
+      }
+
+      try {
+        // Mostrar spinner no botão
+        const btnTexto = document.getElementById('btnTexto');
+        const btnSpinner = document.getElementById('btnSpinner');
+        if (btnTexto) btnTexto.textContent = profId ? 'Atualizando...' : 'Criando...';
+        if (btnSpinner) btnSpinner.classList.remove('d-none');
+        
+        DataLoader.showLoading(profId ? 'Atualizando professor...' : 'Criando professor...');
+        
+        // Timeout de segurança para garantir que oculta loader mesmo em caso de erro
+        const timeoutId = setTimeout(() => {
+          DataLoader.hideLoading();
+          if (btnTexto) btnTexto.textContent = profId ? 'Atualizar' : 'Guardar';
+          if (btnSpinner) btnSpinner.classList.add('d-none');
+          console.warn('Timeout: operação demorou muito');
+        }, 30000); // 30 segundos
+
+        if (profId) {
+          await api.updateProfessor(profId, data);
+        } else {
+          await api.createProfessor(data);
+        }
+
+        clearTimeout(timeoutId);
+        DataLoader.hideLoading();
+        if (btnTexto) btnTexto.textContent = profId ? 'Atualizar' : 'Guardar';
+        if (btnSpinner) btnSpinner.classList.add('d-none');
+        const msg = profId ? 'Professor atualizado com sucesso!' : 'Professor criado com sucesso!';
+        DataLoader.showSuccess(msg);
+
+        bootstrap.Modal.getInstance(document.getElementById('profModal')).hide();
+        document.getElementById('profModalForm').removeAttribute('data-id');
+        document.getElementById('formProfessor').reset();
+        document.getElementById('profModalTitle').textContent = 'Novo Professor';
+        const senhaGroupResetEl = document.getElementById('senhaGroup');
+        if (senhaGroupResetEl) senhaGroupResetEl.style.display = 'block';
+        
+        loadProfessores();
+      } catch (error) {
+        // Esconder spinner
+        const btnTexto = document.getElementById('btnTexto');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const profId = document.getElementById('profModalForm').getAttribute('data-id');
+        if (btnTexto) btnTexto.textContent = profId ? 'Atualizar' : 'Guardar';
+        if (btnSpinner) btnSpinner.classList.add('d-none');
+        DataLoader.hideLoading();
+        DataLoader.showError('Erro ao guardar professor: ' + error.message);
+        console.error('Erro completo:', error);
+      }
+    });
+
+    // =========== RESET MODAL ===========
+    document.getElementById('profModal').addEventListener('hidden.bs.modal', function() {
+      document.getElementById('profModalTitle').textContent = 'Novo Professor';
+      document.getElementById('formProfessor').reset();
+      document.getElementById('profModalForm').removeAttribute('data-id');
+      const senhaGroupCloseEl = document.getElementById('senhaGroup');
+      if (senhaGroupCloseEl) senhaGroupCloseEl.style.display = 'block';
+      const btnSalvarReset = document.getElementById('btnSalvarProf');
+      if (btnSalvarReset) btnSalvarReset.textContent = 'Guardar';
+      document.querySelectorAll('[id*="Error"]').forEach(el => el.textContent = '');
+    });
+
+    // Logout
+    document.querySelectorAll('[data-logout]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        AuthHelper.logout();
+      });
+    });
+
+    // Carregar dados iniciais
+    document.addEventListener('DOMContentLoaded', function() {
+      loadProfessores();
+
+      // Event delegation para botões da tabela - Adicionar listeners UMA VEZ
+      const tbody = document.querySelector('table tbody');
+      
+      tbody.addEventListener('click', function(e) {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        
+        const id = btn.getAttribute('data-id');
+        if (!id) return;
+        
+        if (btn.classList.contains('btn-view')) {
+          viewProfessor(id, btn);
+        } else if (btn.classList.contains('btn-edit')) {
+          editProfessor(id);
+        } else if (btn.classList.contains('btn-delete')) {
+          deleteProfessor(id, btn);
+        }
+      });
+
+      // Update header com dados do usuário
+      const headerUserName = document.querySelector('.header-user-name');
+      const headerUserRole = document.querySelector('.header-user-role');
+      
+      if (headerUserName) {
+        headerUserName.textContent = api.getUserName() || 'Administrador';
+      }
+      if (headerUserRole) {
+        headerUserRole.textContent = AuthHelper.translateRole(api.getUserRole());
+      }
+    });
+  </script>
+</body>
+
+</html>
