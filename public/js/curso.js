@@ -7,7 +7,6 @@ if (typeof api === 'undefined') {
 }
 
 let cursosData = [];
-let disciplinasData = [];
 
 document.addEventListener('DOMContentLoaded', function () {
   console.log('[CURSOS] Script carregado');
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tbody.innerHTML = '';
 
     if (!cursos || cursos.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted py-4">Nenhum curso encontrado</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-4">Nenhum curso encontrado</td></tr>';
       console.log('[CURSOS] Nenhum curso na lista');
       return;
     }
@@ -46,14 +45,13 @@ document.addEventListener('DOMContentLoaded', function () {
       try {
         const row = document.createElement('tr');
         const duracao = curso.duracao_semestres ? `${curso.duracao_semestres} semestres` : '-';
-        const numDisciplinas = curso.disciplinas?.length || 0;
+        const objetivo = curso.objetivo_curso || '-';
         
         row.innerHTML = `
           <td>${curso.sigla_curso || '-'}</td>
           <td>${curso.descricao_curso || '-'}</td>
           <td>${duracao}</td>
-          <td><span class="badge bg-info">${numDisciplinas} disciplinas</span></td>
-          <td>${curso.descricao_curso || '-'}</td>
+          <td>${objetivo}</td>
           <td>
             <button class="btn btn-sm btn-outline-info me-1 btn-view" data-id="${curso.id_curso}" data-bs-toggle="modal" data-bs-target="#cursoDetailsModal">Ver</button>
             <button class="btn btn-sm btn-outline-warning me-1 btn-edit" data-id="${curso.id_curso}">Editar</button>
@@ -64,36 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
       } catch (error) {
         console.error('[CURSOS] Erro ao renderizar linha:', error);
       }
-    });
-  }
-
-  // Carregar disciplinas
-  async function loadDisciplinas() {
-    try {
-      disciplinasData = await api.getDisciplinas();
-      console.log('[CURSOS] Disciplinas carregadas:', disciplinasData);
-      renderDisciplinasCheckboxes();
-    } catch (error) {
-      console.error('[CURSOS] Erro ao carregar disciplinas:', error);
-    }
-  }
-
-   // Renderizar checkboxes de disciplinas
-  function renderDisciplinasCheckboxes() {
-    const container = document.getElementById('cursoDisciplinas');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    disciplinasData.forEach(disc => {
-      const div = document.createElement('div');
-      div.className = 'form-check';
-      div.innerHTML = `
-        <input class="form-check-input" type="checkbox" value="${disc.id_disc}" id="disc_${disc.id_disc}">
-        <label class="form-check-label" for="disc_${disc.id_disc}">
-          ${disc.sigla_disc} - ${disc.descricao_disc}
-        </label>
-      `;
-      container.appendChild(div);
     });
   }
 
@@ -117,14 +85,12 @@ document.addEventListener('DOMContentLoaded', function () {
             DataLoader.hideLoading();
             
             const duracao = cursoData.duracao_semestres ? `${cursoData.duracao_semestres} semestres` : '-';
-            const disciplinas = (cursoData.disciplinas || [])
-              .map(cd => cd.disciplina.sigla_disc + ' - ' + cd.disciplina.descricao_disc)
-              .join(', ') || '-';
+            const objetivo = cursoData.objetivo_curso || '-';
             
             document.getElementById('detailCodigo').textContent = cursoData.sigla_curso || '-';
             document.getElementById('detailNome').textContent = cursoData.descricao_curso || '-';
             document.getElementById('detailDuracao').textContent = duracao;
-            document.getElementById('detailDisciplinas').textContent = disciplinas;
+            document.getElementById('detailObjetivo').textContent = objetivo;
             
             console.log('[CURSOS] Detalhes carregados:', cursoData);
           })
@@ -150,12 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('cursoCodigo').value = cursoData.sigla_curso || '';
             document.getElementById('cursoNome').value = cursoData.descricao_curso || '';
             document.getElementById('cursoDuracao').value = cursoData.duracao_semestres || '';
-            
-            // Pré-selecionar disciplinas (checkboxes)
-            const disciplinasIds = (cursoData.disciplinas || []).map(cd => cd.disciplina_id);
-            document.querySelectorAll('#cursoDisciplinas .form-check-input').forEach(checkbox => {
-              checkbox.checked = disciplinasIds.includes(parseInt(checkbox.value));
-            });
+            document.getElementById('cursoObjetivo').value = cursoData.objetivo_curso || '';
             
             // Abrir modal
             const modal = new bootstrap.Modal(document.getElementById('cursoModal'));
@@ -198,15 +159,11 @@ document.addEventListener('DOMContentLoaded', function () {
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
 
-      // Obter disciplinas selecionadas
-      const disciplinasIds = Array.from(document.querySelectorAll('#cursoDisciplinas .form-check-input:checked'))
-        .map(checkbox => parseInt(checkbox.value));
-      
       const data = {
         sigla_curso: document.getElementById('cursoCodigo').value,
         descricao_curso: document.getElementById('cursoNome').value,
         duracao_semestres: parseInt(document.getElementById('cursoDuracao').value) || null,
-        disciplinasIds: disciplinasIds
+        objetivo_curso: document.getElementById('cursoObjetivo').value.trim() || null
       };
 
       try {
@@ -286,8 +243,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('cursoId').value = '';
         document.getElementById('cursoAction').value = 'add';
       }
-      
-      loadDisciplinas();
     });
   }
 
@@ -303,5 +258,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Iniciar carregamento
   loadCursos();
-  loadDisciplinas();
 });

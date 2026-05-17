@@ -12,6 +12,10 @@ let disciplinasData = [];
 document.addEventListener('DOMContentLoaded', function () {
   console.log('[CLASSES] Script carregado');
 
+  if (typeof AuthHelper !== 'undefined') {
+    AuthHelper.checkRole(['ADMIN']);
+  }
+
   // Carregar classes e renderizar tabela
   async function loadClasses() {
     try {
@@ -159,6 +163,8 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('classeDuracao').value = classeData.duracao_semestres || '';
             document.getElementById('classeCurso').value = classeData.nomeCurso || '';
             document.getElementById('classeTipo').value = classeData.tipoEnsino || 'SECUNDARIO';
+
+            updateClasseDependentFields();
             
             // Pré-selecionar disciplinas (checkboxes)
             const disciplinasIds = (classeData.disciplinas || []).map(cd => cd.disciplina_id);
@@ -300,11 +306,14 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('classeId').value = '';
         document.getElementById('classeAction').value = 'add';
         document.getElementById('classeTipo').value = 'SECUNDARIO';
+        updateClasseDependentFields();
       }
       
       loadDisciplinas();
     });
   }
+
+  // listener for `classeTipo` is handled inline in the page to avoid duplicate bindings
 
   // Fechar modal
   if (classeModalEl) {

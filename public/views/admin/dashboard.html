@@ -138,6 +138,18 @@
             </a>
           </div>
 
+           <div class="nav-item">
+            <a href="curso.html" class="nav-link" data-title="Cursos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Cursos</span>
+            </a>
+          </div>
+
           <div class="nav-item">
             <a href="classe.html" class="nav-link" data-title="Classes">
               <span class="nav-link-icon">
@@ -292,24 +304,40 @@
           </div>
         </div>
 
-        <!-- Distribuição por Classe -->
-        <div class="card mt-4">
-          <div class="card-header">
-            <h5 class="card-title mb-0">Distribuição de Alunos</h5>
+        <!-- Main extras: atalhos e conteúdo recente -->
+        <div class="row mt-4">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Atalhos</h5>
+              </div>
+              <div class="card-body">
+                <div class="d-grid gap-2">
+                  <a href="alunos.html" class="btn btn-primary">Gerir Alunos</a>
+                  <a href="curso.html" class="btn btn-secondary">Gerir Cursos</a>
+                  <a href="classe.html" class="btn btn-info">Gerir Classes</a>
+                  <a href="avisos.html" class="btn btn-warning">Criar Aviso</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-body">
-            <div class="row text-center">
-              <div class="col-4 col-md-2">
-                <div class="fw-bold text-primary">11ª</div>
-                <small class="text-muted">350 alunos</small>
+
+          <div class="col-md-8">
+            <div class="card mb-3">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Últimos Avisos</h5>
               </div>
-              <div class="col-4 col-md-2">
-                <div class="fw-bold text-primary">12ª</div>
-                <small class="text-muted">420 alunos</small>
+              <div class="card-body" id="recentAvisos">
+                <p class="text-muted mb-0">Carregando...</p>
               </div>
-              <div class="col-4 col-md-2">
-                <div class="fw-bold text-primary">13ª</div>
-                <small class="text-muted">475 alunos</small>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Últimos Alunos</h5>
+              </div>
+              <div class="card-body" id="recentAlunos">
+                <p class="text-muted mb-0">Carregando...</p>
               </div>
             </div>
           </div>
@@ -396,6 +424,10 @@
         document.querySelectorAll('[data-stat-avisos]').forEach(el => {
           el.textContent = avisos.length;
         });
+
+        // Render recent content
+        renderRecentAvisos(avisos);
+        renderRecentAlunos(estudantes);
 
       } catch (error) {
         console.error('Erro ao carregar dados:', error);

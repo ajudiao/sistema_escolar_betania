@@ -150,6 +150,18 @@
               <span class="nav-link-text">Cursos</span>
             </a>
           </div>
+
+          <div class="nav-item">
+            <a href="classe.html" class="nav-link" data-title="Classes\">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Classes</span>
+            </a>
+          </div>
           <div class="nav-item">
             <a href="alunos.html" class="nav-link" data-title="Alunos">
               <span class="nav-link-icon">
@@ -266,8 +278,7 @@
                     <th>Código</th>
                     <th>Nome do Curso</th>
                     <th>Duração</th>
-                    <th>Disciplinas</th>
-                    <th>Descrição</th>
+                    <th>Objectivo</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
@@ -304,10 +315,8 @@
                     <input id="cursoDuracao" class="form-control" type="number" placeholder="Ex: 6" min="1">
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Disciplinas do Curso</label>
-                    <div id="cursoDisciplinas" class="border rounded p-3" style="max-height: 250px; overflow-y: auto;">
-                      <!-- Checkboxes de disciplinas carregadas dinamicamente -->
-                    </div>
+                    <label class="form-label">Objectivo do Curso</label>
+                    <textarea id="cursoObjetivo" class="form-control" rows="4" placeholder="Descreva o objectivo do curso" required></textarea>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -346,8 +355,8 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-md-12">
-                    <label class="form-label fw-bold">Disciplinas</label>
-                    <p id="detailDisciplinas" class="text-muted">-</p>
+                    <label class="form-label fw-bold">Objectivo do Curso</label>
+                    <p id="detailObjetivo" class="text-muted">-</p>
                   </div>
                 </div>
               </div>
@@ -371,235 +380,7 @@
   <script src="../../js/sidebar.js"></script>
   <script src="../../js/curso.js"></script>
   <script>
-    // Proteger página para ADMIN
     AuthHelper.checkRole(['ADMIN']);
-
-    let cursosData = [];
-    let disciplinasDisponives = [];
-
-    // Carregar cursos da API
-    async function loadCursos() {
-      try {
-        DataLoader.showLoading('Carregando cursos...');
-        cursosData = await api.getCursos();
-        DataLoader.hideLoading();
-        renderCursosTable(cursosData);
-      } catch (error) {
-        DataLoader.hideLoading();
-        DataLoader.showError('Erro ao carregar cursos: ' + error.message);
-      }
-    }
-
-    // Carregar disciplinas para o modal
-    async function loadDisciplinasModal() {
-      try {
-        disciplinasDisponives = await api.getDisciplinas();
-        renderDisciplinasCheckboxes();
-      } catch (error) {
-        console.error('Erro ao carregar disciplinas:', error);
-        DataLoader.showError('Erro ao carregar disciplinas: ' + error.message);
-      }
-    }
-
-    // Renderizar checkboxes de disciplinas
-    function renderDisciplinasCheckboxes() {
-      const container = document.getElementById('disciplinasCheckboxes');
-      container.innerHTML = '';
-
-      if (!disciplinasDisponives || disciplinasDisponives.length === 0) {
-        container.innerHTML = '<p class="text-muted">Nenhuma disciplina encontrada</p>';
-        return;
-      }
-
-      disciplinasDisponives.forEach((disc, index) => {
-        const checkId = `check-disc-${disc.id_disc}`;
-        const div = document.createElement('div');
-        div.className = 'form-check';
-        div.innerHTML = `
-          <input class="form-check-input disciplina-check" type="checkbox" value="${disc.id_disc}" id="${checkId}">
-          <label class="form-check-label" for="${checkId}">
-            ${disc.sigla_disc} - ${disc.descricao_disc}
-          </label>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    // Renderizar tabela de cursos
-    function renderCursosTable(cursos) {
-      const tbody = document.querySelector('table tbody');
-      tbody.innerHTML = '';
-
-      if (!cursos || cursos.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted py-4">Nenhum curso encontrado</td></tr>';
-        return;
-      }
-
-      cursos.forEach(curso => {
-        const row = document.createElement('tr');
-        row.setAttribute('data-curso-id', curso.id_curso);
-        row.innerHTML = `
-          <td><strong>${curso.sigla_curso || '-'}</strong></td>
-          <td>${curso.descricao_curso || '-'}</td>
-          <td>-</td>
-          <td>-</td>
-          <td>-</td>
-          <td>
-            <button class="btn btn-sm btn-outline-info me-1 btn-view" data-id="${curso.id_curso}">Ver</button>
-            <button class="btn btn-sm btn-outline-warning me-1 btn-edit" data-id="${curso.id_curso}">Editar</button>
-            <button class="btn btn-sm btn-outline-danger btn-delete" data-id="${curso.id_curso}">Deletar</button>
-          </td>
-        `;
-        tbody.appendChild(row);
-      });
-
-      // Adicionar listeners aos botões
-      document.querySelectorAll('.btn-view').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const id = this.getAttribute('data-id');
-          viewCurso(id);
-        });
-      });
-
-      document.querySelectorAll('.btn-edit').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const id = this.getAttribute('data-id');
-          editCurso(id);
-        });
-      });
-
-      document.querySelectorAll('.btn-delete').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const id = this.getAttribute('data-id');
-          deleteCurso(id);
-        });
-      });
-    }
-
-    // Ver detalhes do curso
-    function viewCurso(id) {
-      const curso = cursosData.find(c => c.id_curso == id);
-      if (curso) {
-        alert(`Curso: ${curso.sigla_curso}\n\nDescrição: ${curso.descricao_curso}`);
-      }
-    }
-
-    // Editar curso
-    function editCurso(id) {
-      const curso = cursosData.find(c => c.id_curso == id);
-      if (curso) {
-        document.getElementById('cursoModalTitle').textContent = 'Editar Curso';
-        document.getElementById('cursoCodigo').value = curso.sigla_curso || '';
-        document.getElementById('cursoNome').value = curso.descricao_curso || '';
-        document.getElementById('cursoDuracao').value = '';
-        document.getElementById('cursoDesc').value = curso.descricao_curso || '';
-        document.getElementById('cursoModalForm').setAttribute('data-id', id);
-        
-        // Desmarcar todas as disciplinas
-        document.querySelectorAll('.disciplina-check').forEach(cb => cb.checked = false);
-        
-        const modal = new bootstrap.Modal(document.getElementById('cursoModal'));
-        modal.show();
-      }
-    }
-
-    // Deletar curso
-    async function deleteCurso(id) {
-      if (confirm('Tem certeza que quer deletar este curso?')) {
-        try {
-          await api.deleteCurso(id);
-          DataLoader.showSuccess('Curso deletado com sucesso!');
-          loadCursos();
-        } catch (error) {
-          DataLoader.showError('Erro ao deletar curso: ' + error.message);
-        }
-      }
-    }
-
-    // Filtrar cursos
-    document.getElementById('btnFilterCurso').addEventListener('click', function() {
-      const q = document.getElementById('filterCursoSearch').value.trim().toLowerCase();
-      const duracao = document.getElementById('filterCursoDuracao').value.trim();
-
-      const filtered = cursosData.filter(curso => {
-        const sigla = (curso.sigla_curso || '').toLowerCase();
-        const descricao = (curso.descricao_curso || '').toLowerCase();
-
-        const matchSearch = !q || sigla.includes(q) || descricao.includes(q);
-        // Duração não implementada no schema - sempre verdadeiro
-        const matchDuracao = !duracao;
-
-        return matchSearch && matchDuracao;
-      });
-
-      renderCursosTable(filtered);
-    });
-
-    // Criar/Editar curso
-    document.getElementById('formCurso').addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const id = document.getElementById('cursoModalForm').getAttribute('data-id');
-      const selectedDisciplinas = Array.from(document.querySelectorAll('.disciplina-check:checked')).map(cb => cb.value);
-      const data = {
-        sigla_curso: document.getElementById('cursoCodigo').value,
-        descricao_curso: document.getElementById('cursoNome').value
-      };
-
-      try {
-        if (id) {
-          await api.updateCurso(id, data);
-          DataLoader.showSuccess('Curso atualizado com sucesso!');
-        } else {
-          await api.createCurso(data);
-          DataLoader.showSuccess('Curso criado com sucesso!');
-        }
-
-        bootstrap.Modal.getInstance(document.getElementById('cursoModal')).hide();
-        document.getElementById('cursoModalForm').removeAttribute('data-id');
-        document.getElementById('formCurso').reset();
-        document.getElementById('cursoModalTitle').textContent = 'Novo Curso';
-        
-        loadCursos();
-      } catch (error) {
-        DataLoader.showError('Erro ao guardar curso: ' + error.message);
-      }
-    });
-
-    // Reset modal
-    document.getElementById('cursoModal').addEventListener('hidden.bs.modal', function() {
-      document.getElementById('cursoModalTitle').textContent = 'Novo Curso';
-      document.getElementById('formCurso').reset();
-      document.getElementById('cursoModalForm').removeAttribute('data-id');
-      // Limpar checkboxes
-      document.querySelectorAll('.disciplina-check').forEach(cb => cb.checked = false);
-    });
-
-    // Logout
-    document.querySelectorAll('[data-logout]').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        AuthHelper.logout();
-      });
-    });
-
-    // Carregar dados iniciais
-    document.addEventListener('DOMContentLoaded', function() {
-      loadCursos();
-      loadDisciplinasModal();
-
-      // Update header com dados do usuário
-      const headerUserName = document.querySelector('.header-user-name');
-      const headerUserRole = document.querySelector('.header-user-role');
-      
-      if (headerUserName) {
-        headerUserName.textContent = api.getUserName() || 'Administrador';
-      }
-      if (headerUserRole) {
-        headerUserRole.textContent = AuthHelper.translateRole(api.getUserRole());
-      }
-    });
   </script>
 </body>
-
 </html>

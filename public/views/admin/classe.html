@@ -45,7 +45,7 @@
                   <rect x="14" y="3" width="7" height="7" />
                   <rect x="14" y="14" width="7" height="7" />
                   <rect x="3" y="14" width="7" height="7" />
-                </svg>
+                    <select id="classeCurso" class="form-control form-select" disabled>
               </span>
               <span class="nav-link-text">Dashboard</span>
             </a>
@@ -136,6 +136,18 @@
 
               </span>
               <span class="nav-link-text">Disciplinas</span>
+            </a>
+          </div>
+
+           <div class="nav-item">
+            <a href="curso.html" class="nav-link" data-title="Cursos">
+              <span class="nav-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l9 4.9v9.8L12 22 3 16.7V6.9L12 2z" />
+                </svg>
+              </span>
+              <span class="nav-link-text">Cursos</span>
             </a>
           </div>
 
@@ -305,13 +317,14 @@
                       <option value="MEDIO">Médio</option>
                     </select>
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label">Nome do Curso (para ensino médio)</label>
-                    <input id="classeCurso" class="form-control" placeholder="Ex: Informática">
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">Duração (em semestres)</label>
-                    <input id="classeDuracao" class="form-control" type="number" placeholder="Ex: 6" min="1">
+                  <div class="mb-3" id="classeCursoRow">
+                    <label class="form-label">Selecione o curso (para ensino médio)</label>
+                    <select id="classeCurso" class="form-control form-select">
+                      <option value="">Selecione um curso</option>
+                      <option value="Informática">Informática</option>
+                      <option value="Gestão">Gestão</option>
+                      <option value="Saúde">Saúde</option>
+                    </select>
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Disciplinas da Classe</label>
@@ -508,18 +521,18 @@
     function editCurso(id) {
       const curso = cursosData.find(c => c.id_curso == id);
       if (curso) {
-        document.getElementById('cursoModalTitle').textContent = 'Editar Classe';
+        document.getElementById('classeModalTitle').textContent = 'Editar Classe';
         document.getElementById('cursoCodigo').value = curso.sigla_curso || '';
+        document.getElementById('classeTipo').value = curso.tipo || 'SECUNDARIO';
         document.getElementById('cursoClasse').value = curso.classe || '';
         document.getElementById('cursoNome').value = curso.descricao_curso || '';
-        document.getElementById('cursoDuracao').value = curso.duracao_semestres || '';
-        document.getElementById('cursoModalForm').setAttribute('data-id', id);
+        document.getElementById('classeId').value = id;
         updateClasseDependentFields();
         
         // Desmarcar todas as disciplinas
         document.querySelectorAll('.disciplina-check').forEach(cb => cb.checked = false);
         
-        const modal = new bootstrap.Modal(document.getElementById('cursoModal'));
+        const modal = new bootstrap.Modal(document.getElementById('classeModal'));
         modal.show();
       }
     }
@@ -537,36 +550,35 @@
       }
     }
 
-    // Filtrar cursos
-    document.getElementById('btnFilterCurso').addEventListener('click', function() {
-      const q = document.getElementById('filterCursoSearch').value.trim().toLowerCase();
-      const duracao = document.getElementById('filterCursoDuracao').value.trim();
+    // Filtrar classes
+    const btnFilterClasse = document.getElementById('btnFilterClasse');
+    if (btnFilterClasse) {
+      btnFilterClasse.addEventListener('click', function() {
+        const q = document.getElementById('filterClasseSearch').value.trim().toLowerCase();
 
-      const filtered = cursosData.filter(curso => {
-        const sigla = (curso.sigla_curso || '').toLowerCase();
-        const descricao = (curso.descricao_curso || '').toLowerCase();
+        const filtered = cursosData.filter(curso => {
+          const sigla = (curso.sigla_curso || '').toLowerCase();
+          const descricao = (curso.descricao_curso || '').toLowerCase();
 
-        const matchSearch = !q || sigla.includes(q) || descricao.includes(q);
-        // Duração não implementada no schema - sempre verdadeiro
-        const matchDuracao = !duracao;
+          return !q || sigla.includes(q) || descricao.includes(q);
+        });
 
-        return matchSearch && matchDuracao;
+        renderCursosTable(filtered);
       });
+    }
 
-      renderCursosTable(filtered);
-    });
+    // Criar/Editar classe
+    const formClasse = document.getElementById('formClasse');
+    if (formClasse) {
+      formClasse.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-    // Criar/Editar curso
-    document.getElementById('formCurso').addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const id = document.getElementById('cursoModalForm').getAttribute('data-id');
+      const id = document.getElementById('classeId').value;
       const selectedDisciplinas = Array.from(document.querySelectorAll('.disciplina-check:checked')).map(cb => cb.value);
       const data = {
         sigla_curso: document.getElementById('cursoCodigo').value,
         descricao_curso: document.getElementById('cursoNome').value,
         classe: document.getElementById('cursoClasse').value,
-        duracao_semestres: document.getElementById('cursoDuracao').value,
         disciplinas: selectedDisciplinas
       };
 
@@ -579,10 +591,10 @@
           DataLoader.showSuccess('Classe criada com sucesso!');
         }
 
-        bootstrap.Modal.getInstance(document.getElementById('cursoModal')).hide();
-        document.getElementById('cursoModalForm').removeAttribute('data-id');
-        document.getElementById('formCurso').reset();
-        document.getElementById('cursoModalTitle').textContent = 'Nova Classe';
+        bootstrap.Modal.getInstance(document.getElementById('classeModal')).hide();
+        document.getElementById('classeId').value = '';
+        document.getElementById('formClasse').reset();
+        document.getElementById('classeModalTitle').textContent = 'Nova Classe';
         updateClasseDependentFields();
 
         loadCursos();
@@ -592,37 +604,36 @@
     });
 
     // Reset modal
-    document.getElementById('cursoModal').addEventListener('hidden.bs.modal', function() {
-      document.getElementById('cursoModalTitle').textContent = 'Nova Classe';
-      document.getElementById('formCurso').reset();
-      document.getElementById('cursoModalForm').removeAttribute('data-id');
-      // Limpar checkboxes
-      document.querySelectorAll('.disciplina-check').forEach(cb => cb.checked = false);
-      updateClasseDependentFields();
-    });
+    const classeModalEl = document.getElementById('classeModal');
+    if (classeModalEl) {
+      classeModalEl.addEventListener('hidden.bs.modal', function() {
+        document.getElementById('classeModalTitle').textContent = 'Nova Classe';
+        document.getElementById('formClasse').reset();
+        document.getElementById('classeId').value = '';
+        // Limpar checkboxes
+        document.querySelectorAll('.disciplina-check').forEach(cb => cb.checked = false);
+        updateClasseDependentFields();
+      });
+    }
 
     function updateClasseDependentFields() {
-      const classe = document.getElementById('cursoClasse').value;
-      const isCursoRequired = ['10', '11', '12', '13'].includes(classe);
+      const tipo = document.getElementById('classeTipo').value;
+      const cursoRow = document.getElementById('classeCursoRow');
+      const cursoSelect = document.getElementById('cursoClasse');
+      const isMedio = tipo === 'MEDIO';
 
-      const nomeInput = document.getElementById('cursoNome');
-      const duracaoInput = document.getElementById('cursoDuracao');
+      cursoRow.style.display = isMedio ? '' : 'none';
+      cursoSelect.disabled = !isMedio;
 
-      nomeInput.disabled = !isCursoRequired;
-      duracaoInput.disabled = !isCursoRequired;
-
-      if (isCursoRequired) {
-        nomeInput.setAttribute('required', '');
-        duracaoInput.setAttribute('required', '');
+      if (isMedio) {
+        cursoSelect.setAttribute('required', '');
       } else {
-        nomeInput.removeAttribute('required');
-        duracaoInput.removeAttribute('required');
-        nomeInput.value = '';
-        duracaoInput.value = '';
+        cursoSelect.removeAttribute('required');
+        cursoSelect.value = '';
       }
     }
 
-    document.getElementById('cursoClasse').addEventListener('change', updateClasseDependentFields);
+    document.getElementById('classeTipo').addEventListener('change', updateClasseDependentFields);
 
     // Logout
     document.querySelectorAll('[data-logout]').forEach(btn => {
