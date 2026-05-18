@@ -378,35 +378,109 @@
         timestamp: Date.now()
       }));
     }
+
+    function renderRecentAvisos(avisos) {
+      const container = document.getElementById('recentAvisos');
+      if (!container) return;
+      
+      if (!avisos || avisos.length === 0) {
+        container.innerHTML = '<p class="text-muted mb-0">Nenhum aviso encontrado</p>';
+        return;
+      }
+
+      // Mostrar apenas os últimos 3 avisos
+      const recentAvisos = avisos.slice(-3).reverse();
+      container.innerHTML = recentAvisos.map(aviso => `
+        <div class="mb-2">
+          <div class="d-flex justify-content-between">
+            <strong>${aviso.titulo || 'Sem título'}</strong>
+            <small class="text-muted">${new Date(aviso.criado_em).toLocaleDateString('pt-AO')}</small>
+          </div>
+          <p class="text-muted mb-2" style="font-size: 0.9rem;">${aviso.descricao || aviso.conteudo || 'Sem descrição'}</p>
+          <hr class="my-2">
+        </div>
+      `).join('');
+    }
+
+    function renderRecentAlunos(estudantes) {
+      const container = document.getElementById('recentAlunos');
+      if (!container) return;
+      
+      if (!estudantes || estudantes.length === 0) {
+        container.innerHTML = '<p class="text-muted mb-0">Nenhum aluno encontrado</p>';
+        return;
+      }
+
+      // Mostrar apenas os últimos 3 alunos
+      const recentAlunos = estudantes.slice(-3).reverse();
+      container.innerHTML = recentAlunos.map(aluno => `
+        <div class="mb-2">
+          <div class="d-flex justify-content-between">
+            <strong>${aluno.usuario?.email || aluno.email || 'Sem email'}</strong>
+            <small class="text-muted">${aluno.numero_estudante || 'N/A'}</small>
+          </div>
+          <p class="text-muted mb-2" style="font-size: 0.9rem;">Classe: ${aluno.classe?.sigla_classe || 'N/A'}</p>
+          <hr class="my-2">
+        </div>
+      `).join('');
+    }
     
     async function carregarEstatisticas() {
       try {
+        console.log('[DASHBOARD] Iniciando carregamento de estatísticas...');
+        DataLoader.showLoading('Carregando estatísticas...');
+        
         // Tentar carregar do cache primeiro
         let estudantes = obterDoCache('estudantes');
         let professores = obterDoCache('professores');
         let turmas = obterDoCache('turmas');
         let avisos = obterDoCache('avisos');
 
-        // Se não há cache, carregar da API
+        // Se não há cache completo, carregar da API
         if (!estudantes || !professores || !turmas || !avisos) {
+          console.log('[DASHBOARD] Cache não encontrado, carregando da API...');
+          
           const resultados = await Promise.all([
-            estudantes ? Promise.resolve(estudantes) : api.getEstudantes(),
-            professores ? Promise.resolve(professores) : api.getProfessores(),
-            turmas ? Promise.resolve(turmas) : api.getTurmas(),
-            avisos ? Promise.resolve(avisos) : api.getAvisos()
+            estudantes ? Promise.resolve(estudantes) : api.getEstudantes().catch(e => {
+              console.error('[DASHBOARD] Erro ao carregar estudantes:', e);
+              return [];
+            }),
+            professores ? Promise.resolve(professores) : api.getProfessores().catch(e => {
+              console.error('[DASHBOARD] Erro ao carregar professores:', e);
+              return [];
+            }),
+            turmas ? Promise.resolve(turmas) : api.getTurmas().catch(e => {
+              console.error('[DASHBOARD] Erro ao carregar turmas:', e);
+              return [];
+            }),
+            avisos ? Promise.resolve(avisos) : api.getAvisos().catch(e => {
+              console.error('[DASHBOARD] Erro ao carregar avisos:', e);
+              return [];
+            })
           ]);
 
-          estudantes = resultados[0];
-          professores = resultados[1];
-          turmas = resultados[2];
-          avisos = resultados[3];
+          estudantes = resultados[0] || [];
+          professores = resultados[1] || [];
+          turmas = resultados[2] || [];
+          avisos = resultados[3] || [];
 
           // Guardar em cache
           guardarEmCache('estudantes', estudantes);
           guardarEmCache('professores', professores);
           guardarEmCache('turmas', turmas);
           guardarEmCache('avisos', avisos);
+          
+          console.log('[DASHBOARD] Dados carregados da API e cachados');
+        } else {
+          console.log('[DASHBOARD] Dados carregados do cache');
         }
+
+        console.log('[DASHBOARD] Estatísticas:', {
+          estudantes: estudantes.length,
+          professores: professores.length,
+          turmas: turmas.length,
+          avisos: avisos.length
+        });
 
         // Atualizar cards de estatísticas
         document.querySelectorAll('[data-stat-alunos]').forEach(el => {
@@ -428,9 +502,15 @@
         // Render recent content
         renderRecentAvisos(avisos);
         renderRecentAlunos(estudantes);
+        
+        console.log('[DASHBOARD] Estatísticas renderizadas com sucesso');
+        DataLoader.hideLoading();
 
       } catch (error) {
-        console.error('Erro ao carregar dados:', error);
+        console.error('[DASHBOARD] Erro geral ao carregar dados:', error);
+        DataLoader.hideLoading();
+        DataLoader.showError('Erro ao carregar estatísticas: ' + error.message);
+        
         // Mostrar dados do cache mesmo se expirado, como fallback
         document.querySelectorAll('[data-stat-alunos]').forEach(el => {
           el.textContent = '—';
