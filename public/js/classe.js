@@ -8,12 +8,41 @@ if (typeof api === 'undefined') {
 
 let classesData = [];
 let disciplinasData = [];
+let cursosData = [];
 
 document.addEventListener('DOMContentLoaded', function () {
   console.log('[CLASSES] Script carregado');
 
   if (typeof AuthHelper !== 'undefined') {
     AuthHelper.checkRole(['ADMIN']);
+  }
+
+  // Carregar cursos
+  async function loadCursos() {
+    try {
+      console.log('[CLASSES] Carregando cursos...');
+      cursosData = await api.getCursos();
+      console.log('[CLASSES] Cursos carregados:', cursosData);
+      renderCursosSelect();
+    } catch (error) {
+      console.error('[CLASSES] Erro ao carregar cursos:', error);
+    }
+  }
+
+  // Renderizar select de cursos
+  function renderCursosSelect() {
+    const select = document.getElementById('classeCurso');
+    if (!select) return;
+    
+    // Limpar select mantendo a opção vazia
+    select.innerHTML = '<option value="">Selecione um curso</option>';
+    
+    cursosData.forEach(curso => {
+      const option = document.createElement('option');
+      option.value = curso.id_curso;
+      option.textContent = curso.descricao_curso;
+      select.appendChild(option);
+    });
   }
 
   // Carregar classes e renderizar tabela
@@ -49,17 +78,15 @@ document.addEventListener('DOMContentLoaded', function () {
     classes.forEach(classe => {
       try {
         const row = document.createElement('tr');
-        const duracao = classe.duracao_semestres ? `${classe.duracao_semestres} semestres` : '-';
         const numDisciplinas = classe.disciplinas?.length || 0;
         const tipoEnsino = classe.tipoEnsino === 'MEDIO' ? 'Médio' : 'Secundário';
-        const nomeCurso = classe.nomeCurso ? `${classe.nomeCurso}` : '-';
+        const nomeCurso = classe.curso ? classe.curso.descricao_curso : '-';
         
         row.innerHTML = `
           <td>${classe.sigla_classe || '-'}</td>
           <td>${classe.descricao_classe || '-'}</td>
           <td>${tipoEnsino}</td>
           <td>${nomeCurso}</td>
-          <td>${duracao}</td>
           <td><span class="badge bg-info">${numDisciplinas} disciplinas</span></td>
           <td>
             <button class="btn btn-sm btn-outline-info me-1 btn-view" data-id="${classe.id_classe}" data-bs-toggle="modal" data-bs-target="#classeDetailsModal">Ver</button>
@@ -123,18 +150,16 @@ document.addEventListener('DOMContentLoaded', function () {
           .then(classeData => {
             DataLoader.hideLoading();
             
-            const duracao = classeData.duracao_semestres ? `${classeData.duracao_semestres} semestres` : '-';
             const disciplinas = (classeData.disciplinas || [])
               .map(cd => cd.disciplina.sigla_disc + ' - ' + cd.disciplina.descricao_disc)
               .join(', ') || '-';
             const tipoEnsino = classeData.tipoEnsino === 'MEDIO' ? 'Médio' : 'Secundário';
-            const nomeCurso = classeData.nomeCurso || '-';
+            const nomeCurso = classeData.curso ? classeData.curso.descricao_curso : '-';
             
             document.getElementById('detailCodigo').textContent = classeData.sigla_classe || '-';
             document.getElementById('detailNome').textContent = classeData.descricao_classe || '-';
             document.getElementById('detailTipo').textContent = tipoEnsino;
             document.getElementById('detailCurso').textContent = nomeCurso;
-            document.getElementById('detailDuracao').textContent = duracao;
             document.getElementById('detailDisciplinas').textContent = disciplinas;
             
             console.log('[CLASSES] Detalhes carregados:', classeData);
@@ -160,8 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Preencher formulário
             document.getElementById('classeCodigo').value = classeData.sigla_classe || '';
             document.getElementById('classeNome').value = classeData.descricao_classe || '';
-            document.getElementById('classeDuracao').value = classeData.duracao_semestres || '';
-            document.getElementById('classeCurso').value = classeData.nomeCurso || '';
+            document.getElementById('classeCurso').value = classeData.curso_id || '';
             document.getElementById('classeTipo').value = classeData.tipoEnsino || 'SECUNDARIO';
 
             updateClasseDependentFields();
@@ -217,12 +241,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const disciplinasIds = Array.from(document.querySelectorAll('#classeDisciplinas .form-check-input:checked'))
         .map(checkbox => parseInt(checkbox.value));
       
+      const cursoIdValue = document.getElementById('classeCurso').value;
       const data = {
         sigla_classe: document.getElementById('classeCodigo').value,
         descricao_classe: document.getElementById('classeNome').value,
-        nomeCurso: document.getElementById('classeCurso').value || null,
-        duracao_semestres: parseInt(document.getElementById('classeDuracao').value) || null,
         tipoEnsino: document.getElementById('classeTipo').value,
+        ...(cursoIdValue && { curso_id: parseInt(cursoIdValue) }),
         disciplinasIds: disciplinasIds
       };
 
@@ -328,4 +352,5 @@ document.addEventListener('DOMContentLoaded', function () {
   // Iniciar carregamento
   loadClasses();
   loadDisciplinas();
+  loadCursos();
 });
