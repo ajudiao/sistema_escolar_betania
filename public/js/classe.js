@@ -45,6 +45,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Atualizar campos dependentes (mostrar/esconder curso baseado no tipo de ensino)
+  function updateClasseDependentFields() {
+    const tipo = document.getElementById('classeTipo').value;
+    const cursoRow = document.getElementById('classeCursoRow');
+    const cursoSelect = document.getElementById('classeCurso');
+    if (!cursoSelect || !cursoRow) return;
+    
+    const isMedio = tipo === 'MEDIO';
+
+    cursoRow.style.display = isMedio ? '' : 'none';
+    cursoSelect.disabled = !isMedio;
+
+    if (isMedio) {
+      cursoSelect.setAttribute('required', '');
+    } else {
+      cursoSelect.removeAttribute('required');
+      cursoSelect.value = '';
+    }
+  }
+
   // Carregar classes e renderizar tabela
   async function loadClasses() {
     try {
@@ -190,17 +210,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
             updateClasseDependentFields();
             
-            // Pré-selecionar disciplinas (checkboxes)
-            const disciplinasIds = (classeData.disciplinas || []).map(cd => cd.disciplina_id);
-            document.querySelectorAll('#classeDisciplinas .form-check-input').forEach(checkbox => {
-              checkbox.checked = disciplinasIds.includes(parseInt(checkbox.value));
-            });
+            // Garantir que os checkboxes estão renderizados com todas as disciplinas disponíveis
+            renderDisciplinasCheckboxes();
+            
+            // Pré-selecionar disciplinas (checkboxes) com delay para garantir DOM update
+            setTimeout(() => {
+              const disciplinasData = classeData.disciplinas || [];
+              console.log('[CLASSES] Disciplinas da classe para seleção:', disciplinasData);
+              
+              // Se houver disciplinas, selecionar os checkboxes
+              if (disciplinasData.length > 0) {
+                const disciplinasIds = disciplinasData.map(cd => cd.disciplina_id);
+                console.log('[CLASSES] IDs das disciplinas a selecionar:', disciplinasIds);
+                
+                const checkboxes = document.querySelectorAll('#classeDisciplinas .form-check-input');
+                console.log('[CLASSES] Total de checkboxes no DOM:', checkboxes.length);
+                
+                let checkedCount = 0;
+                checkboxes.forEach(checkbox => {
+                  const checkboxValue = parseInt(checkbox.value);
+                  const isIncluded = disciplinasIds.includes(checkboxValue);
+                  checkbox.checked = isIncluded;
+                  if (isIncluded) {
+                    checkedCount++;
+                    console.log(`[CLASSES] ✓ Checkbox ${checkboxValue} marcado`);
+                  }
+                });
+                console.log(`[CLASSES] Total de checkboxes marcados: ${checkedCount}/${checkboxes.length}`);
+              } else {
+                console.log('[CLASSES] Nenhuma disciplina associada a esta classe');
+                document.querySelectorAll('#classeDisciplinas .form-check-input').forEach(cb => cb.checked = false);
+              }
+            }, 150);
             
             // Abrir modal
             const modal = new bootstrap.Modal(document.getElementById('classeModal'));
             modal.show();
             
-            console.log('[CLASSES] Dados carregados para edição:', classeData);
+            console.log('[CLASSES] Dados da classe carregados:', classeData);
           })
           .catch(error => {
             DataLoader.hideLoading();
@@ -337,7 +384,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // listener for `classeTipo` is handled inline in the page to avoid duplicate bindings
+  // Event listener para quando muda o tipo de ensino no formulário
+  const classeTypeSelect = document.getElementById('classeTipo');
+  if (classeTypeSelect) {
+    classeTypeSelect.addEventListener('change', updateClasseDependentFields);
+  }
 
   // Fechar modal
   if (classeModalEl) {

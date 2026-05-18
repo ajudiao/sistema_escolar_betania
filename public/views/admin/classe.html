@@ -398,7 +398,7 @@
     AuthHelper.checkRole(['ADMIN']);
 
     let cursosData = [];
-    let disciplinasDisponives = [];
+    // Gerenciamento de disciplinas removido - agora em classe.js
 
     // Carregar cursos da API
     async function loadCursos() {
@@ -415,38 +415,11 @@
 
     // Carregar disciplinas para o modal
     async function loadDisciplinasModal() {
-      try {
-        disciplinasDisponives = await api.getDisciplinas();
-        renderDisciplinasCheckboxes();
-      } catch (error) {
-        console.error('Erro ao carregar disciplinas:', error);
-        DataLoader.showError('Erro ao carregar disciplinas: ' + error.message);
-      }
+      // Esta função agora é gerenciada por classe.js
+      console.log('[MODAL] loadDisciplinasModal não é mais necessária - classe.js gerencia tudo');
     }
 
-    // Renderizar checkboxes de disciplinas
-    function renderDisciplinasCheckboxes() {
-      const container = document.getElementById('cursoDisciplinas');
-      container.innerHTML = '';
-
-      if (!disciplinasDisponives || disciplinasDisponives.length === 0) {
-        container.innerHTML = '<p class="text-muted">Nenhuma disciplina encontrada</p>';
-        return;
-      }
-
-      disciplinasDisponives.forEach((disc, index) => {
-        const checkId = `check-disc-${disc.id_disc}`;
-        const div = document.createElement('div');
-        div.className = 'form-check';
-        div.innerHTML = `
-          <input class="form-check-input disciplina-check" type="checkbox" value="${disc.id_disc}" id="${checkId}">
-          <label class="form-check-label" for="${checkId}">
-            ${disc.sigla_disc} - ${disc.descricao_disc}
-          </label>
-        `;
-        container.appendChild(div);
-      });
-    }
+    // Renderizar checkboxes - função agora em classe.js
 
     // Renderizar tabela de cursos
     function renderCursosTable(cursos) {
@@ -633,13 +606,8 @@
       });
     });
 
-    // Carregar dados iniciais
+    // Atualizar header com dados do usuário (este é o último DOMContentLoaded do HTML)
     document.addEventListener('DOMContentLoaded', function() {
-      updateClasseDependentFields();
-      loadCursos();
-      loadDisciplinasModal();
-
-      // Update header com dados do usuário
       const headerUserName = document.querySelector('.header-user-name');
       const headerUserRole = document.querySelector('.header-user-role');
       
