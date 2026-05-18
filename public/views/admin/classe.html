@@ -45,7 +45,7 @@
                   <rect x="14" y="3" width="7" height="7" />
                   <rect x="14" y="14" width="7" height="7" />
                   <rect x="3" y="14" width="7" height="7" />
-                    <select id="classeCurso" class="form-control form-select" disabled>
+                </svg>
               </span>
               <span class="nav-link-text">Dashboard</span>
             </a>
@@ -609,7 +609,7 @@
     function updateClasseDependentFields() {
       const tipo = document.getElementById('classeTipo').value;
       const cursoRow = document.getElementById('classeCursoRow');
-      const cursoSelect = document.getElementById('cursoClasse');
+      const cursoSelect = document.getElementById('classeCurso');
       const isMedio = tipo === 'MEDIO';
 
       cursoRow.style.display = isMedio ? '' : 'none';
