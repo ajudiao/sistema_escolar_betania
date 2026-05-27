@@ -375,6 +375,7 @@
 
               <form id="formProfessor">
                 <div class="modal-body">
+                  <div id="modalErrorContainer"></div>
 
                   <input type="hidden" id="profModalForm">
                   <input type="hidden" id="profId">
@@ -631,47 +632,49 @@
       
       // Limpar mensagens de erro anteriores
       document.querySelectorAll('[id*="Error"]').forEach(el => el.textContent = '');
+      const errorContainer = document.getElementById('modalErrorContainer');
+      if (errorContainer) errorContainer.innerHTML = '';
       
       // Nome obrigatório
       const profNome = document.getElementById('profNome').value.trim();
       if (!profNome) {
-        DataLoader.showError('Nome é obrigatório');
+        DataLoader.showError('Nome é obrigatório', 'modalErrorContainer');
         isValid = false;
       }
       
       // Email obrigatório
       const profEmail = document.getElementById('profEmail').value.trim();
       if (!profEmail) {
-        DataLoader.showError('Email é obrigatório');
+        DataLoader.showError('Email é obrigatório', 'modalErrorContainer');
         isValid = false;
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profEmail)) {
-        DataLoader.showError('Email inválido');
+        DataLoader.showError('Email inválido', 'modalErrorContainer');
         isValid = false;
       }
       
       // Telefone obrigatório
       const profTelefone = document.getElementById('profTelefone').value.trim();
       if (!profTelefone) {
-        DataLoader.showError('Telefone é obrigatório');
+        DataLoader.showError('Telefone é obrigatório', 'modalErrorContainer');
         isValid = false;
       }
       
       // Numero de BI obrigatório
       const biNum = document.querySelector('input[name="documento_numero"]').value.trim();
       if (!biNum) {
-        DataLoader.showError('Número de BI é obrigatório');
+        DataLoader.showError('Número de BI é obrigatório', 'modalErrorContainer');
         isValid = false;
       }
       
       // Data de nascimento obrigatória
       const dataNasc = document.querySelector('input[name="data_nascimento"]').value;
       if (!dataNasc) {
-        DataLoader.showError('Data de nascimento é obrigatória');
+        DataLoader.showError('Data de nascimento é obrigatória', 'modalErrorContainer');
         isValid = false;
       } else {
         const dataNascError = Utils.validarDataNascimento(dataNasc, 18, 100);
         if (dataNascError) {
-          DataLoader.showError(dataNascError);
+          DataLoader.showError(dataNascError, 'modalErrorContainer');
           isValid = false;
         }
       }
@@ -679,21 +682,21 @@
       // Data de emissão do BI obrigatória
       const dataEmissao = document.querySelector('input[name="documento_emissao"]').value;
       if (!dataEmissao) {
-        DataLoader.showError('Data de emissão do BI é obrigatória');
+        DataLoader.showError('Data de emissão do BI é obrigatória', 'modalErrorContainer');
         isValid = false;
       }
       
       // Naturalidade obrigatória
       const cidade = document.querySelector('input[name="cidade"]').value.trim();
       if (!cidade) {
-        DataLoader.showError('Naturalidade é obrigatória');
+        DataLoader.showError('Naturalidade é obrigatória', 'modalErrorContainer');
         isValid = false;
       }
       
       // Endereço obrigatório (rua)
       const rua = document.querySelector('input[name="rua"]').value.trim();
       if (!rua) {
-        DataLoader.showError('Rua é obrigatória');
+        DataLoader.showError('Rua é obrigatória', 'modalErrorContainer');
         isValid = false;
       }
       
@@ -702,10 +705,10 @@
       if (!profId) {
         const profSenha = document.getElementById('profSenha').value.trim();
         if (!profSenha) {
-          DataLoader.showError('Senha é obrigatória para novo professor');
+          DataLoader.showError('Senha é obrigatória para novo professor', 'modalErrorContainer');
           isValid = false;
         } else if (profSenha.length < 6) {
-          DataLoader.showError('Senha deve ter pelo menos 6 caracteres');
+          DataLoader.showError('Senha deve ter pelo menos 6 caracteres', 'modalErrorContainer');
           isValid = false;
         }
       }
@@ -1056,6 +1059,10 @@ document.getElementById('profModal').addEventListener('show.bs.modal', function(
       document.getElementById('formProfessor').addEventListener('submit', async function(e) {
       e.preventDefault();
 
+      // Limpar erro anterior no modal
+      const errorContainer = document.getElementById('modalErrorContainer');
+      if (errorContainer) errorContainer.innerHTML = '';
+
       // Validação
       if (!validateForm()) {
         return;
@@ -1151,7 +1158,9 @@ document.getElementById('profModal').addEventListener('show.bs.modal', function(
         if (btnTexto) btnTexto.textContent = profId ? 'Atualizar' : 'Guardar';
         if (btnSpinner) btnSpinner.classList.add('d-none');
         DataLoader.hideLoading();
-        DataLoader.showError('Erro ao guardar professor: ' + error.message);
+        
+        // Exibir erro amigável no container do modal
+        DataLoader.showError(error.message, 'modalErrorContainer');
         console.error('Erro completo:', error);
       }
     });
@@ -1166,6 +1175,8 @@ document.getElementById('profModal').addEventListener('show.bs.modal', function(
       const btnSalvarReset = document.getElementById('btnSalvarProf');
       if (btnSalvarReset) btnSalvarReset.textContent = 'Guardar';
       document.querySelectorAll('[id*="Error"]').forEach(el => el.textContent = '');
+      const errorContainer = document.getElementById('modalErrorContainer');
+      if (errorContainer) errorContainer.innerHTML = '';
     });
 
     // Logout
