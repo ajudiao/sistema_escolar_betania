@@ -296,6 +296,9 @@
   <script src="../../js/sidebar.js"></script>
   <script src="js/professor.js"></script>
   <script>
+    // ========== VARIÁVEIS GLOBAIS ==========
+    let professorAtual = null;
+    
     // Carregamento inicial de dados
     async function carregarDados() {
       const spinner = document.getElementById('loadingSpinner');
@@ -326,7 +329,10 @@
         
         console.log('[Faltas] Chamando api.getProfessorByUsuario...');
         const professor = await api.getProfessorByUsuario(usuarioId);
-        console.log('%c[Faltas] PROFESSOR RECEBIDO COM SUCESSO', 'color: green; font-size: 12px');
+        
+        // ARMAZENAR PROFESSOR GLOBALMENTE
+        professorAtual = professor;
+        console.log('%c[Faltas] PROFESSOR RECEBIDO E ARMAZENADO GLOBALMENTE', 'color: green; font-size: 12px');
         console.log('[Faltas] Estrutura completa:', JSON.stringify(professor, null, 2));
         console.log('[Faltas] Campos do professor:', Object.keys(professor));
         
@@ -334,68 +340,127 @@
         document.querySelector('.header-user-name').textContent = professor.nome_prof;
         console.log('[Faltas] Nome professor atualizado:', professor.nome_prof);
         
-        // 4. Populate turmas dropdown
+        // 4. Populate turmas dropdown a partir de turmasDisciplinas
         const selectTurma = document.getElementById('selectTurma');
         
-        // Tentar obter turmas de vários campos possíveis
+        console.log('%c[Faltas] Verificando turmasDisciplinas...', 'color: cyan;');
+        console.log('[Faltas] professor.turmasDisciplinas exists?', !!professor.turmasDisciplinas);
+        console.log('[Faltas] professor.turmasDisciplinas length:', professor.turmasDisciplinas ? professor.turmasDisciplinas.length : 0);
+        
         let todasAsTurmas = [];
         
-        // Opção 1: turmas_dirigidas
-        if (professor.turmas_dirigidas && Array.isArray(professor.turmas_dirigidas) && professor.turmas_dirigidas.length > 0) {
-          console.log('[Faltas] Turmas encontradas em turmas_dirigidas:', professor.turmas_dirigidas.length);
-          todasAsTurmas = professor.turmas_dirigidas;
-        }
-        // Opção 2: turmas (array de objetos com turma dentro)
-        else if (professor.turmas && Array.isArray(professor.turmas) && professor.turmas.length > 0) {
-          console.log('[Faltas] Turmas encontradas em turmas (ProfessorTurma):', professor.turmas.length);
-          // Extrair objetos turma de dentro do array
-          todasAsTurmas = professor.turmas
-            .map(pt => pt.turma)
-            .filter(t => t !== null && t !== undefined);
-          console.log('[Faltas] Após extração:', todasAsTurmas.length, 'turmas válidas');
-        }
-        // Opção 3: nenhuma encontrada
-        else {
-          console.warn('[Faltas] AVISO: Nenhuma turma encontrada');
-        }
-        
-        console.log('[Faltas] Quantidade de turmas:', todasAsTurmas.length);
-        
-        if (todasAsTurmas.length > 0) {
-          todasAsTurmas.forEach((item, idx) => {
-            console.log(`[Faltas] Processando turma ${idx}:`, item);
-            
-            // Try different possible structures
-            let turma = null;
-            
-            // Opção 1: É um objeto turma direto
-            if (item && item.id_turma) {
-              turma = item;
+        if (professor.turmasDisciplinas && professor.turmasDisciplinas.length > 0) {
+          console.log('%c[Faltas] ✓ Encontradas turmasDisciplinas atribuídas!', 'color: green;');
+          console.log('[Faltas] Estrutura de turmasDisciplinas:', professor.turmasDisciplinas[0]);
+          
+          // Extrair turmas únicas (evitar duplicatas)
+          const turmasMap = new Map();
+          
+          professor.turmasDisciplinas.forEach((td, idx) => {
+            if (td.turma && td.turma.id_turma) {
+              const idTurma = td.turma.id_turma;
+              
+              // Adicionar à map se ainda não existe
+              if (!turmasMap.has(idTurma)) {
+                const siglaTurma = td.turma.sigla_turma || `Turma ${idTurma}`;
+                turmasMap.set(idTurma, { id: idTurma, sigla: siglaTurma });
+                console.log(`%c[Faltas] ✓ Turma ${idx}: ID=${idTurma}, Sigla=${siglaTurma}`, 'color: green;');
+              }
             }
-            // Opção 2: É um objeto ProfessorTurma com turma dentro
-            else if (item && item.turma && item.turma.id_turma) {
-              turma = item.turma;
-            }
-            
-            if (!turma) {
-              console.warn('[Faltas] Turma inválida, pulando:', item);
-              return;
-            }
-            
-            const option = document.createElement('option');
-            option.value = turma.id_turma;
-            option.textContent = turma.sigla_turma || `Turma ${turma.id_turma}`;
-            selectTurma.appendChild(option);
-            console.log('[Faltas] Turma adicionada:', turma.sigla_turma, '(ID:', turma.id_turma + ')');
           });
+          
+          // Preencher o dropdown com as turmas únicas
+          turmasMap.forEach((turmaInfo) => {
+            const option = document.createElement('option');
+            option.value = turmaInfo.id;
+            option.textContent = turmaInfo.sigla;
+            selectTurma.appendChild(option);
+            todasAsTurmas.push(turmaInfo);
+          });
+          
+          console.log('%c[Faltas] ✓ Total de turmas únicas carregadas:', 'color: green;', todasAsTurmas.length);
         } else {
-          console.warn('[Faltas] AVISO: Nenhuma turma encontrada para o professor');
-          console.log('[Faltas] Campos de turmas analisados:');
-          console.log('[Faltas] - professor.turmas_dirigidas:', professor.turmas_dirigidas);
-          console.log('[Faltas] - professor.turmas:', professor.turmas);
+          console.warn('%c[Faltas] ✗ AVISO: Nenhuma turma encontrada! Professor não tem turmasDisciplinas atribuídas!', 'color: red; font-weight: bold;');
+          console.log('[Faltas] Tentando fallback para turmas_dirigidas ou turmas...');
+          
+          // Fallback para turmas_dirigidas ou turmas se turmasDisciplinas não existir
+          if (professor.turmas_dirigidas && Array.isArray(professor.turmas_dirigidas) && professor.turmas_dirigidas.length > 0) {
+            console.log('[Faltas] Usando turmas_dirigidas como fallback');
+            todasAsTurmas = professor.turmas_dirigidas;
+            todasAsTurmas.forEach(turma => {
+              const option = document.createElement('option');
+              option.value = turma.id_turma;
+              option.textContent = turma.sigla_turma || `Turma ${turma.id_turma}`;
+              selectTurma.appendChild(option);
+            });
+          } else if (professor.turmas && Array.isArray(professor.turmas) && professor.turmas.length > 0) {
+            console.log('[Faltas] Usando turmas (ProfessorTurma) como fallback');
+            todasAsTurmas = professor.turmas
+              .map(pt => pt.turma)
+              .filter(t => t !== null && t !== undefined);
+            todasAsTurmas.forEach(turma => {
+              const option = document.createElement('option');
+              option.value = turma.id_turma;
+              option.textContent = turma.sigla_turma || `Turma ${turma.id_turma}`;
+              selectTurma.appendChild(option);
+            });
+          }
+        }
+        
+        if (todasAsTurmas.length === 0) {
+          console.error('%c[Faltas] ✗ NENHUMA TURMA ENCONTRADA EM NENHUM CAMPO!', 'color: red; font-weight: bold;');
           spinner.innerHTML = `<div class="alert alert-warning">Nenhuma turma encontrada para este professor. Entre em contato com o administrador.</div>`;
           return;
         }
+        
+        // 5. Adicionar funcionalidade de filtro dinâmico de disciplinas
+        const selectDisciplina = document.getElementById('selectDisciplina');
+        
+        function atualizarDisciplinasPorTurma() {
+          selectDisciplina.innerHTML = '<option value="">Selecione...</option>';
+          
+          const turmaId = parseInt(document.getElementById('selectTurma').value);
+          
+          if (!turmaId || !professorAtual || !professorAtual.turmasDisciplinas) {
+            console.log('%c[Faltas] Turma não selecionada ou professor não carregado', 'color: orange;');
+            return;
+          }
+          
+          console.log(`%c[Faltas] Filtrando disciplinas para turma ID: ${turmaId}`, 'color: cyan;');
+          console.log('[Faltas] professorAtual.turmasDisciplinas exists:', !!professorAtual.turmasDisciplinas);
+          console.log('[Faltas] professorAtual.turmasDisciplinas length:', professorAtual.turmasDisciplinas.length);
+          
+          // Filtrar turmasDisciplinas para a turma selecionada
+          const disciplinasDaTurma = professorAtual.turmasDisciplinas
+            .filter(td => td.turma_id === turmaId && td.disciplina)
+            .reduce((acc, td) => {
+              // Evitar duplicatas de disciplinas
+              if (!acc.some(d => d.id_disc === td.disciplina.id_disc)) {
+                acc.push(td.disciplina);
+              }
+              return acc;
+            }, []);
+          
+          console.log(`%c[Faltas] Disciplinas encontradas para turma ${turmaId}: ${disciplinasDaTurma.length}`, 'color: teal;', disciplinasDaTurma);
+          
+          if (disciplinasDaTurma.length === 0) {
+            console.warn(`%c[Faltas] Nenhuma disciplina atribuída para a turma ${turmaId}`, 'color: orange;');
+            return;
+          }
+          
+          disciplinasDaTurma.forEach(disc => {
+            const option = document.createElement('option');
+            option.value = disc.id_disc;
+            option.textContent = disc.sigla_disc || disc.descricao_disc || `Disciplina ${disc.id_disc}`;
+            selectDisciplina.appendChild(option);
+            
+            console.log(`%c[Faltas] Disciplina adicionada: ID=${disc.id_disc}, Nome=${option.textContent}`, 'color: teal;');
+          });
+        }
+        
+        // Adicionar evento ao select de turmas para atualizar disciplinas
+        selectTurma.addEventListener('change', atualizarDisciplinasPorTurma);
+        console.log('%c[Faltas] ✓ Event listener adicionado ao select de turmas', 'color: green;');
         
         // 5. Show content, hide spinner
         console.log('%c[Faltas] CARREGAMENTO COMPLETO COM SUCESSO', 'color: green; font-weight: bold; font-size: 12px');

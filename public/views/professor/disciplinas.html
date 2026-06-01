@@ -191,34 +191,93 @@
         
         const professor = await api.getProfessorByUsuario(usuarioId);
         console.log('%c[Disciplinas] PROFESSOR RECEBIDO', 'color: green; font-size: 12px');
-        console.log('[Disciplinas] Disciplinas:', JSON.stringify(professor.disciplinas, null, 2));
+        console.log('[Disciplinas] turmasDisciplinas:', JSON.stringify(professor.turmasDisciplinas, null, 2));
         
         // 2. Atualizar nome no header
         document.querySelector('.header-user-name').textContent = professor.nome_prof;
         
-        // 3. Popular grid de disciplinas
-        const disciplinas = professor.disciplinas || [];
-        console.log('[Disciplinas] Total de disciplinas:', disciplinas.length);
+        // 3. Extrair disciplinas únicas de turmasDisciplinas
+        const disciplinasMap = new Map();
+        
+        console.log('%c[Disciplinas] Verificando turmasDisciplinas...', 'color: cyan;');
+        console.log('[Disciplinas] professor.turmasDisciplinas exists?', !!professor.turmasDisciplinas);
+        console.log('[Disciplinas] professor.turmasDisciplinas length:', professor.turmasDisciplinas ? professor.turmasDisciplinas.length : 0);
+        
+        if (professor.turmasDisciplinas && professor.turmasDisciplinas.length > 0) {
+          console.log('%c[Disciplinas] ✓ Encontradas turmasDisciplinas!', 'color: green;');
+          
+          // Extrair disciplinas únicas e contar quantas turmas cada uma tem
+          professor.turmasDisciplinas.forEach((td) => {
+            if (td.disciplina && td.disciplina.id_disc) {
+              const discId = td.disciplina.id_disc;
+              
+              if (!disciplinasMap.has(discId)) {
+                disciplinasMap.set(discId, {
+                  disciplina: td.disciplina,
+                  turmas: []
+                });
+              }
+              
+              // Adicionar turma à lista se não estiver duplicada
+              const discData = disciplinasMap.get(discId);
+              if (!discData.turmas.some(t => t.id_turma === td.turma.id_turma)) {
+                discData.turmas.push(td.turma);
+              }
+              
+              console.log(`[Disciplinas] ✓ Disciplina ID=${discId} encontrada em turma ${td.turma.sigla_turma}`);
+            }
+          });
+          
+          console.log('%c[Disciplinas] ✓ Total de disciplinas únicas extraídas:', 'color: green;', disciplinasMap.size);
+        } else {
+          console.warn('%c[Disciplinas] ✗ AVISO: Nenhuma turmasDisciplinas encontrada!', 'color: red; font-weight: bold;');
+          console.log('[Disciplinas] Tentando fallback para professor.disciplinas...');
+          
+          // Fallback para o campo antigo se turmasDisciplinas não existir
+          if (professor.disciplinas && Array.isArray(professor.disciplinas) && professor.disciplinas.length > 0) {
+            professor.disciplinas.forEach((item) => {
+              let disciplina = null;
+              
+              if (item && item.disciplina && item.disciplina.id_disc) {
+                disciplina = item.disciplina;
+              } else if (item && item.id_disc) {
+                disciplina = item;
+              }
+              
+              if (disciplina && !disciplinasMap.has(disciplina.id_disc)) {
+                disciplinasMap.set(disciplina.id_disc, {
+                  disciplina: disciplina,
+                  turmas: []
+                });
+              }
+            });
+            console.log('[Disciplinas] ✓ Usando fallback: ', disciplinasMap.size, 'disciplinas');
+          }
+        }
+        
+        // 4. Popular grid de disciplinas
+        const disciplinas = Array.from(disciplinasMap.values());
+        console.log('[Disciplinas] Total de disciplinas a renderizar:', disciplinas.length);
         
         if (disciplinas.length > 0) {
           const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
           
           disciplinas.forEach((item, idx) => {
-            let disciplina = null;
-            
-            if (item && item.disciplina && item.disciplina.id_disc) {
-              disciplina = item.disciplina;
-            } else if (item && item.id_disc) {
-              disciplina = item;
-            }
-            
-            if (!disciplina) {
-              console.warn('[Disciplinas] Disciplina inválida, pulando:', item);
-              return;
-            }
-            
+            const disciplina = item.disciplina;
+            const turmas = item.turmas;
             const color = colors[idx % colors.length];
             const iniciais = disciplina.sigla_disc || disciplina.descricao_disc.substring(0, 2);
+            
+            // Gerar HTML das turmas
+            let turmasHtml = '';
+            if (turmas.length > 0) {
+              turmasHtml = '<div class="small mb-2"><strong>Leciona em:</strong></div>';
+              turmasHtml += '<div class="d-flex flex-wrap gap-2">';
+              turmas.forEach(turma => {
+                turmasHtml += `<span class="badge bg-light text-dark">${turma.sigla_turma}</span>`;
+              });
+              turmasHtml += '</div>';
+            }
             
             const card = document.createElement('div');
             card.className = 'col-md-6 col-lg-4';
@@ -242,15 +301,16 @@
                   </div>
                   <h5 class="card-title">${disciplina.descricao_disc || 'Disciplina'}</h5>
                   <p class="card-text text-muted small">${disciplina.sigla_disc}</p>
+                  ${turmasHtml}
                 </div>
                 <div class="card-footer bg-transparent border-top-0">
-
-
+                  <small class="text-muted">📚 ${turmas.length} ${turmas.length === 1 ? 'turma' : 'turmas'}</small>
                 </div>
               </div>
             `;
             
             grid.appendChild(card);
+            console.log(`[Disciplinas] ✓ Card criado para ${disciplina.descricao_disc} (${turmas.length} turma(s))`);
           });
           
           console.log('%c[Disciplinas] CARREGAMENTO COMPLETO', 'color: green; font-weight: bold; font-size: 12px');

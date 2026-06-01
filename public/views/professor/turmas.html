@@ -184,34 +184,97 @@
 
     async function carregarTurmas() {
       try {
+        console.log('%c[Turmas] INICIANDO CARREGAMENTO', 'color: blue; font-weight: bold; font-size: 12px');
+        
         const usuarioId = localStorage.getItem('userId');
         
         if (!usuarioId) {
-          console.error('Usuário não identificado');
+          console.error('[Turmas] Usuário não identificado');
           document.getElementById('loadingSpinner').style.display = 'none';
           return;
         }
 
         // Obter professor
+        console.log('[Turmas] Carregando professor...');
         const professor = await api.getProfessorByUsuario(usuarioId);
+        console.log('%c[Turmas] PROFESSOR RECEBIDO', 'color: green; font-size: 12px');
+        console.log('[Turmas] turmasDisciplinas:', professor.turmasDisciplinas);
         
         // Atualizar nome do professor no header
         document.querySelector('.header-user-name').textContent = professor.nome_prof;
         document.querySelector('.header-user-avatar').textContent = 
           professor.nome_prof.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
 
-        // Carregar turmas do professor
-        const turmas = await api.getTurmasProfessor(professor.id_prof);
+        // Extrair turmas únicas de turmasDisciplinas
+        const turmasMap = new Map();
+        
+        console.log('%c[Turmas] Verificando turmasDisciplinas...', 'color: cyan;');
+        console.log('[Turmas] professor.turmasDisciplinas exists?', !!professor.turmasDisciplinas);
+        console.log('[Turmas] professor.turmasDisciplinas length:', professor.turmasDisciplinas ? professor.turmasDisciplinas.length : 0);
+        
+        let turmasParaCarregar = [];
+        
+        if (professor.turmasDisciplinas && professor.turmasDisciplinas.length > 0) {
+          console.log('%c[Turmas] ✓ Encontradas turmasDisciplinas!', 'color: green;');
+          
+          // Extrair turmas únicas
+          professor.turmasDisciplinas.forEach((td) => {
+            if (td.turma && td.turma.id_turma) {
+              const idTurma = td.turma.id_turma;
+              
+              if (!turmasMap.has(idTurma)) {
+                turmasMap.set(idTurma, td.turma);
+                console.log(`[Turmas] ✓ Turma ${idTurma} adicionada ao mapa`);
+              }
+            }
+          });
+          
+          turmasParaCarregar = Array.from(turmasMap.values());
+          console.log('%c[Turmas] ✓ Total de turmas únicas extraídas:', 'color: green;', turmasParaCarregar.length);
+        } else {
+          console.warn('%c[Turmas] ✗ AVISO: Nenhuma turma encontrada em turmasDisciplinas!', 'color: orange;');
+          console.log('[Turmas] Tentando fallback para api.getTurmasProfessor...');
+          
+          // Fallback: usar método antigo
+          try {
+            turmasParaCarregar = await api.getTurmasProfessor(professor.id_prof);
+            console.log('[Turmas] ✓ Turmas carregadas via fallback:', turmasParaCarregar.length);
+          } catch (errFallback) {
+            console.error('[Turmas] Fallback também falhou:', errFallback);
+            throw errFallback;
+          }
+        }
+
+        if (turmasParaCarregar.length === 0) {
+          console.warn('%c[Turmas] AVISO: Nenhuma turma encontrada!', 'color: orange;');
+          document.getElementById('loadingSpinner').innerHTML = `
+            <div class="alert alert-info mt-3">
+              <strong>Nenhuma turma atribuída</strong>
+              <p>Você não tem turmas atribuídas no momento.</p>
+            </div>
+          `;
+          return;
+        }
+
+        // Carregar dados detalhados das turmas (estudantes, etc.)
+        console.log('[Turmas] Carregando detalhes das turmas...');
+        const turmasDetalhadas = await Promise.all(
+          turmasParaCarregar.map(turma => api.getTurma(turma.id_turma))
+        );
+        
+        console.log('%c[Turmas] ✓ DETALHES CARREGADOS', 'color: green; font-size: 12px');
 
         // Renderizar turmas
-        renderizarTurmas(turmas);
+        renderizarTurmas(turmasDetalhadas);
 
         // Esconder spinner e mostrar turmas
         document.getElementById('loadingSpinner').style.display = 'none';
         document.getElementById('turmasContainer').style.display = '';
+        
+        console.log('%c[Turmas] CARREGAMENTO COMPLETO COM SUCESSO', 'color: green; font-weight: bold; font-size: 12px');
 
       } catch (error) {
-        console.error('Erro ao carregar turmas:', error);
+        console.error('%c[Turmas] ERRO CRÍTICO:', 'color: red; font-weight: bold; font-size: 12px', error);
         document.getElementById('loadingSpinner').innerHTML = `
           <div class="alert alert-danger mt-3">
             <strong>Erro ao carregar turmas!</strong>
