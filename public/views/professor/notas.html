@@ -350,103 +350,101 @@
           ? professor.nome_prof.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)
           : 'JF';
         
-        // Preencher dropdown de turmas
+        // Preencher dropdown de turmas a partir de turmasDisciplinas
         const turmaSelect = document.getElementById('turmaSelect');
         turmaSelect.innerHTML = '<option value="">Selecione...</option>';
         
         let turmasDisponiveis = [];
         
-        console.log('%c[NOTAS] Verificando turmas...', 'color: cyan;');
-        console.log('%c[NOTAS] professor.turmas exists?', 'color: cyan;', !!professor.turmas);
-        console.log('%c[NOTAS] professor.turmas length:', 'color: cyan;', professor.turmas ? professor.turmas.length : 0);
-        console.log('%c[NOTAS] professor.turmas_dirigidas exists?', 'color: cyan;', !!professor.turmas_dirigidas);
-        console.log('%c[NOTAS] professor.turmas_dirigidas length:', 'color: cyan;', professor.turmas_dirigidas ? professor.turmas_dirigidas.length : 0);
+        console.log('%c[NOTAS] Verificando turmasDisciplinas...', 'color: cyan;');
+        console.log('%c[NOTAS] professor.turmasDisciplinas exists?', 'color: cyan;', !!professor.turmasDisciplinas);
+        console.log('%c[NOTAS] professor.turmasDisciplinas length:', 'color: cyan;', professor.turmasDisciplinas ? professor.turmasDisciplinas.length : 0);
         
-        if (professor.turmas && professor.turmas.length > 0) {
-          console.log('%c[NOTAS] ✓ Encontradas turmas em professor.turmas', 'color: green;');
-          console.log('%c[NOTAS] Estrutura de turmas:', 'color: purple;', professor.turmas[0]);
+        if (professor.turmasDisciplinas && professor.turmasDisciplinas.length > 0) {
+          console.log('%c[NOTAS] ✓ Encontradas turmasDisciplinas atribuídas!', 'color: green;');
+          console.log('%c[NOTAS] Estrutura de turmasDisciplinas:', 'color: purple;', professor.turmasDisciplinas[0]);
           
-          // IMPORTANTE: Filtrar apenas turmas que existem (turma !== null)
-          const turmasValidas = professor.turmas.filter(pt => pt.turma !== null);
-          console.log(`%c[NOTAS] Turmas válidas: ${turmasValidas.length} de ${professor.turmas.length}`, 'color: orange;');
+          // Extrair turmas únicas (evitar duplicatas)
+          const turmasMap = new Map();
           
-          turmasValidas.forEach((pt, idx) => {
-            const turma = pt.turma; // Aqui está o objeto turma real
-            const idTurma = turma.id_turma;
-            const siglaTurma = turma.sigla_turma || `Turma ${idTurma}`;
-            
-            console.log(`%c[NOTAS] ✓ Turma ${idx}: ID=${idTurma}, Sigla=${siglaTurma}`, 'color: green;');
-            
-            if (idTurma) {
-              const option = document.createElement('option');
-              option.value = idTurma;
-              option.textContent = siglaTurma;
-              option.dataset.id = idTurma;
-              turmaSelect.appendChild(option);
-              turmasDisponiveis.push({ id: idTurma, sigla: siglaTurma });
+          professor.turmasDisciplinas.forEach((td, idx) => {
+            if (td.turma && td.turma.id_turma) {
+              const idTurma = td.turma.id_turma;
+              
+              // Adicionar à map se ainda não existe
+              if (!turmasMap.has(idTurma)) {
+                const siglaTurma = td.turma.sigla_turma || `Turma ${idTurma}`;
+                turmasMap.set(idTurma, { id: idTurma, sigla: siglaTurma });
+                console.log(`%c[NOTAS] ✓ Turma ${idx}: ID=${idTurma}, Sigla=${siglaTurma}`, 'color: green;');
+              }
             }
           });
-          console.log('%c[NOTAS] ✓ Total de turmas válidas carregadas:', 'color: green;', turmasDisponiveis.length);
-        } else if (professor.turmas_dirigidas && professor.turmas_dirigidas.length > 0) {
-          console.log('%c[NOTAS] ✓ Encontradas turmas em professor.turmas_dirigidas', 'color: green;');
-          console.log('%c[NOTAS] Estrutura de turmas dirigidas:', 'color: purple;', professor.turmas_dirigidas[0]);
           
-          // Turmas dirigidas já vêm como objeto Turma direto (não é junção)
-          professor.turmas_dirigidas.forEach((turma, idx) => {
-            const idTurma = turma.id_turma;
-            const siglaTurma = turma.sigla_turma || `Turma ${idTurma}`;
-            
-            console.log(`%c[NOTAS] ✓ Turma Dirigida ${idx}: ID=${idTurma}, Sigla=${siglaTurma}`, 'color: green;');
-            
-            if (idTurma) {
-              const option = document.createElement('option');
-              option.value = idTurma;
-              option.textContent = siglaTurma;
-              option.dataset.id = idTurma;
-              turmaSelect.appendChild(option);
-              turmasDisponiveis.push({ id: idTurma, sigla: siglaTurma });
-            }
+          // Preencher o dropdown com as turmas únicas
+          turmasMap.forEach((turmaInfo) => {
+            const option = document.createElement('option');
+            option.value = turmaInfo.id;
+            option.textContent = turmaInfo.sigla;
+            option.dataset.id = turmaInfo.id;
+            turmaSelect.appendChild(option);
+            turmasDisponiveis.push(turmaInfo);
           });
-          console.log('%c[NOTAS] ✓ Total de turmas dirigidas carregadas:', 'color: green;', turmasDisponiveis.length);
+          
+          console.log('%c[NOTAS] ✓ Total de turmas únicas carregadas:', 'color: green;', turmasDisponiveis.length);
         } else {
-          console.warn('%c[NOTAS] ✗ AVISO: Nenhuma turma encontrada! Professor não tem turmas nem turmas_dirigidas!', 'color: red; font-weight: bold;');
+          console.warn('%c[NOTAS] ✗ AVISO: Nenhuma turma encontrada! Professor não tem turmasDisciplinas atribuídas!', 'color: red; font-weight: bold;');
           showFlashMessage('⚠️ Nenhuma turma encontrada para este professor', 'warning');
         }
         
-        // Preencher dropdown de disciplinas
+        // Preencher dropdown de disciplinas a partir de turmasDisciplinas
         const disciplinaSelect = document.getElementById('disciplinaSelect');
-        disciplinaSelect.innerHTML = '<option value="">Selecione...</option>';
         
-        console.log('%c[NOTAS] Verificando disciplinas...', 'color: cyan;');
-        console.log('%c[NOTAS] professor.disciplinas exists?', 'color: cyan;', !!professor.disciplinas);
-        console.log('%c[NOTAS] professor.disciplinas length:', 'color: cyan;', professor.disciplinas ? professor.disciplinas.length : 0);
-        
-        if (professor.disciplinas && professor.disciplinas.length > 0) {
-          console.log('%c[NOTAS] ✓ Encontradas disciplinas!', 'color: green;');
-          console.log('%c[NOTAS] Estrutura de disciplinas:', 'color: purple;', professor.disciplinas[0]);
+        function atualizarDisciplinasPorTurma() {
+          disciplinaSelect.innerHTML = '<option value="">Selecione...</option>';
           
-          professor.disciplinas.forEach(disc => {
+          const turmaId = parseInt(document.getElementById('turmaSelect').value);
+          
+          if (!turmaId || !professor.turmasDisciplinas) {
+            console.log('%c[NOTAS] Turma não selecionada ou turmasDisciplinas não disponível', 'color: orange;');
+            return;
+          }
+          
+          console.log(`%c[NOTAS] Filtrando disciplinas para turma ID: ${turmaId}`, 'color: cyan;');
+          
+          // Filtrar turmasDisciplinas para a turma selecionada
+          const disciplinasDaTurma = professor.turmasDisciplinas
+            .filter(td => td.turma_id === turmaId && td.disciplina)
+            .reduce((acc, td) => {
+              // Evitar duplicatas de disciplinas
+              if (!acc.some(d => d.id_disc === td.disciplina.id_disc)) {
+                acc.push(td.disciplina);
+              }
+              return acc;
+            }, []);
+          
+          console.log(`%c[NOTAS] Disciplinas encontradas para turma ${turmaId}: ${disciplinasDaTurma.length}`, 'color: teal;', disciplinasDaTurma);
+          
+          if (disciplinasDaTurma.length === 0) {
+            console.warn(`%c[NOTAS] Nenhuma disciplina atribuída para a turma ${turmaId}`, 'color: orange;');
+            return;
+          }
+          
+          disciplinasDaTurma.forEach(disc => {
             const option = document.createElement('option');
-            
-            // O ID correto é disciplina_id (da relação ProfessorDisciplina)
-            const disciplinaId = disc.disciplina_id;
-            
-            // O nome vem do objeto disciplina aninhado
-            const nomeDisciplina = disc.disciplina?.descricao_disc || disc.disciplina?.sigla_disc || `Disciplina ${disciplinaId}`;
-            
-            option.value = disciplinaId;
-            option.textContent = nomeDisciplina;
-            option.dataset.nomeDisciplina = nomeDisciplina;
-            option.dataset.disciplinaId = disciplinaId;
-            
+            option.value = disc.id_disc;
+            option.textContent = disc.sigla_disc || disc.descricao_disc || `Disciplina ${disc.id_disc}`;
+            option.dataset.nomeDisciplina = disc.sigla_disc || disc.descricao_disc;
+            option.dataset.disciplinaId = disc.id_disc;
             disciplinaSelect.appendChild(option);
             
-            console.log(`%c[NOTAS] Disciplina adicionada: ID=${disciplinaId}, Nome=${nomeDisciplina}`, 'color: teal;');
+            console.log(`%c[NOTAS] Disciplina adicionada: ID=${disc.id_disc}, Nome=${option.textContent}`, 'color: teal;');
           });
-          console.log('%c[NOTAS] ✓ Total de disciplinas carregadas:', 'color: green;', professor.disciplinas.length);
-        } else {
-          console.warn('%c[NOTAS] ✗ AVISO: Nenhuma disciplina encontrada!', 'color: orange;');
         }
+        
+        // Adicionar evento ao select de turmas para atualizar disciplinas
+        document.getElementById('turmaSelect').addEventListener('change', atualizarDisciplinasPorTurma);
+        
+        console.log('%c[NOTAS] ✓ Event listener adicionado ao select de turmas', 'color: green;');
         
         // Definir data de hoje
         const dataAvaliacao = document.getElementById('dataAvaliacao');
