@@ -509,18 +509,10 @@
                     </div>
                   </div>
 
-                  <!-- DISCIPLINAS -->
+                  <!-- TURMAS E DISCIPLINAS -->
                   <div class="mb-3">
-                    <label class="form-label">Disciplinas</label>
-                    <div id="disciplinasContainer" class="border rounded p-3 d-grid gap-2" style="max-height:150px; overflow-y:auto;">
-                      <div class="text-muted small">Carregando disciplinas...</div>
-                    </div>
-                  </div>
-
-                  <!-- TURMAS -->
-                  <div class="mb-3">
-                    <label class="form-label">Turmas</label>
-                    <div id="turmasContainer" class="border rounded p-3 d-grid gap-2" style="max-height:150px; overflow-y:auto;">
+                    <label class="form-label">Turmas e Disciplinas</label>
+                    <div id="turmasComDisciplinasContainer" class="border rounded p-3" style="max-height:300px; overflow-y:auto;">
                       <div class="text-muted small">Carregando turmas...</div>
                     </div>
                   </div>
@@ -566,50 +558,29 @@
     let disciplinasData = [];
     let turmasData = [];
 
-    // =========== CARREGAR E RENDERIZAR DISCIPLINAS ===========
+    // =========== CARREGAR DISCIPLINAS ===========
     async function loadDisciplinas() {
       try {
         disciplinasData = await api.getDisciplinas();
-        renderDisciplinasCheckboxes();
       } catch (error) {
         console.error('Erro ao carregar disciplinas:', error);
-        const container = document.getElementById('disciplinasContainer');
-        container.innerHTML = '<div class="text-danger small">Erro ao carregar disciplinas</div>';
       }
     }
 
-    function renderDisciplinasCheckboxes(selectedIds = []) {
-      const container = document.getElementById('disciplinasContainer');
-      container.innerHTML = '';
-
-      if (!disciplinasData || disciplinasData.length === 0) {
-        container.innerHTML = '<div class="text-muted small">Nenhuma disciplina cadastrada</div>';
-        return;
-      }
-
-      disciplinasData.forEach(disciplina => {
-        const isChecked = selectedIds.includes(disciplina.id_disc) ? 'checked' : '';
-        const div = document.createElement('div');
-        div.className = 'form-check';
-        div.innerHTML = `<input class="form-check-input" type="checkbox" name="disciplinas" value="${disciplina.id_disc}" ${isChecked}> ${disciplina.sigla_disc || 'N/A'}`;
-        container.appendChild(div);
-      });
-    }
-
-    // =========== CARREGAR E RENDERIZAR TURMAS ===========
+    // =========== CARREGAR E RENDERIZAR TURMAS COM DISCIPLINAS ===========
     async function loadTurmas() {
       try {
         turmasData = await api.getTurmas();
-        renderTurmasCheckboxes();
+        renderTurmasComDisciplinas();
       } catch (error) {
         console.error('Erro ao carregar turmas:', error);
-        const container = document.getElementById('turmasContainer');
+        const container = document.getElementById('turmasComDisciplinasContainer');
         container.innerHTML = '<div class="text-danger small">Erro ao carregar turmas</div>';
       }
     }
 
-    function renderTurmasCheckboxes(selectedIds = []) {
-      const container = document.getElementById('turmasContainer');
+    function renderTurmasComDisciplinas(turmasDisciplinasMap = {}) {
+      const container = document.getElementById('turmasComDisciplinasContainer');
       container.innerHTML = '';
 
       if (!turmasData || turmasData.length === 0) {
@@ -617,12 +588,159 @@
         return;
       }
 
+      // Construir mapa de turma-disciplina já atribuídas por OUTROS professores
+      const professoresAtribuicoes = {};
+      const currentProfId = parseInt(document.getElementById('profModalForm').getAttribute('data-id')) || null;
+      
+      professoresData.forEach(prof => {
+        // Pular o professor que está sendo editado
+        if (prof.id_prof === currentProfId) return;
+        
+        if (prof.turmasDisciplinas && Array.isArray(prof.turmasDisciplinas)) {
+          prof.turmasDisciplinas.forEach(td => {
+            const key = `${td.turma_id}_${td.disciplina_id}`;
+            professoresAtribuicoes[key] = prof.nome_prof;
+          });
+        }
+      });
+
+      console.log('Atribuições já existentes:', professoresAtribuicoes);
+
       turmasData.forEach(turma => {
-        const isChecked = selectedIds.includes(turma.id_turma) ? 'checked' : '';
-        const div = document.createElement('div');
-        div.className = 'form-check';
-        div.innerHTML = `<input class="form-check-input" type="checkbox" name="turmas" value="${turma.id_turma}" ${isChecked}> ${turma.sigla_turma || 'Turma'} - ${turma.classe_turma || ''}`;
-        container.appendChild(div);
+        const isChecked = Object.keys(turmasDisciplinasMap).includes(turma.id_turma.toString()) ? 'checked' : '';
+        
+        // Criar card para turma
+        const turmaDiv = document.createElement('div');
+        turmaDiv.className = 'mb-3 p-3 border rounded bg-light';
+        turmaDiv.style.border = '1px solid #dee2e6';
+        
+        // Checkbox da turma
+        const checkboxDiv = document.createElement('div');
+        checkboxDiv.className = 'form-check mb-2';
+        checkboxDiv.innerHTML = `
+          <input 
+            class="form-check-input turma-checkbox" 
+            type="checkbox" 
+            name="turmas_selecionadas" 
+            value="${turma.id_turma}" 
+            id="turma_${turma.id_turma}"
+            ${isChecked}
+          >
+          <label class="form-check-label fw-bold" for="turma_${turma.id_turma}">
+            ${turma.sigla_turma || 'Turma'} — Turno: ${turma.turno_turma || 'N/A'} — Classe: ${turma.classe_turma || 'N/A'} — Sala: ${turma.sala_turma || 'N/A'}
+          </label>
+        `;
+        turmaDiv.appendChild(checkboxDiv);
+
+        // Dropdown de disciplinas
+        const disciplinasDiv = document.createElement('div');
+        disciplinasDiv.className = 'ms-4';
+        disciplinasDiv.innerHTML = `
+          <label class="form-label small text-muted">Selecione disciplina(s)</label>
+          <div class="disciplinas-group" style="display: flex; flex-direction: column; gap: 8px;">
+        `;
+
+        // Se a turma foi selecionada anteriormente, mostrar checkboxes de disciplinas
+        if (turmasDisciplinasMap[turma.id_turma]) {
+          const disciplinasPreSelecionadas = turmasDisciplinasMap[turma.id_turma];
+          
+          disciplinasData.forEach(disciplina => {
+            const isDisciplinaChecked = disciplinasPreSelecionadas.includes(disciplina.id_disc) ? 'checked' : '';
+            const atribuidoKey = `${turma.id_turma}_${disciplina.id_disc}`;
+            const jáAtribuído = professoresAtribuicoes[atribuidoKey];
+            
+            const disciplinaCheckbox = document.createElement('div');
+            disciplinaCheckbox.className = 'form-check';
+            
+            if (jáAtribuído) {
+              // Desabilitar se já está atribuído a outro professor
+              disciplinaCheckbox.innerHTML = `
+                <input 
+                  class="form-check-input" 
+                  type="checkbox" 
+                  disabled
+                  title="Já atribuído ao professor ${jáAtribuído}"
+                  style="opacity: 0.5;"
+                >
+                <label class="form-check-label small" style="opacity: 0.6; cursor: not-allowed;">
+                  <del>${disciplina.sigla_disc || disciplina.descricao_disc || 'N/A'}</del>
+                  <span class="badge bg-warning text-dark ms-1">Atribuído a ${jáAtribuído}</span>
+                </label>
+              `;
+            } else {
+              disciplinaCheckbox.innerHTML = `
+                <input 
+                  class="form-check-input disciplina-checkbox" 
+                  type="checkbox" 
+                  name="turma_${turma.id_turma}_disciplinas" 
+                  value="${disciplina.id_disc}"
+                  ${isDisciplinaChecked}
+                >
+                <label class="form-check-label small">
+                  ${disciplina.sigla_disc || disciplina.descricao_disc || 'N/A'}
+                </label>
+              `;
+            }
+            disciplinasDiv.querySelector('.disciplinas-group').appendChild(disciplinaCheckbox);
+          });
+        } else {
+          disciplinasDiv.querySelector('.disciplinas-group').innerHTML = '<div class="text-muted small ms-2">Marque a turma para selecionar disciplinas</div>';
+        }
+
+        disciplinasDiv.querySelector('.disciplinas-group').innerHTML += '</div>';
+        turmaDiv.appendChild(disciplinasDiv);
+
+        // Adicionar event listener no checkbox da turma para mostrar/esconder disciplinas
+        const turmaCheckbox = turmaDiv.querySelector('.turma-checkbox');
+        turmaCheckbox.addEventListener('change', function() {
+          const disciplinasGroup = turmaDiv.querySelector('.disciplinas-group');
+          if (this.checked) {
+            // Mostrar disciplinas
+            disciplinasGroup.innerHTML = '';
+            disciplinasData.forEach(disciplina => {
+              const atribuidoKey = `${turma.id_turma}_${disciplina.id_disc}`;
+              const jáAtribuído = professoresAtribuicoes[atribuidoKey];
+              
+              const disciplinaCheckbox = document.createElement('div');
+              disciplinaCheckbox.className = 'form-check';
+              
+              if (jáAtribuído) {
+                // Desabilitar se já está atribuído a outro professor
+                disciplinaCheckbox.innerHTML = `
+                  <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    disabled
+                    title="Já atribuído ao professor ${jáAtribuído}"
+                    style="opacity: 0.5;"
+                  >
+                  <label class="form-check-label small" style="opacity: 0.6; cursor: not-allowed;">
+                    <del>${disciplina.sigla_disc || disciplina.descricao_disc || 'N/A'}</del>
+                    <span class="badge bg-warning text-dark ms-1">Atribuído a ${jáAtribuído}</span>
+                  </label>
+                `;
+              } else {
+                disciplinaCheckbox.innerHTML = `
+                  <input 
+                    class="form-check-input disciplina-checkbox" 
+                    type="checkbox" 
+                    name="turma_${turma.id_turma}_disciplinas" 
+                    value="${disciplina.id_disc}"
+                  >
+                  <label class="form-check-label small">
+                    ${disciplina.sigla_disc || disciplina.descricao_disc || 'N/A'}
+                  </label>
+                `;
+              }
+              disciplinasGroup.appendChild(disciplinaCheckbox);
+            });
+          } else {
+            // Esconder e limpar disciplinas
+            disciplinasGroup.innerHTML = '<div class="text-muted small ms-2">Marque a turma para selecionar disciplinas</div>';
+          }
+        });
+
+        container.appendChild(turmaDiv);
       });
     }
 
@@ -709,6 +827,54 @@
           isValid = false;
         } else if (profSenha.length < 6) {
           DataLoader.showError('Senha deve ter pelo menos 6 caracteres', 'modalErrorContainer');
+          isValid = false;
+        }
+      }
+      
+      // Validar conflitos de turma-disciplina
+      if (isValid) {
+        const currentProfId = parseInt(profId) || null;
+        const conflitosEncontrados = [];
+
+        // Construir mapa de atribuições de outros professores
+        const outrosProfessores = professoresData.filter(p => p.id_prof !== currentProfId);
+        const atribuicoesPorTurma = {};
+        
+        outrosProfessores.forEach(prof => {
+          if (prof.turmasDisciplinas && Array.isArray(prof.turmasDisciplinas)) {
+            prof.turmasDisciplinas.forEach(td => {
+              const key = `${td.turma_id}_${td.disciplina_id}`;
+              if (!atribuicoesPorTurma[key]) {
+                atribuicoesPorTurma[key] = [];
+              }
+              atribuicoesPorTurma[key].push(prof.nome_prof);
+            });
+          }
+        });
+
+        // Verificar turma-disciplinas selecionadas
+        document.querySelectorAll('input.turma-checkbox:checked').forEach(turmaCheckbox => {
+          const turmaId = parseInt(turmaCheckbox.value);
+          const disciplinasCheckboxes = document.querySelectorAll(`input[name="turma_${turmaId}_disciplinas"]:checked`);
+          
+          disciplinasCheckboxes.forEach(discCheckbox => {
+            const disciplinaId = parseInt(discCheckbox.value);
+            const key = `${turmaId}_${disciplinaId}`;
+            
+            if (atribuicoesPorTurma[key]) {
+              const turma = turmasData.find(t => t.id_turma === turmaId);
+              const disciplina = disciplinasData.find(d => d.id_disc === disciplinaId);
+              const turmaName = turma ? (turma.sigla_turma || `ID ${turma.id_turma}`) : `Turma ${turmaId}`;
+              const discName = disciplina ? (disciplina.sigla_disc || disciplina.descricao_disc) : `Disciplina ${disciplinaId}`;
+              
+              conflitosEncontrados.push(`${discName} na turma ${turmaName} já está atribuída a ${atribuicoesPorTurma[key].join(', ')}`);
+            }
+          });
+        });
+
+        if (conflitosEncontrados.length > 0) {
+          const mensagem = 'Conflito detectado:\n' + conflitosEncontrados.join('\n');
+          DataLoader.showError(mensagem, 'modalErrorContainer');
           isValid = false;
         }
       }
@@ -802,15 +968,27 @@
       const statusBadge = prof.status === 'ATIVO' ? '<span class="badge bg-success">Ativo</span>' : '<span class="badge bg-danger">Inativo</span>';
       document.getElementById('profDetailStatus').innerHTML = statusBadge;
 
-      const disciplinasResumo = Array.isArray(prof.disciplinas)
-        ? prof.disciplinas
-            .map(item => item.disciplina?.sigla_disc || item.disciplina?.descricao_disc || item.disciplina_id || item.id)
-            .filter(Boolean)
-            .join(', ')
-        : '-';
-      document.getElementById('profDetailDisciplinas').textContent = disciplinasResumo || '-';
-      document.getElementById('profDetailDisciplinasLecionadas').textContent = disciplinasResumo || '-';
+      // Extrair disciplinas do professor (usando turmasDisciplinas se disponível)
+      const disciplinasResumo = [];
+      if (prof.turmasDisciplinas && Array.isArray(prof.turmasDisciplinas) && prof.turmasDisciplinas.length > 0) {
+        // Usar turmasDisciplinas
+        prof.turmasDisciplinas.forEach(td => {
+          const discName = td.disciplina?.sigla_disc || td.disciplina?.descricao_disc || 'N/A';
+          const turmaName = td.turma?.sigla_turma || `Turma ${td.turma_id}`;
+          disciplinasResumo.push(`${discName} (${turmaName})`);
+        });
+      } else if (prof.disciplinas && Array.isArray(prof.disciplinas)) {
+        // Fallback para estrutura antiga
+        prof.disciplinas.forEach(item => {
+          const discName = item.disciplina?.sigla_disc || item.disciplina?.descricao_disc || item.disciplina_id || item.id;
+          disciplinasResumo.push(discName);
+        });
+      }
+      
+      document.getElementById('profDetailDisciplinas').textContent = disciplinasResumo.length > 0 ? disciplinasResumo.join(', ') : '-';
+      document.getElementById('profDetailDisciplinasLecionadas').textContent = disciplinasResumo.length > 0 ? disciplinasResumo.join(', ') : '-';
 
+      // Extrair turmas do professor
       const turmasResumo = Array.isArray(prof.turmas)
         ? prof.turmas
             .map(item => item.turma?.sigla_turma || item.turma?.classe_turma || item.turma_id || item.id)
@@ -834,29 +1012,27 @@
       // DEBUG: Ver toda a estrutura do professor
       console.log('=== OBJETO PROFESSOR COMPLETO ===');
       console.log(JSON.stringify(prof, null, 2));
-      console.log('prof.disciplinas:', prof.disciplinas);
-      console.log('prof.turmas:', prof.turmas);
+      console.log('prof.turmasDisciplinas:', prof.turmasDisciplinas);
 
-      // Extrair IDs das disciplinas e turmas do professor
-      const disciplinasIds = [];
-      const turmasIds = [];
-      
-      if (prof.disciplinas && Array.isArray(prof.disciplinas)) {
-        prof.disciplinas.forEach(disc => {
-          const id = disc.disciplina?.id_disc || disc.disciplina_id || disc.id;
-          if (id) disciplinasIds.push(id);
+      // Extrair mapeamento de turma -> disciplinas
+      const turmasDisciplinasMap = {};
+      if (prof.turmasDisciplinas && Array.isArray(prof.turmasDisciplinas)) {
+        prof.turmasDisciplinas.forEach(td => {
+          const turmaId = td.turma_id;
+          const disciplinaId = td.disciplina_id;
+          
+          if (turmaId) {
+            if (!turmasDisciplinasMap[turmaId]) {
+              turmasDisciplinasMap[turmaId] = [];
+            }
+            if (disciplinaId) {
+              turmasDisciplinasMap[turmaId].push(disciplinaId);
+            }
+          }
         });
       }
-      
-      if (prof.turmas && Array.isArray(prof.turmas)) {
-        prof.turmas.forEach(turma => {
-          const id = turma.turma?.id_turma || turma.turma_id || turma.id;
-          if (id) turmasIds.push(id);
-        });
-      }
-      
-      console.log('IDs de disciplinas a marcar:', disciplinasIds);
-      console.log('IDs de turmas a marcar:', turmasIds);
+
+      console.log('Mapa de turma->disciplinas:', turmasDisciplinasMap);
 
       document.getElementById('profModalTitle').textContent = 'Editar Professor';
       
@@ -925,69 +1101,12 @@
 
       document.getElementById('profModalForm').setAttribute('data-id', id);
       
-      // Carregar e marcar disciplinas e turmas APÓS abrir modal
+      // Carregar e renderizar turmas com disciplinas pré-selecionadas
       Promise.all([loadDisciplinas(), loadTurmas()]).then(() => {
         console.log('Disciplinas e turmas carregadas!');
-        console.log('disciplinasIds para marcar:', disciplinasIds);
-        console.log('turmasIds para marcar:', turmasIds);
-        
-        // Aguardar um pouco para permitir renderização
         setTimeout(() => {
-          // Se temos dados do professor, usar renderização com pré-seleção
-          if (disciplinasIds.length > 0 || turmasIds.length > 0) {
-            console.log('Re-renderizando com IDs pré-selecionados...');
-            if (disciplinasIds.length > 0) {
-              renderDisciplinasCheckboxes(disciplinasIds);
-            }
-            if (turmasIds.length > 0) {
-              renderTurmasCheckboxes(turmasIds);
-            }
-          } else {
-            // Se não temos dados, fazer de forma manual
-            console.log('Tentando marcar checkboxes manualmente...');
-            
-            // Desmarcar todas as checkboxes
-            document.querySelectorAll('input[name="disciplinas"]').forEach(cb => cb.checked = false);
-            document.querySelectorAll('input[name="turmas"]').forEach(cb => cb.checked = false);
-
-            // Marcar disciplinas do professor
-            if (prof.disciplinas && Array.isArray(prof.disciplinas)) {
-              console.log('Disciplinas do professor:', prof.disciplinas);
-              prof.disciplinas.forEach(disc => {
-                // Tenta pegar do objeto aninhado primeiro, depois fallback
-                const disciplinaId = disc.disciplina?.id_disc || disc.disciplina_id || disc.id;
-                console.log('Procurando disciplina com ID:', disciplinaId);
-                const checkbox = document.querySelector(`input[name="disciplinas"][value="${disciplinaId}"]`);
-                if (checkbox) {
-                  checkbox.checked = true;
-                  console.log('Disciplina marcada:', disciplinaId);
-                } else {
-                  console.log('Checkbox não encontrado para disciplina:', disciplinaId);
-                }
-              });
-            } else {
-              console.log('Nenhuma disciplina para marcar. prof.disciplinas:', prof.disciplinas);
-            }
-
-            // Marcar turmas do professor
-            if (prof.turmas && Array.isArray(prof.turmas)) {
-              console.log('Turmas do professor:', prof.turmas);
-              prof.turmas.forEach(turma => {
-                // Tenta pegar do objeto aninhado primeiro, depois fallback
-                const turmaId = turma.turma?.id_turma || turma.turma_id || turma.id;
-                console.log('Procurando turma com ID:', turmaId);
-                const checkbox = document.querySelector(`input[name="turmas"][value="${turmaId}"]`);
-                if (checkbox) {
-                  checkbox.checked = true;
-                  console.log('Turma marcada:', turmaId);
-                } else {
-                  console.log('Checkbox não encontrado para turma:', turmaId);
-                }
-              });
-            } else {
-              console.log('Nenhuma turma para marcar. prof.turmas:', prof.turmas);
-            }
-          }
+          // Renderizar com mapa de turma->disciplinas
+          renderTurmasComDisciplinas(turmasDisciplinasMap);
         }, 100);
       }).catch(err => {
         console.error('Erro ao carregar disciplinas/turmas:', err);
@@ -1050,7 +1169,7 @@
     });
 
     // =========== FORMULÁRIO SUBMIT ===========
-document.getElementById('profModal').addEventListener('show.bs.modal', function() {
+    document.getElementById('profModal').addEventListener('show.bs.modal', function() {
         // Carregar disciplinas e turmas quando o modal abrir
         loadDisciplinas();
         loadTurmas();
@@ -1093,16 +1212,23 @@ document.getElementById('profModal').addEventListener('show.bs.modal', function(
         ].filter(x => x).join(', ') || 'Não especificado'
       };
 
-      // Capturar disciplinas selecionadas e converter para números
-      const disciplinasSelecionadas = Array.from(document.querySelectorAll('input[name="disciplinas"]:checked')).map(cb => Number(cb.value));
-      if (disciplinasSelecionadas.length > 0) {
-        data.disciplinas = disciplinasSelecionadas;
-      }
+      // Capturar turmas e disciplinas selecionadas
+      const turmasDisciplinas = [];
+      document.querySelectorAll('input.turma-checkbox:checked').forEach(turmaCheckbox => {
+        const turmaId = parseInt(turmaCheckbox.value);
+        const disciplinasCheckboxes = document.querySelectorAll(`input[name="turma_${turmaId}_disciplinas"]:checked`);
+        
+        disciplinasCheckboxes.forEach(discCheckbox => {
+          const disciplinaId = parseInt(discCheckbox.value);
+          turmasDisciplinas.push({
+            turma_id: turmaId,
+            disciplina_id: disciplinaId
+          });
+        });
+      });
 
-      // Capturar turmas selecionadas e converter para números
-      const turmasSelecionadas = Array.from(document.querySelectorAll('input[name="turmas"]:checked')).map(cb => Number(cb.value));
-      if (turmasSelecionadas.length > 0) {
-        data.turmas = turmasSelecionadas;
+      if (turmasDisciplinas.length > 0) {
+        data.turmasDisciplinas = turmasDisciplinas;
       }
 
       // Se for novo professor, adicionar email e password para criar usuário
